@@ -32,8 +32,5 @@ int main()
     printf("1./3. == d ? %s\n",
             1./3. == d ? "Correct" : "Incorrect");
 
-
-
-
     return 0;
 }
