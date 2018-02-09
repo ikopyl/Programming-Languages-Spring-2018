@@ -1,0 +1,94 @@
+\documentclass[10pt,letterpaper]{article}  
+\usepackage{mdwtab}
+\usepackage{syntax} 
+\usepackage{lipsum} % to geberate text for the example 
+
+\setlength{\grammarparsep}{0.25cm}   % vertical distance between production rules
+\setlength{\grammarindent}{1cm}      % horizontal indent distance
+
+
+\renewcommand{\syntleft}{}          % do not display '<' associated with variable, for example <A>
+\renewcommand{\syntright}{}         % do not display '>' associated with variable, for example <A>
+
+% Note: the empty line between production rules is not optional!
+
+\makeatletter
+\newenvironment{mygrammar}[1][0pt]{%
+\list{}{%
+\labelwidth\grammarindent%
+\leftmargin\dimexpr\grammarindent+#1\relax%
+\advance\grammarindent\labelsep
+\itemindent\z@%
+\listparindent\z@%
+\parsep\grammarparsep%
+}%
+\let\\\@normalcr
+\syntaxShortcuts\relax\relax%
+\def\alt{\\\llap{\textbar\quad}}%
+\def\gr@setpar{%
+\def\par{%
+\parshape\@ne\@totalleftmargin\linewidth%
+\@@par%
+\catcode`\<12%
+\everypar{%
+\everypar{}%
+\catcode`\<\active%
+\gr@implitem%
+}%
+}%
+}%
+\gr@setpar%
+\par%
+\let\gr@leftsq\[%
+\let\gr@rightsq\]%
+\def\gr@endsyntdiag]{\end{syntdiag}\gr@setpar\par}%
+\def\[{\@ifnextchar[{\begin{syntdiag}\@gobble}\gr@leftsq}%
+\def\]{\@ifnextchar]\gr@endsyntdiag\gr@rightsq}%
+}{%
+\@newlistfalse%
+\everypar{}%
+\endlist%
+}
+\makeatother
+
+\begin{document}
+
+
+\ttfamily
+\begin{grammar}    
+
+  <A> $\rightarrow$ B | c | d
+
+   <B> $\rightarrow$ B
+
+   <C> $\rightarrow$ D 
+\end{grammar}
+
+\begin{mygrammar}    
+
+  <A> $\equal$ B | c | d
+
+   <B> $\rightarrow$ B
+
+   <C> $\rightarrow$ D 
+\end{mygrammar}
+
+\begin{mygrammar}[3cm]    
+
+  <A> $\rightarrow$ B | c | d
+
+   <B> $\rightarrow$ B
+
+   <C> $\rightarrow$ D 
+\end{mygrammar}
+
+\begin{mygrammar}[6cm]    
+
+  <A> $\rightarrow$ B | c | d
+
+   <B> $\rightarrow$ B
+
+   <C> $\rightarrow$ D 
+\end{mygrammar}
+
+\end{document}

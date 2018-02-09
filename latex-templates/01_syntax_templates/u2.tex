@@ -1,0 +1,74 @@
+\documentclass{article}
+% \usepackage[utf18]{inputenc}
+% \usepackage[T1]{fontenc}
+
+
+%\usepackage[T1]{fontenc}
+
+%\usepackage{sourcecodepro}
+%\usepackage[T1]{fontenc}
+
+
+% \usepackage{consolas}
+% % \renewcommand*\familydefault{\ttdefault} 		%% Only if the base font of the document is to be typewriter style
+% %\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
+% \usepackage[latin1]{inputenc}
+% \usepackage[none]{hyphenat}%%%%
+
+
+
+
+% Euler for math | Palatino for rm | Helvetica for ss | Courier for tt
+\renewcommand{\rmdefault}{ppl} % rm
+\linespread{1.05}        % Palatino needs more leading
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+\usepackage{euler} % math
+%\usepackage{eulervm} % a better implementation of the euler package (not in gwTeX)
+\normalfont
+\usepackage[T1]{fontenc}
+
+
+
+
+
+
+\begin{document}
+
+\rmfamily
+Question 1: Write BNF notation of the syntax of exponential real numbers (<ERN>). Examples of possible <ERN> are:
+
+\texttt\
+
+\ttfamily
++12.34E-12
+
+-.12E-7
+
+12.E17
+
+7E+3
+
+\texttt\
+
+\rmfamily{The answer:}\\
+
+\ttfamily
+
+<ERN> ::= <sign><real><expression>
+
+<real> ::= <digits>|.<digits>|<digits>.|<digits>.<digits>
+
+<exponents> ::= E<sign><digits>
+
+<digits> ::= <digit>|<digit><digits>
+
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+
+<sign> ::= +|-|<empty>
+
+<empty> ::=
+
+
+\end{document}
