@@ -23,7 +23,7 @@ int main() {
 
     printf("allDifferent(a, 5) == 1 ? %s\n",
             trueOrFalse == 1 ? "True" : "False");
-    printf("allDifferent(a, 5) =  %d\n", 
+    printf("allDifferent(a, 5) =  %d\n\n", 
             trueOrFalse);
 
 
@@ -36,7 +36,7 @@ int main() {
 
     printf("allDifferent(a, 6) == 1 ? %s\n",
             trueOrFalse == 1 ? "True" : "False");
-    printf("allDifferent(a, 6) =  %d\n", 
+    printf("allDifferent(a, 6) =  %d\n\n", 
             trueOrFalse);
 
     return 0;
