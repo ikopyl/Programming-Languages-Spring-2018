@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum(int);
+unsigned int sum(int);
+short allDifferent(unsigned int[], unsigned int);
 
 int main() {
 
@@ -18,12 +19,24 @@ int main() {
 /**
  * A function that returns the sum of digits of a positive integer n
  */
-int sum(int n)
+unsigned int sum(int n)
 {
-    int currentDigit = 0;
+    unsigned int sumOfDigits = 0;
     do {
-        currentDigit += n % 10;
+        sumOfDigits += n % 10;
+        printf("sumOfDigits = %d\n", sumOfDigits);
     } while ((n /= 10) != 0);
 
-    return abs(currentDigit);
+    return abs(sumOfDigits);
+}
+
+short allDifferent(unsigned int a[], unsigned int na) {
+
+    unsigned int sumsOfDigits[na];
+    // number of comparisons would increase per each iteration
+    for (int i = 0; i < na; i++) {
+
+    }
+
+    return 1;
 }
