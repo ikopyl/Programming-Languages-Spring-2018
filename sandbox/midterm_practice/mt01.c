@@ -16,8 +16,8 @@ int main() {
 
     unsigned int a[5] = { 17, 22, 33, 41, 9 };
     printUIntArray(a, sizeof(a));
-    puts("");
 
+    puts("");
     short trueOrFalse = allDifferent(a, 5);
     puts("");
 
@@ -26,6 +26,18 @@ int main() {
     printf("allDifferent(a, 5) =  %d\n", 
             trueOrFalse);
 
+
+    unsigned int b[5] = { 17, 22, 33, 42, 9 };
+    printUIntArray(b, sizeof(b));
+
+    puts("");
+    trueOrFalse = allDifferent(b, 5);
+    puts("");
+
+    printf("allDifferent(a, 6) == 1 ? %s\n",
+            trueOrFalse == 1 ? "True" : "False");
+    printf("allDifferent(a, 6) =  %d\n", 
+            trueOrFalse);
 
     return 0;
 }
@@ -59,7 +71,7 @@ short allDifferent(unsigned int *a, unsigned int na) {
                 if (sumsOfDigits[j] == temp)
                     return 0;
 
-        sumsOfDigits[i] = temp;             // should do mergesort insert && binary search
+        sumsOfDigits[i] = temp;                     // should do mergesort insert && binary search
         printUIntArray(sumsOfDigits, sizeof(sumsOfDigits));
     }
 
