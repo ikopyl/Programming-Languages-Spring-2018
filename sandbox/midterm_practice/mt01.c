@@ -56,6 +56,10 @@ unsigned int sum(int n)
     return abs(sumOfDigits);
 }
 
+/**
+ * A function that return 1 if all components of the positive integer array 
+ * a[0..na-1] have different sums of digits; otherwise it returns 0.
+ */
 short allDifferent(unsigned int *a, unsigned int na) {
 
     unsigned int sumsOfDigits[na];
