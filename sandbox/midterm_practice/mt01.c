@@ -23,7 +23,6 @@ int sum(int n)
     int currentDigit = 0;
     do {
         currentDigit += n % 10;
-        printf("currentDigit == %d\n", currentDigit);
     } while ((n /= 10) != 0);
 
     return abs(currentDigit);
