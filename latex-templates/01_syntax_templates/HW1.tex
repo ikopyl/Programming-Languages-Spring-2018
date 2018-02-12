@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{syntax}
+\usepackage[T1]{fontenc}			% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+
+Homework is prepared by: Ilya Kopyl
+
+It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
+
+
+	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+
+
+	\paragraph{1. Using BNF write the syntax definitions of the following objects:}
+	\rmfamily\
+	\newline
+
+			a) Natural number (1, 2, 3, ...).
+			
+			The answer:
+	\ttfamily
+	\begin{grammar}
+	
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+
+	\paragraph{}
+	\rmfamily\
+	
+			b) Unsigned integer (0, 1, 2, 3, ...).
+			
+			The answer:
+	\ttfamily
+		\begin{grammar}
+		
+		<unsigned integer> ::= 0 | <non-zero digit> <digits>
+		
+		<digits> ::= <digit> | <digits> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+
+	\paragraph{}
+	\rmfamily\
+	
+			c) Integer (..., -2, -1, 0, 1, 2, ...).
+			
+			The answer:
+	\ttfamily
+		\begin{grammar}
+		
+		
+				
+		<digits> ::= <digit> | <digits> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+
+
+
+
+
+\end{document}
