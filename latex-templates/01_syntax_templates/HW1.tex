@@ -8,7 +8,8 @@
 \begin{document}
 
 	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
-	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+%	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+	\setlength{\grammarindent}{5cm} 
 
 	\title{\textsc{CSc 600 Homework 1 - Syntax}}
 
@@ -26,7 +27,8 @@
 	\paragraph{1. Using BNF write the syntax definitions of the following objects:}\
 	\rmfamily\\\
 	
-			a) Natural number (1, 2, 3, ...). The answer:
+		a) Natural number (1, 2, 3, ...). The answer:
+			
 	\ttfamily
 	\begin{grammar}
 	
@@ -44,7 +46,8 @@
 	\paragraph{}
 	\rmfamily
 	
-			b) Unsigned integer (0, 1, 2, 3, ...). The answer:
+		b) Unsigned integer (0, 1, 2, 3, ...). The answer:
+			
 	\ttfamily
 	\begin{grammar}
 		
@@ -64,7 +67,8 @@
 	\paragraph{}
 	\rmfamily
 	
-			c) Integer (..., -2, -1, 0, 1, 2, ...). The answer:
+		c) Integer (..., -2, -1, 0, 1, 2, ...). The answer:
+			
 	\ttfamily
 	\begin{grammar}
 		
@@ -74,7 +78,7 @@
 		
 		<empty> ::= \
 		
-		<unsigned integer> ::= 0 | <non-zero digit> <digit>
+		<unsigned integer> ::= 0 | <non-zero digit> <digits>
 				
 		<digits> ::= <digit> | <digits> <digit>
 
@@ -91,17 +95,18 @@
 	\paragraph{}
 	\rmfamily
 	
-			d) Odd number (..., -3, -1, 1, 3, ..., 101, ..., 2047, ...). The answer:
+		d) Odd number (..., -3, -1, 1, 3, ..., 101, ..., 2047, ...). The answer:
+			
 	\ttfamily
 	\begin{grammar}
 	
-		<odd number> ::= <sign> <unsigned odd num>
+		<odd number> ::= <sign> <unsigned odd number>
 		
 		<sign> ::= + | - | <empty>
 		
 		<empty> ::= \
 		
-		<unsigned odd num> ::= <odd digit> | <number> <unsigned odd num>
+		<unsigned odd number> ::= <odd digit> | <number> <unsigned odd number>
 		
 		<number> ::= <non-zero digit> | <number> <digit>
 		
@@ -111,6 +116,36 @@
 		
 		<odd digit> ::= 1 | 3 | 5 | 7 | 9
 		
+	\end{grammar}
+	
+	
+	
+	
+	\paragraph{}
+	\rmfamily
+	
+		e) Even number (..., -4, -2, 0, 2, 4, ..., 332, ..., 1022, ...). The answer:
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<even number> ::= <sign> <unsigned even number>
+	
+		<sign> ::= + | - | <empty>
+	
+		<empty> ::= \
+	
+		<unsigned even number> ::= <even digit> | <number> <unsigned even number>
+	
+		<number> ::= <non-zero digit> | <number> <digit>
+	
+		<digit> ::= 0 | <non-zero digit>
+	
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	
+		<even digit> ::= 0 | 2 | 4 | 6 | 8
+	
+			
 	\end{grammar}
 
 
