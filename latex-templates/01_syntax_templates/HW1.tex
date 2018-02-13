@@ -106,9 +106,9 @@
 		
 		<empty> ::= \
 		
-		<unsigned odd number> ::= <odd digit> | <number> <unsigned odd number>
+		<unsigned odd number> ::= <odd digit> | <natural number> <unsigned odd number>
 		
-		<number> ::= <non-zero digit> | <number> <digit>
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
 		
 		<digit> ::= 0 | <non-zero digit>
 		
@@ -135,9 +135,9 @@
 	
 		<empty> ::= \
 	
-		<unsigned even number> ::= <even digit> | <number> <unsigned even number>
+		<unsigned even number> ::= <even digit> | <natural number> <unsigned even number>
 	
-		<number> ::= <non-zero digit> | <number> <digit>
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
 	
 		<digit> ::= 0 | <non-zero digit>
 	
@@ -165,9 +165,9 @@
 		
 		<empty> ::= \
 		
-		<unsigned int div-by-5> ::= 0 | 5 | <number> <unsigned int div-by-5>
+		<unsigned int div-by-5> ::= 0 | 5 | <natural number> <unsigned int div-by-5>
 		
-		<number> ::= <non-zero digit> | <number> <digit>
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
 		
 		<digit> ::= 0 | <non-zero digit>
 		
