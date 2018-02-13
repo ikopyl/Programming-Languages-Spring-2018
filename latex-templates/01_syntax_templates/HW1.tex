@@ -17,6 +17,8 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
 
 
+
+
 	\paragraph{1. Using BNF write the syntax definitions of the following objects:}\
 	\rmfamily\\\
 	
@@ -32,6 +34,8 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 		
 	\end{grammar}
 	
+	
+
 	
 	\paragraph{}
 	\rmfamily
@@ -49,6 +53,8 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 		
 	\end{grammar}
+
+
 
 
 	\paragraph{}
@@ -77,6 +83,31 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 
 
 
+
+	\paragraph{}
+	\rmfamily
+	
+			d) Odd number (..., -3, -1, 1, 3, ...). The answer:
+	\ttfamily
+	\begin{grammar}
+	
+		<odd number> ::= <sign> <unsigned odd num>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned odd num> ::= <odd digit> | <number> <unsigned odd num>
+		
+		<number> ::= <non-zero digit> | <number> <digit>
+		
+		<digit> ::= 0 | <non-zero digit>
+		
+		<non-zero digit> ::= 2 | 4 | 6 | 8 | <odd digit>
+		
+		<odd digit> ::= 1 | 3 | 5 | 7 | 9
+		
+	\end{grammar}
 
 
 
