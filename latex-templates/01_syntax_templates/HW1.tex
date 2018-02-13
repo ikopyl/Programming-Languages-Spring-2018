@@ -34,16 +34,16 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 		
 	\end{grammar}
-
-
+	
+	
 	\paragraph{}
-	\rmfamily\
+	\rmfamily
 	
 			b) Unsigned integer (0, 1, 2, 3, ...).
 			
 			The answer:
 	\ttfamily
-		\begin{grammar}
+	\begin{grammar}
 		
 		<unsigned integer> ::= 0 | <non-zero digit> <digits>
 		
@@ -57,21 +57,28 @@ It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).
 
 
 	\paragraph{}
-	\rmfamily\
+	\rmfamily
 	
 			c) Integer (..., -2, -1, 0, 1, 2, ...).
 			
 			The answer:
 	\ttfamily
-		\begin{grammar}
+	\begin{grammar}
 		
+		<integer> ::= <sign> <unsigned integer>
 		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned integer> ::= 0 | <non-zero digit> <digit>
 				
 		<digits> ::= <digit> | <digits> <digit>
 
 		<digit> ::= 0 | <non-zero digit>
-
+		
 		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
 		
 	\end{grammar}
 
