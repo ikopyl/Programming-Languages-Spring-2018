@@ -51,9 +51,9 @@
 	\ttfamily
 	\begin{grammar}
 		
-		<unsigned integer> ::= 0 | <non-zero digit> <digits>
+		<unsigned integer> ::= 0 | <natural number>
 		
-		<digits> ::= <digit> | <digits> <digit>
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
 
 		<digit> ::= 0 | <non-zero digit>
 
@@ -78,9 +78,9 @@
 		
 		<empty> ::= \
 		
-		<unsigned integer> ::= 0 | <non-zero digit> <digits>
-				
-		<digits> ::= <digit> | <digits> <digit>
+		<unsigned integer> ::= 0 | <natural number>
+		
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
 
 		<digit> ::= 0 | <non-zero digit>
 		
