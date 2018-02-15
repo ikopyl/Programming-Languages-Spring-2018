@@ -121,9 +121,7 @@
 		
 		<empty> ::= \
 		
-		<unsigned integer> ::= <digits>
-		
-		<digits> ::= <digit> | <digits> <digit>
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
 
 		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
@@ -168,6 +166,29 @@
 		
 		<empty> ::= \
 		
+		<unsigned odd number> ::= <odd digit> | <unsigned integer> <odd digit>
+		
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+		
+	\end{grammar}
+
+		\paragraph{}	
+		\rmfamily\
+		
+		Example of BNF definition of an odd number in languages that do not support leading zeroes (e.g. Python):
+			
+	\ttfamily
+	\begin{grammar}
+	
+		<odd number> ::= <sign> <unsigned odd number>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
 		<unsigned odd number> ::= <odd digit> | <natural number> <odd digit>
 		
 		<natural number> ::= <non-zero digit> | <natural number> <digit>
@@ -184,7 +205,7 @@
 	
 	
 	\paragraph{}
-	\rmfamily
+	\rmfamily\
 	
 		e) Even number (..., -4, -2, 0, 2, 4, ..., 332, ..., 1022, ...). The answer:
 		
