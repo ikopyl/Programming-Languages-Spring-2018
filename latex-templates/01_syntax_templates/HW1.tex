@@ -1,9 +1,17 @@
 \documentclass{article}
+
 \usepackage{syntax}
 \usepackage[T1]{fontenc}			% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
 
 \begin{document}
 
@@ -178,6 +186,23 @@
 		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 		
 	\end{grammar}
+	
+	
+	
+	
+	
+	\paragraph{2. Show syntax diagrams for questions (a), ..., (f) of problem 1.}
+
+			
+%		\includegraphics{diagrams}
+		\includegraphics[width=\textwidth]{leadingzeroes3}
+		\rmfamily
+		Example of syntax diagrams for integers with no support of leading zeroes.
+		\includegraphics[width=\textwidth-28pt]{noleadingzeroescrop2}
+ %		\includepdf{shortdiagram.png}
+		
+			
+	\ttfamily
 
 
 
