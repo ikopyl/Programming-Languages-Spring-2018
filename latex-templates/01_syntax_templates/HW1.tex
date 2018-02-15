@@ -218,6 +218,27 @@
 	
 		<empty> ::= \
 	
+		<unsigned even number> ::= <even digit> | <unsigned integer> <even digit>
+	
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	
+	\end{grammar}
+	
+		\rmfamily\
+	
+		Example of BNF definition of an even number in languages that do not support leading zeroes (e.g. Python):
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<even number> ::= <sign> <unsigned even number>
+	
+		<sign> ::= + | - | <empty>
+	
+		<empty> ::= \
+	
 		<unsigned even number> ::= <even digit> | <natural number> <even digit>
 	
 		<natural number> ::= <non-zero digit> | <natural number> <digit>
