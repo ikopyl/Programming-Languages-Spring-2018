@@ -14,7 +14,13 @@
 \graphicspath{ {images/} }
 
 \usepackage{microtype}
-% \DisableLigatures[<]{}
+\DisableLigatures[<]{encoding = T1}
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
 
 
 \begin{document}
@@ -329,7 +335,7 @@
 		Following is an example of input statement in C++:
 		\newline
 	
-		\texttt{cin	>>	sclr	>>	vec[2 * i - 1]	>>	mat[f(i)][j + k]	>>	t[i/3][j][k]; }
+		\texttt{cin	\lstinline[language=bash]/>>/	sclr	\lstinline[language=bash]/>>/	vec[2 * i - 1]	\lstinline[language=bash]/>>/	mat[f(i)][j + k]	\lstinline[language=bash]/>>/	t[i/3][j][k]; }
 	
 		The answer:
 		
@@ -341,7 +347,7 @@
 	
 		<input statement> ::= cin <input arguments> ;
 		
-		<input arguments> ::= >> <input value> | <input arguments> >> <input value>
+		<input arguments> ::= \lstinline[language=bash]/>>/ <input value> | <input arguments> \lstinline[language=bash]/>>/ <input value>
 		
 		<input value> ::= <struct member> | <array element> | <identifier>
 		
@@ -414,7 +420,7 @@
 
 	\end{grammar}
 	
-	
+
 	
 	
 	\rmfamily\
@@ -441,16 +447,16 @@
 		
 		The answer (the definitions for auxiliary BNF productions are listed in the previous answer):
 		
-	\ttfamily
+	\ttfamily\
 	\begin{grammar}
 	
 		<output statement> ::= cout <output arguments> ;
 		
-		<output arguments> ::= << <output value> | <output arguments> << <output value>
+		<output arguments> ::= \lstinline[language=bash]/<</ <output value> | <output arguments> \lstinline[language=bash]/<</ <output value>
 		
-		<output value> ::= <expression>
+		<output value> 	   ::= <expression>
 		
 	\end{grammar}
-
+	
 
 \end{document}
