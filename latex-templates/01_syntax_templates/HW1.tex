@@ -345,7 +345,10 @@
 		
 		<input arguments> ::= >> <input value> | <input arguments> >> <input value>
 		
-		<input value> ::= <identifier> | <array element> | <struct member>
+		<input value> ::= <struct member> | <array element> | <identifier>
+		
+		<struct member> ::= <identifier> . <identifier>
+					   \alt <struct member> . <identifier> 
 		
 		<array element> ::= <identifier> <array indicies>
 		
@@ -358,13 +361,7 @@
 		<numerical expression> ::= <arithmetic expression>
 							  \alt <unary expression>
 					    	  \alt <function call>
-							  		
-		<expression> ::= <conditional expression>
-					\alt <numerical expression>
-					\alt <string literal>
-					\alt <character literal>
-					\alt <void>
-					
+							  					
 		<arithmetic expression> ::= <operand> | <arithmetic expression> <operator> <operand>
 
 		<operator> ::= + | - | * | / | \% 
@@ -372,9 +369,18 @@
 		<unary expression> ::= ++ <operand> | <operand> ++ 
 							 \alt --- <operand> | <operand> ---
 									 
-		<arithmetic operand> ::= <identifier> | <integer> | <floating point number>
+		<operand> ::= <identifier> | <integer> | <floating point number>
 		
+		<function call> ::= <identifier> ( <function arguments> )
 		
+		<function arguments> ::= <function argument> | <function arguments> , <function argument>
+				
+		<function argument> ::= <function call> | <expression>
+		
+		<expression> ::= <numerical expression>
+					\alt <string>
+					\alt <character literal>
+					\alt <void>
 		
  						   
 
