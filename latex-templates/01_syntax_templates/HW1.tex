@@ -331,11 +331,39 @@
 		\texttt{cin	>>	sclr	>>	vec[2 * i - 1]	>>	mat[f(i)][j + k]	>>	t[i/3][j][k]; }
 	
 		The answer:
+		\newline
+		\newline
+		\textit{"There are only two hard things in Computer Science: cache invalidation and naming things." -- Phil Karlton.\\}
 		
 	\ttfamily
+	
+	
+	
 	\begin{grammar}
 	
-		<input statement> ::= cin <input statement list> ;
+		<input statement> ::= cin <input arguments> ;
+		
+		<input arguments> ::= >> <input value> | <input arguments> >> <input value>
+		
+		<input value> ::= <variable> | <array element> | <struct member>
+		
+		<variable> ::= <identifier>
+		
+		<array element> ::= <identifier> <array indicies>
+		
+		<identifier> ::= <non-digit character> | <identifier> <digit>
+		
+		<array indicies> ::= <array index> | <array indicies> <array index>
+		
+		<array index> ::= [ <expression> ]
+		
+		<expression> ::= <arithmetic expression>
+					\alt <function call>
+					\alt <identifier>
+					\alt <void>
+		
+		
+		
 		
 	\end{grammar}
 
