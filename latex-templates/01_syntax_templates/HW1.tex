@@ -345,9 +345,7 @@
 		
 		<input arguments> ::= >> <input value> | <input arguments> >> <input value>
 		
-		<input value> ::= <variable> | <array element> | <struct member>
-		
-		<variable> ::= <identifier>
+		<input value> ::= <identifier> | <array element> | <struct member>
 		
 		<array element> ::= <identifier> <array indicies>
 		
@@ -355,50 +353,30 @@
 		
 		<array indicies> ::= <array index> | <array indicies> <array index>
 		
-		<array index> ::= [ <numeric expression> ]
+		<array index> ::= [ <numerical expression> ]
 		
+		<numerical expression> ::= <arithmetic expression>
+							  \alt <unary expression>
+					    	  \alt <function call>
+							  		
 		<expression> ::= <conditional expression>
-					\alt <numeric expression>
-					\alt <function call>
-					\alt <identifier>
+					\alt <numerical expression>
+					\alt <string literal>
+					\alt <character literal>
 					\alt <void>
+					
+		<arithmetic expression> ::= <operand> | <arithmetic expression> <operator> <operand>
+
+		<operator> ::= + | - | * | / | \% 
+
+		<unary expression> ::= ++ <operand> | <operand> ++ 
+							 \alt --- <operand> | <operand> ---
+									 
+		<arithmetic operand> ::= <identifier> | <integer> | <floating point number>
 		
 		
 		
-<logical or> ::= <logical and>
-			\alt <logical or> || <logical and>
-
-<logical and> ::= <inclusive or>
-			 \alt <logical and> \&\& <inclusive or>
-
-<inclusive or> ::= <exclusive or>
-			  \alt <inclusive or> | <exclusive or>
-
-<exclusive or> ::= <and>
-			  \alt <exclusive or> \^{} <and>
-
-<and> ::= <equality>
-	 \alt <and> \& <equality>
-
-<equality expression> ::= <relational expression>
-		  \alt <equality expression> == <relational expression>
-		  \alt <equality expression> != <relational expression>
-
-<relational expression>	::= <addition>
-					   \alt <relational expression> < <addition>
-					   \alt <relational expression> > <addition>
-					   \alt <relational expression> <= <addition>
-					   \alt <relational expression> >= <addition>
-
-<addition> ::= <multiplication>
-				  \alt <addition> + <multiplication>
-				  \alt <addition> - <multiplication>
-
-<multiplicative expression>	::= <pm expression>
-						   \alt <multiplication> * <unary expression>
-						   \alt <multiplication> / <unary expression>
-						   \alt <multiplication> \% <unary expression>
-						   
+ 						   
 
 		
 		
