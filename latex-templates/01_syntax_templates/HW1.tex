@@ -331,9 +331,6 @@
 		\texttt{cin	>>	sclr	>>	vec[2 * i - 1]	>>	mat[f(i)][j + k]	>>	t[i/3][j][k]; }
 	
 		The answer:
-		\newline
-		\newline
-		\textit{"There are only two hard things in Computer Science: cache invalidation and naming things." -- Phil Karlton.\\}
 		
 	\ttfamily
 	
@@ -373,16 +370,29 @@
 		
 		<function call> ::= <identifier> ( <function arguments> )
 		
-		<function arguments> ::= <function argument> | <function arguments> , <function argument>
+		<function arguments> ::= <argument> | <function arguments> , <argument>
 				
-		<function argument> ::= <function call> | <expression>
+		<argument> ::= <function call> | <expression>
 		
 		<expression> ::= <numerical expression>
 					\alt <string>
 					\alt <character literal>
 					\alt <void>
+					
+		<string> ::= "\"" <characters> "\""
+
+		<characters> ::= <non-digit character> | <characters> <char>
 		
- 						   
+		<char> ::= <non-digit character> | <digit>
+		
+		<non-digit character> ::= A | B | C | D | E | F | G | H | I | J
+			  				 \alt K | L | M | N | O | P | Q | R | S | T 
+			   			     \alt U | V | W | X | Y | Z | a | b | c | d 
+			  				 \alt e | f | g | h | i | j | k | l | m | n
+			   				 \alt o | p | q | r | s | t | u | v | w | x 
+			  				 \alt y | z | 
+		
+		
 
 		
 		
