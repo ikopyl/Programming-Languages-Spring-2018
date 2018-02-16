@@ -13,7 +13,8 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
-
+\usepackage{microtype}
+% \DisableLigatures[<]{}
 
 
 \begin{document}
@@ -392,7 +393,9 @@
 
 		<characters> ::= <char> | <characters> <char>
 		
-		<char> ::= <non-digit character> | <digit>
+		<char> ::= <non-digit character> | <digit> | <whitespace>
+		
+		<whitespace> ::= ' '
 		
 		<non-digit character> ::= A | B | C | D | E | F | G | H | I | J
 			  				 \alt K | L | M | N | O | P | Q | R | S | T 
@@ -415,8 +418,6 @@
 	
 	
 	\rmfamily\
-	\newline	
-	
 	
 	\paragraph{4. Write a BNF definition of the syntax of (all possible) output statements in C++. }\
 	
@@ -427,21 +428,29 @@
 		\newline
 
 	
-		\texttt{ cout << 12.34 * a / rate << " " << 43.21 << " " << }
+		\texttt{ cout << 12.34 * a / rate << " " << 43.21 << " " }
 		
-		\texttt{ alpha + x[2 * i - 1] << " " << (p \&\& q) << "\"" "\"" }
+		\texttt{ 	  << alpha + x[2*i-1] << " " << (p \&\& q) << " " }
 		
-		\texttt{ << pow(t[i][j], 1.2) << " string " << 's' }
+		\texttt{      << pow(t[i][j],1.2) << " string " << 's' }
 		
-		\texttt{ << " " << myfun(x, sin(x+y), third_argument) ; } 
+		\texttt{      << " " << myfun(x, sin(x+y), third_argument) ; } 
 		
 		\rmfamily\
 		
 		
-		The answer:
+		The answer (the definitions for auxiliary BNF productions are listed in the previous answer):
 		
 	\ttfamily
-
+	\begin{grammar}
+	
+		<output statement> ::= cout <output arguments> ;
+		
+		<output arguments> ::= << <output value> | <output arguments> << <output value>
+		
+		<output value> ::= <expression>
+		
+	\end{grammar}
 
 
 \end{document}
