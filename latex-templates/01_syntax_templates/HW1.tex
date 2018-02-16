@@ -405,7 +405,7 @@
 		<character> ::= <non-digit character> | <digit>
 		           \alt <whitespace> | <character literal>
 		
-		<character literal> ::= "\\" <special character>
+		<character literal> ::= <special character> | "\\" <non-digit character>
 		
 		<whitespace> ::= ' '
 		
