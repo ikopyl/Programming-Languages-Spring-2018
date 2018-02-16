@@ -359,15 +359,21 @@
 							  \alt <unary expression>
 					    	  \alt <function call>
 							  					
-		<arithmetic expression> ::= <operand> | <arithmetic expression> <operator> <operand>
+		<arithmetic expression> ::= <operand> | <arithmetic expression> <operator> <arithmetic expression>
 
 		<operator> ::= + | - | * | / | \% 
 
 		<unary expression> ::= ++ <operand> | <operand> ++ 
 							 \alt --- <operand> | <operand> ---
 									 
-		<operand> ::= <identifier> | <integer> | <floating point number>
+		<operand> ::= <identifier> | <integer number> | <floating point number>
 		
+		<integer number> ::= <digits> | <digits> L | <digits> LL
+		
+		<floating point number> ::= <real number> | <real number> F
+		
+		<real number> ::= <digits> . <digits> | <digits> . | . <digits>
+				
 		<function call> ::= <identifier> ( <function arguments> )
 		
 		<function arguments> ::= <argument> | <function arguments> , <argument>
@@ -393,6 +399,8 @@
 			  				 \alt e | f | g | h | i | j | k | l | m | n
 			   				 \alt o | p | q | r | s | t | u | v | w | x 
 			  				 \alt y | z | _
+		
+		<digits> ::= <digit> | <digits> <digit>
 		
 		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 		
