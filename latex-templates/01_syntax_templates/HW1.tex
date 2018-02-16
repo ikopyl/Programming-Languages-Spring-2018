@@ -377,11 +377,13 @@
 									 
 		<operand> ::= <identifier> | <integer number> | <floating point number>
 		
-		<integer number> ::= <digits> | <digits> L | <digits> LL
+		<integer number> ::= <integer> | <integer> L | <integer> LL
 		
-		<floating point number> ::= <real number> | <real number> F
+		<floating point number> ::= <real> | <real> F
 		
-		<real number> ::= <digits> . <digits> | <digits> . | . <digits>
+		<real> ::= <sign> <unsigned real>
+		
+		<unsigned real> ::= <digits> . <digits> | <digits> . | . <digits>
 				
 		<function call> ::= <identifier> ( <function arguments> )
 		
