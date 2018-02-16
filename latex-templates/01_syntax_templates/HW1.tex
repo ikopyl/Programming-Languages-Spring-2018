@@ -363,13 +363,14 @@
 		<array index> ::= [ <numerical expression> ]
 		
 		<numerical expression> ::= <arithmetic expression>
-							  \alt <unary expression>
 					    	  \alt <function call>
 							  					
-		<arithmetic expression> ::= <operand>
+		<arithmetic expression> ::= <compound operand>
 							   \alt <arithmetic expression> <operator> <arithmetic expression>
 
 		<operator> ::= + | - | * | / | \% 
+		
+		<compound operand> ::= <operand> | <unary expression>
 
 		<unary expression> ::= ++ <operand> | <operand> ++ 
 							 \alt --- <operand> | <operand> ---
