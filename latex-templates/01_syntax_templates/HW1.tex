@@ -355,13 +355,51 @@
 		
 		<array indicies> ::= <array index> | <array indicies> <array index>
 		
-		<array index> ::= [ <expression> ]
+		<array index> ::= [ <numeric expression> ]
 		
-		<expression> ::= <arithmetic expression>
+		<expression> ::= <conditional expression>
+					\alt <numeric expression>
 					\alt <function call>
 					\alt <identifier>
 					\alt <void>
 		
+		
+		
+<logical or> ::= <logical and>
+			\alt <logical or> || <logical and>
+
+<logical and> ::= <inclusive or>
+			 \alt <logical and> \&\& <inclusive or>
+
+<inclusive or> ::= <exclusive or>
+			  \alt <inclusive or> | <exclusive or>
+
+<exclusive or> ::= <and>
+			  \alt <exclusive or> \^{} <and>
+
+<and> ::= <equality>
+	 \alt <and> \& <equality>
+
+<equality expression> ::= <relational expression>
+		  \alt <equality expression> == <relational expression>
+		  \alt <equality expression> != <relational expression>
+
+<relational expression>	::= <addition>
+					   \alt <relational expression> < <addition>
+					   \alt <relational expression> > <addition>
+					   \alt <relational expression> <= <addition>
+					   \alt <relational expression> >= <addition>
+
+<addition> ::= <multiplication>
+				  \alt <addition> + <multiplication>
+				  \alt <addition> - <multiplication>
+
+<multiplicative expression>	::= <pm expression>
+						   \alt <multiplication> * <unary expression>
+						   \alt <multiplication> / <unary expression>
+						   \alt <multiplication> \% <unary expression>
+						   
+
 		
 		
 		
