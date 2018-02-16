@@ -362,8 +362,7 @@
 		
 		<array index> ::= [ <numerical expression> ]
 		
-		<numerical expression> ::= <arithmetic expression>
-					    	  \alt <function call>
+		<numerical expression> ::= <arithmetic expression> | <function call>
 							  					
 		<arithmetic expression> ::= <compound operand>
 							   \alt <arithmetic expression> <operator> <arithmetic expression>
@@ -393,16 +392,20 @@
 		
 		<expression> ::= <numerical expression>
 					\alt <string>
+					\alt <char>
 					\alt <character literal>
-					\alt <void>
+					\alt <empty>
 					
 		<string> ::= "\"" <characters> "\""
 		
-		<character literal> ::= "\'" <char> "\'" | "\'" "\\" <char> "\'"
-
-		<characters> ::= <char> | <characters> <char>
+		<char> ::= "\'" <character> "\'"
 		
-		<char> ::= <non-digit character> | <digit> | <whitespace>
+		<characters> ::= <character> | <characters> <character>
+		
+		<character> ::= <non-digit character> | <digit>
+		           \alt <whitespace> | <character literal>
+		
+		<character literal> ::= "\\" <special character>
 		
 		<whitespace> ::= ' '
 		
@@ -416,9 +419,7 @@
 		<digits> ::= <digit> | <digits> <digit>
 		
 		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-		
-		<void> ::= <empty>
-		
+				
 		<empty> ::= \
 
 	\end{grammar}
@@ -426,7 +427,7 @@
 
 	
 	
-	\rmfamily\
+	\rmfamily
 	
 	\paragraph{4. Write a BNF definition of the syntax of (all possible) output statements in C++. }\
 	
