@@ -1,0 +1,466 @@
+\documentclass{article}
+
+\usepackage{syntax}
+\usepackage[T1]{fontenc}			% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
+
+\usepackage{courier} % tt
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{microtype}
+\DisableLigatures[<]{encoding = T1}
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+
+
+\begin{document}
+
+	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+%	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+	\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
+%	\setlength{\grammarindent}{5cm} 
+
+
+
+
+	\begin{titlepage}
+		\vspace*{\stretch{1.0}}
+		\begin{center}
+				\Large\textsc{CSc 600-01 (Section 1)}
+				
+				\Large\textbf{Homework 1 - Syntax}\\
+
+				\Large\textit{prepared by Ilya Kopyl}
+				
+		\end{center}	
+		\vspace*{\stretch{2.0}}
+	\end{titlepage}
+
+
+	\title{\textsc{CSc 600 Homework 1 - Syntax}}	
+	\maketitle
+	
+		\textit{Homework is prepared by: Ilya Kopyl.}
+
+		\textit{It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).}
+		
+		\textit{Syntax diagrams are created in LucidChart online editor (lucidchart.com).}
+
+
+	\rmfamily\
+
+
+
+
+	\paragraph{1. Using BNF write the syntax definitions of the following objects:}\
+	\rmfamily\\\
+	
+		a) Natural number (1, 2, 3, ...). The answer:
+			
+	\ttfamily
+	\begin{grammar}
+	
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+	
+	
+
+	
+	\paragraph{}
+	\rmfamily\
+	
+		b) Unsigned integer (0, 1, 2, 3, ...). The answer:
+		
+	\ttfamily
+	\begin{grammar}
+		
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+		\rmfamily\
+	
+		Example of BNF definition of unsigned integer in languages that do not support leading zeroes (e.g. Python):
+			
+	\ttfamily
+	\begin{grammar}
+		
+		<unsigned integer> ::= 0 | <natural number>
+		
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+
+
+
+	\paragraph{}
+	\rmfamily
+	
+		c) Integer (..., -2, -1, 0, 1, 2, ...). The answer:
+			
+	\ttfamily
+	\begin{grammar}
+	
+		<integer> ::= <sign> <unsigned integer>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+	\end{grammar}
+
+		\rmfamily\
+	
+		Example of BNF definition of an integer in languages that do not support leading zeroes (e.g. Python):
+			
+	\ttfamily
+	\begin{grammar}
+		
+		<integer> ::= <sign> <unsigned integer>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned integer> ::= 0 | <natural number>
+		
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+
+		<digit> ::= 0 | <non-zero digit>
+		
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+
+
+
+	\paragraph{}
+	\rmfamily\
+	
+		d) Odd number (..., -3, -1, 1, 3, ..., 101, ..., 2047, ...). The answer:
+			
+	\ttfamily
+	\begin{grammar}
+	
+		<odd number> ::= <sign> <unsigned odd number>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned odd number> ::= <odd digit> | <unsigned integer> <odd digit>
+		
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+		
+	\end{grammar}
+
+		\paragraph{}	
+		\rmfamily\
+		
+		Example of BNF definition of an odd number in languages that do not support leading zeroes (e.g. Python):
+			
+	\ttfamily
+	\begin{grammar}
+	
+		<odd number> ::= <sign> <unsigned odd number>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned odd number> ::= <odd digit> | <natural number> <odd digit>
+		
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+		
+		<digit> ::= 0 | <non-zero digit>
+		
+		<non-zero digit> ::= 2 | 4 | 6 | 8 | <odd digit>
+		
+		<odd digit> ::= 1 | 3 | 5 | 7 | 9
+		
+	\end{grammar}
+	
+	
+	
+	
+	\paragraph{}
+	\rmfamily\
+	
+		e) Even number (..., -4, -2, 0, 2, 4, ..., 332, ..., 1022, ...). The answer:
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<even number> ::= <sign> <unsigned even number>
+	
+		<sign> ::= + | - | <empty>
+	
+		<empty> ::= \
+	
+		<unsigned even number> ::= <even digit> | <unsigned integer> <even digit>
+	
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	
+	\end{grammar}
+	
+		\rmfamily\
+	
+		Example of BNF definition of an even number in languages that do not support leading zeroes (e.g. Python):
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<even number> ::= <sign> <unsigned even number>
+	
+		<sign> ::= + | - | <empty>
+	
+		<empty> ::= \
+	
+		<unsigned even number> ::= <even digit> | <natural number> <even digit>
+	
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+	
+		<digit> ::= 0 | <non-zero digit>
+	
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	
+		<even digit> ::= 0 | 2 | 4 | 6 | 8
+	
+			
+	\end{grammar}
+	
+	
+	
+	
+	\paragraph{}
+	\rmfamily
+	
+		f) Integer divisible by five (..., -10, 5, 0, 5, 10, ...). The answer:
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<integer div-by-5> ::= <sign> <unsigned int div-by-5>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned int div-by-5> ::= <div-by-5 suffix> | <unsigned integer> <div-by-5 suffix>
+	
+		<unsigned integer> ::= <digit> | <unsigned integer> <digit>
+		
+		<div-by-5 suffix> ::= 0 | 5
+
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+	
+		\rmfamily
+	
+		Example of BNF definition of an integer divisible by 5 in languages that do not support leading zeroes (e.g. Python):
+		
+	\ttfamily
+	\begin{grammar}
+	
+		<integer div-by-5> ::= <sign> <unsigned int div-by-5>
+		
+		<sign> ::= + | - | <empty>
+		
+		<empty> ::= \
+		
+		<unsigned int div-by-5> ::= <div-by-5 suffix> | <natural number> <div-by-5 suffix>
+		
+		<natural number> ::= <non-zero digit> | <natural number> <digit>
+		
+		<div-by-5 suffix> ::= 0 | 5
+		
+		<digit> ::= 0 | <non-zero digit>
+		
+		<non-zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+		
+	\end{grammar}
+	
+	
+	
+	
+	
+	\paragraph{2. Show syntax diagrams for questions (a), ..., (f) of problem 1.}
+	
+		\includegraphics[width=\textwidth]{leadingzeroes4}
+		\rmfamily
+		Example of syntax diagrams for integers with no support of leading zeroes.
+		\includegraphics[width=\textwidth-2pt]{noleadingzeroescrop6}
+				
+	\rmfamily
+	
+	
+	
+	
+	\paragraph{3. Write a BNF definition of the syntax of (all possible) input statements in C++. }\
+	
+	\rmfamily\
+	
+		Following is an example of input statement in C++:
+		\newline
+	
+		\texttt{cin	\lstinline[language=bash]/>>/	sclr	\lstinline[language=bash]/>>/	vec[2 * i - 1]	\lstinline[language=bash]/>>/	mat[f(i)][j + k]	\lstinline[language=bash]/>>/	t[i/3][j][k]; }
+	
+		The answer:
+		
+	\ttfamily
+	
+	
+	
+	\begin{grammar}
+	
+		<input statement> ::= cin <input arguments> ;
+		
+		<input arguments> ::= \lstinline[language=bash]/>>/ <input value> | <input arguments> \lstinline[language=bash]/>>/ <input value>
+		
+		<input value> ::= <struct member> | <array element> | <identifier>
+		
+		<struct member> ::= <identifier> . <identifier>
+					   \alt <struct member> . <identifier> 
+		
+		<array element> ::= <identifier> <array indicies>
+		
+		<identifier> ::= <non-digit character> | <identifier> <digit>
+		
+		<array indicies> ::= <array index> | <array indicies> <array index>
+		
+		<array index> ::= [ <numerical expression> ]
+		
+		<numerical expression> ::= <arithmetic expression> | <function call>
+							  					
+		<arithmetic expression> ::= <compound operand>
+							   \alt <arithmetic expression> <operator> <arithmetic expression>
+
+		<operator> ::= + | - | * | / | \% 
+		
+		<compound operand> ::= <operand> | <unary expression>
+
+		<unary expression> ::= ++ <operand> | <operand> ++ 
+							 \alt --- <operand> | <operand> ---
+									 
+		<operand> ::= <identifier> | <integer number> | <floating point number>
+		
+		<integer number> ::= <integer> | <integer> L | <integer> LL
+		
+		<floating point number> ::= <real> | <real> F
+		
+		<real> ::= <sign> <unsigned real>
+		
+		<unsigned real> ::= <digits> . <digits> | <digits> . | . <digits>
+				
+		<function call> ::= <identifier> ( <function arguments> )
+		
+		<function arguments> ::= <argument> | <function arguments> , <argument>
+				
+		<argument> ::= <function call> | <expression>
+		
+		<expression> ::= <numerical expression>
+					\alt <string>
+					\alt <char>
+					\alt <character literal>
+					\alt <empty>
+					
+		<string> ::= "\"" <characters> "\""
+		
+		<char> ::= "\'" <character> "\'"
+		
+		<characters> ::= <character> | <characters> <character>
+		
+		<character> ::= <non-digit character> | <digit>
+		           \alt <whitespace> | <character literal>
+		
+		<character literal> ::= <special character> | "\\" <non-digit character>
+		
+		<whitespace> ::= ' '
+		
+		<non-digit character> ::= A | B | C | D | E | F | G | H | I | J
+			  				 \alt K | L | M | N | O | P | Q | R | S | T 
+			   			     \alt U | V | W | X | Y | Z | a | b | c | d 
+			  				 \alt e | f | g | h | i | j | k | l | m | n
+			   				 \alt o | p | q | r | s | t | u | v | w | x 
+			  				 \alt y | z | _
+		
+		<digits> ::= <digit> | <digits> <digit>
+		
+		<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+				
+		<empty> ::= \
+
+	\end{grammar}
+	
+
+	
+	
+	\rmfamily
+	
+	\paragraph{4. Write a BNF definition of the syntax of (all possible) output statements in C++. }\
+	
+	\rmfamily\
+
+	
+		Following is an example of output statement in C++:
+		\newline
+
+	
+		\texttt{ cout << 12.34 * a / rate << " " << 43.21 << " " }
+		
+		\texttt{ 	  << alpha + x[2*i-1] << " " << (p \&\& q) << " " }
+		
+		\texttt{      << pow(t[i][j],1.2) << " string " << 's' }
+		
+		\texttt{      << " " << myfun(x, sin(x+y), third_argument) ; } 
+		
+		\rmfamily\
+		
+		
+		The answer (the definitions for auxiliary BNF productions are listed in the previous answer):
+		
+	\ttfamily\
+	\begin{grammar}
+	
+		<output statement> ::= cout <output arguments> ;
+		
+		<output arguments> ::= \lstinline[language=bash]/<</ <output value> | <output arguments> \lstinline[language=bash]/<</ <output value>
+		
+		<output value> 	   ::= <expression>
+		
+	\end{grammar}
+	
+
+\end{document}
