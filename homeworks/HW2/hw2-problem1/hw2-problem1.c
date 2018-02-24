@@ -11,7 +11,7 @@ int main()
 
 int maxlen(int *a, unsigned int n)
 {
-    printUIntArray(a, n);
+    printIntArray(a, n);
     
     unsigned int max_count, current_count, i;
     max_count = 0;
