@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "functions.h"
 
-int maxlen(int*, unsigned int);
+int maxlen(int *, unsigned int);
 
 int main()
 {
@@ -8,8 +9,10 @@ int main()
     return 0;
 }
 
-int maxlen(int* a, unsigned int n)
+int maxlen(int *a, unsigned int n)
 {
+    printUIntArray(a, n);
+    
     unsigned int max_count, current_count, i;
     max_count = 0;
     current_count = 1;
