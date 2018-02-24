@@ -30,7 +30,7 @@ int main()
 
 unsigned int maxlen(int *a, unsigned int n)
 {
-    if (n < 2)                  // handling the edge cases
+    if (n < 2)                                  // handling the edge cases
         return n;
 
     unsigned int max_count, current_count, i;
@@ -39,17 +39,17 @@ unsigned int maxlen(int *a, unsigned int n)
 
     printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n", i, a[i], current_count, max_count);          // printing element 1
 
-    for (i = 1; i < n; ++i) 
+    for (i = 1; i < n; ++i)
     {
-        if (a[i] == a[i-1])
+        if (a[i] == a[i-1])                     // counting the current sequence
             current_count++;
-        else
+        else                                    // reseting the counter for the new sequence
         {
-            if (current_count > max_count)
+            if (current_count > max_count)      // saving the max count
                 max_count = current_count;
             if (max_count > n - i)              // no need to continue if max_count is sufficiently large
                 break;
-            current_count = 1;                  // reseting the counter if the previous sequence ended
+            current_count = 1;                  // reseting the counter
         }
 
         printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n", i, a[i], current_count, max_count);          // printing elements 2..n
