@@ -9,7 +9,7 @@ int main()
     int result = 0;
 
     int a[13] = { 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 };
-    printf("Array a: ");
+    printf("Array a:\t");
     printIntArray(a, sizeof(a));
 
     result = maxlen(a, 13);
@@ -18,7 +18,7 @@ int main()
 
 
     int b[0] = {};                              // testing the case: an empty array
-    printf("Array b: ");
+    printf("Array b:\t");
     printIntArray(b, sizeof(b));
 
     result = maxlen(b, 0);
@@ -27,7 +27,7 @@ int main()
 
 
     int c[1] = { 12 };                          // testing the case: 1 element in the array
-    printf("Array c: ");
+    printf("Array c:\t");
     printIntArray(c, sizeof(c));
 
     result = maxlen(c, 1);
@@ -35,18 +35,18 @@ int main()
     assert(result == 1);
 
 
-    // testing the early loop termination:
-    int d[10] = { -49, 16, 16, 16, 17, 18, 18, 18, 18, 20 };
-    printf("Array d: ");
+    // testing the early loop exit:
+    int d[10] = { 16, 16, 16, 16, 16, 18, 18, 18, 18, 20 };
+    printf("Array d:\t");
     printIntArray(d, sizeof(d));
 
     result = maxlen(d, 10);
     printf("Max sequence length of array d = %d\n\n", result);
-    assert(result == 4);
+    assert(result == 5);
 
 
     int e[2] = { 0, 0 };                        // testing the case: 2 elements with the same value
-    printf("Array e: ");
+    printf("Array e:\t");
     printIntArray(e, sizeof(e));
 
     result = maxlen(e, 2);
@@ -55,7 +55,7 @@ int main()
 
 
     int f[2] = { 0, 1 };                        // testing the case: 2 elements with different values
-    printf("Array f: ");
+    printf("Array f:\t");
     printIntArray(f, sizeof(f));
 
     result = maxlen(f, 2);
@@ -64,7 +64,7 @@ int main()
 
 
     int g[8] = { 1, 2, 3, 4, 5, 5, 5, 5 };      // testing the case: the longest sequence is at the end of array
-    printf("Array g: ");
+    printf("Array g:\t");
     printIntArray(g, sizeof(g));
 
     result = maxlen(g, 8);
@@ -87,26 +87,12 @@ unsigned int maxlen(int *a, unsigned int n)
 
     for (i = 1; i < n; ++i)
     {
-
-//         if (a[i] == a[i-1])                     // counting the current sequence
-//             current_count++;
-//         else                                    // reseting the counter for the new sequence
-//         {
-//             if (current_count > max_count)      // saving the max count
-//                 max_count = current_count;
-// //            if (max_count > n - i)              // no need to continue if max_count is sufficiently large
-// //                break;
-//             current_count = 1;                  // reseting the counter
-//         }
-
-
-
-
-
         if (a[i] != a[i-1])
         {
             if (current_count > max_count)
                 max_count = current_count;
+            if (max_count >= n - i)                 // no need to resume if max_count is sufficiently large
+                break;
             current_count = 1;
         }
         else
