@@ -2,7 +2,7 @@
 #include "functions.h"
 
 /**
- * Correct way to pass the size of the array is to use sizeof() function
+ * Passing the size of the array with sizeof() function
  */
 void printIntArray(int *array, unsigned int size) 
 {
