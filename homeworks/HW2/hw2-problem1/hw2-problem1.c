@@ -9,7 +9,7 @@ int main()
     int result = 0;
 
     int a[13] = { 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 };
-    printf("Array a:\t");
+    printf("Array a:    ");
     printIntArray(a, sizeof(a));
 
     result = maxlen(a, 13);
@@ -18,7 +18,7 @@ int main()
 
 
     int b[0] = {};                              // testing the case: an empty array
-    printf("Array b:\t");
+    printf("Array b:    ");
     printIntArray(b, sizeof(b));
 
     result = maxlen(b, 0);
@@ -27,7 +27,7 @@ int main()
 
 
     int c[1] = { 12 };                          // testing the case: 1 element in the array
-    printf("Array c:\t");
+    printf("Array c:    ");
     printIntArray(c, sizeof(c));
 
     result = maxlen(c, 1);
@@ -37,7 +37,7 @@ int main()
 
     // testing the early loop exit:
     int d[10] = { 16, 16, 16, 16, 16, 18, 18, 18, 18, 20 };
-    printf("Array d:\t");
+    printf("Array d:    ");
     printIntArray(d, sizeof(d));
 
     result = maxlen(d, 10);
@@ -46,7 +46,7 @@ int main()
 
 
     int e[2] = { 0, 0 };                        // testing the case: 2 elements with the same value
-    printf("Array e:\t");
+    printf("Array e:    ");
     printIntArray(e, sizeof(e));
 
     result = maxlen(e, 2);
@@ -55,7 +55,7 @@ int main()
 
 
     int f[2] = { 0, 1 };                        // testing the case: 2 elements with different values
-    printf("Array f:\t");
+    printf("Array f: ");
     printIntArray(f, sizeof(f));
 
     result = maxlen(f, 2);
@@ -64,7 +64,7 @@ int main()
 
 
     int g[8] = { 1, 2, 3, 4, 5, 5, 5, 5 };      // testing the case: the longest sequence is at the end of array
-    printf("Array g:\t");
+    printf("Array g:    ");
     printIntArray(g, sizeof(g));
 
     result = maxlen(g, 8);
@@ -75,7 +75,7 @@ int main()
 
 unsigned int maxlen(int *a, unsigned int n)
 {
-    if (n < 2)                                  // handling the edge cases
+    if (n < 2)                                      // handling the edge cases of arrays of size 0 and 1
         return n;
 
     unsigned int max_count, current_count, i;
