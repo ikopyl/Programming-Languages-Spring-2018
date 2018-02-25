@@ -64,7 +64,11 @@ int main()
 
 
     int g[8] = { 1, 2, 3, 4, 5, 5, 5, 5 };      // testing the case: the longest sequence is at the end of array
+    printf("Array g: ");
+    printIntArray(g, sizeof(g));
 
+    result = maxlen(g, 8);
+    printf("Max sequence length of array g = %d\n\n", result);
 
     return 0;
 }
@@ -83,15 +87,30 @@ unsigned int maxlen(int *a, unsigned int n)
 
     for (i = 1; i < n; ++i)
     {
-        if (a[i] == a[i-1])                     // counting the current sequence
-            current_count++;
-        else                                    // reseting the counter for the new sequence
+
+//         if (a[i] == a[i-1])                     // counting the current sequence
+//             current_count++;
+//         else                                    // reseting the counter for the new sequence
+//         {
+//             if (current_count > max_count)      // saving the max count
+//                 max_count = current_count;
+// //            if (max_count > n - i)              // no need to continue if max_count is sufficiently large
+// //                break;
+//             current_count = 1;                  // reseting the counter
+//         }
+
+        if (a[i] != a[i-1])
         {
-            if (current_count > max_count)      // saving the max count
+            if (current_count > max_count)
                 max_count = current_count;
-            if (max_count > n - i)              // no need to continue if max_count is sufficiently large
-                break;
-            current_count = 1;                  // reseting the counter
+            current_count = 1;
+        }
+        else
+        {
+            current_count++;
+            if (i == n-1)
+                if (current_count > max_count)
+                    max_count = current_count;
         }
 
         printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
