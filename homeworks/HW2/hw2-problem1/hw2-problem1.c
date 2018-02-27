@@ -36,13 +36,13 @@ int main()
 
 
     // testing the early loop exit:
-    int d[10] = { 16, 16, 16, 16, 16, 18, 18, 18, 18, 20 };
+    int d[6] = { 16, 16, 16, 18, 18, 20 };
     printf("Array d:    ");
     printIntArray(d, sizeof(d));
 
-    result = maxlen(d, 10);
+    result = maxlen(d, 6);
     printf("Max sequence length of array d = %d\n\n", result);
-    assert(result == 5);
+    assert(result == 3);
 
 
     int e[2] = { 0, 0 };                        // testing the case: 2 elements with the same value
@@ -63,11 +63,11 @@ int main()
     assert(result == 1);
 
 
-    int g[8] = { 1, 2, 3, 4, 5, 5, 5, 5 };      // testing the case: the longest sequence is at the end of array
+    int g[4] = { 1, 2, 3, 3 };      // testing the case: the longest sequence is at the end of array
     printf("Array g:    ");
     printIntArray(g, sizeof(g));
 
-    result = maxlen(g, 8);
+    result = maxlen(g, 4);
     printf("Max sequence length of array g = %d\n\n", result);
 
     return 0;
@@ -82,27 +82,44 @@ unsigned int maxlen(int *a, unsigned int n)
     i = max_count = 0;
     current_count = 1;
 
-    printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+    printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
            i, a[i], current_count, max_count);
 
     for (i = 1; i < n; ++i)
     {
-        if (a[i] != a[i-1])
+//        if (a[i] != a[i-1])
+//        {
+//            if (current_count > max_count)
+//                max_count = current_count;
+//            if (max_count >= n - i)                 // no need to resume if max_count is sufficiently large
+//                break;
+//            current_count = 1;
+//        }
+//        else
+//        {
+//            current_count++;
+//            if (i == n-1 && current_count > max_count)
+//                max_count = current_count;
+//        }
+
+        // you could rewrite it as:
+
+        if (a[i] == a[i-1])
         {
-            if (current_count > max_count)
+            current_count++;
+            if(i == n-1 && current_count > max_count)
                 max_count = current_count;
-            if (max_count >= n - i)                 // no need to resume if max_count is sufficiently large
-                break;
-            current_count = 1;
         }
         else
         {
-            current_count++;
-            if (i == n-1 && current_count > max_count)
+            if (current_count > max_count)
                 max_count = current_count;
+            if (max_count >= n-i)                   // exit the loop if max_count is sufficiently large
+                break;
+            current_count = 1;
         }
 
-        printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+        printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
                i, a[i], current_count, max_count);
     }
     return max_count;
