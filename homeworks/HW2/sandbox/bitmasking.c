@@ -4,7 +4,11 @@
 int main(int argc, char** argv)
 {
 
-    unsigned int input, n_bits, *bits, bit;
+    // unsigned int input, n_bits, *bits, bit;
+
+    unsigned int n_bits, *bits, bit;
+
+    unsigned char input;
 
     // input = 0b0111u;
     // input = 7;
