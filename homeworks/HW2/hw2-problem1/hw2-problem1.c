@@ -87,34 +87,21 @@ unsigned int maxlen(int *a, unsigned int n)
 
     for (i = 1; i < n; ++i)
     {
-//        if (a[i] != a[i-1])
-//        {
-//            if (current_count > max_count)
-//                max_count = current_count;
-//            if (max_count >= n - i)                 // no need to resume if max_count is sufficiently large
-//                break;
-//            current_count = 1;
-//        }
-//        else
-//        {
-//            current_count++;
-//            if (i == n-1 && current_count > max_count)
-//                max_count = current_count;
-//        }
-
-        // you could rewrite it as:
-
-        if (a[i] == a[i-1])
+        if (a[i] == a[i-1])         // counting the current sequence
         {
             current_count++;
+
+            // checking whether the longest sequence is at the end of array
             if(i == n-1 && current_count > max_count)
                 max_count = current_count;
         }
-        else
+        else            // starting the count of the new sequence:
         {
             if (current_count > max_count)
                 max_count = current_count;
-            if (max_count >= n-i)                   // exit the loop if max_count is sufficiently large
+
+            // exit the loop if max_count is sufficiently large:
+            if (max_count >= n-i)
                 break;
             current_count = 1;
         }
