@@ -1,0 +1,161 @@
+\documentclass{article}
+
+
+\usepackage{minted}
+
+\usepackage{syntax}
+
+\usepackage[T1]{fontenc}			% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
+
+\usepackage{courier} % tt
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{microtype}
+\DisableLigatures[<]{encoding = T1}
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+
+
+\begin{document}
+
+	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+%	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+	\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
+%	\setlength{\grammarindent}{5cm} 
+
+
+
+
+	\begin{titlepage}
+		\vspace*{\stretch{1.0}}
+		\begin{center}
+				\Large\textsc{CSc 600-01 (Section 1)}
+				
+				\Large\textbf{Homework 2 - Procedural Programming}\\
+
+				\Large\textit{prepared by Ilya Kopyl}
+				
+		\end{center}	
+		\vspace*{\stretch{2.0}}
+	\end{titlepage}
+
+
+	\title{\textsc{CSc 600 Homework 2 - Procedural Programming}}	
+	\maketitle
+	
+		\textit{Homework is prepared by: Ilya Kopyl.}
+
+		\textit{It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).}
+		
+		% \textit{Syntax diagrams are created in LucidChart online editor (lucidchart.com).}
+
+
+	\rmfamily\
+
+
+
+
+	\paragraph{1. Plateau program (max sequence length) (a combinatorial algorithm)}\
+	\rmfamily\\\
+	
+		The array a(1..n) contains sorted integers. Write a function maxlen(a,n) that returns the length of the longest sequence of identical numbers (for example, if a={ 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 } then maxlen returns 4 because the longest sequence 6, 6, 6, 6 contains 4 numbers. Write a demo main program for testing the work of maxlen. Explain your solution, and insert comments in your program. The time complexity of the solution should belong to O(n).
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+
+A code listing that implements maxlen function:
+	\ttfamily
+	
+\begin{minted}[fontsize=\small]{c} 
+
+
+unsigned int maxlen(int *a, unsigned int n)
+{
+    // handling the edge cases of arrays of size 0 and 1
+    if (n < 2)                                      
+        return n;
+
+    unsigned int max_count, current_count, i;
+    i = max_count = 0;
+    current_count = 1;
+
+    printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+           i, a[i], current_count, max_count);
+
+    for (i = 1; i < n; ++i)
+    {
+        if (a[i] != a[i-1])    // starting the count of the new sequence:
+        {
+            if (current_count > max_count)
+                max_count = current_count;
+                
+            // exit the loop if max_count is sufficiently large:
+            if (max_count >= n - i)                 
+                break;
+                
+            current_count = 1;
+        }
+        else                   // continuing the count of the current sequence:
+        {
+            current_count++;
+            
+            if (i == n-1 && current_count > max_count)
+                max_count = current_count;
+        }
+
+        printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+               i, a[i], current_count, max_count);
+    }
+    return max_count;
+}
+
+
+\end{minted}	
+	
+
+	
+	
+	
+	\paragraph{3. Write a BNF definition }\
+	
+	\rmfamily\
+	
+		Following is :
+		
+	\ttfamily
+		
+
+	
+	
+	\rmfamily
+	
+	\paragraph{4. Write a BNF definition. }\
+	
+	\rmfamily\
+
+	
+		Following is an example :
+		
+	\ttfamily\
+
+	
+
+\end{document}
