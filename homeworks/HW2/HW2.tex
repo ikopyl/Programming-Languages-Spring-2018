@@ -90,7 +90,7 @@
 
 unsigned int maxlen(int *a, unsigned int n)
 {
-    // handling the edge cases of arrays of size 0 and 1
+    // handling the edge cases - arrays of size 0 and 1:
     if (n < 2)                                      
         return n;
 
@@ -98,31 +98,33 @@ unsigned int maxlen(int *a, unsigned int n)
     i = max_count = 0;
     current_count = 1;
 
-    printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+    printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
            i, a[i], current_count, max_count);
 
     for (i = 1; i < n; ++i)
     {
-        if (a[i] != a[i-1])    // starting the count of the new sequence:
+        if (a[i] == a[i-1])         // counting the current sequence
         {
+            current_count++;
+
+            // checking whether the longest sequence is at the end of array
+            if(i == n-1 && current_count > max_count)
+                max_count = current_count;
+        }
+        else            	    // starting the count of the new sequence
+        {
+            // before resetting the counter, save it's value if it is above threshold
             if (current_count > max_count)
                 max_count = current_count;
-                
-            // exit the loop if max_count is sufficiently large:
-            if (max_count >= n - i)                 
+
+            // exit the loop if max_count is sufficiently large
+            if (max_count >= n-i)
                 break;
                 
             current_count = 1;
         }
-        else                   // continuing the count of the current sequence:
-        {
-            current_count++;
-            
-            if (i == n-1 && current_count > max_count)
-                max_count = current_count;
-        }
 
-        printf("\ta[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
+        printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
                i, a[i], current_count, max_count);
     }
     return max_count;
