@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include "functions.h"
 
 void BigInt(unsigned int);
 
@@ -15,6 +14,7 @@ unsigned int getNumberOfDigits(unsigned int);
  * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
 #define NUMBER_OF_ROWS 8
+#define NUMBER_OF_BITS 8
 
 const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
 
@@ -61,12 +61,11 @@ const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
 
 int main()
 {
-    printf("%d has %d digits\n", 170, getNumberOfDigits(170));
-    printf("%d has %d digits\n", 123, getNumberOfDigits(123));
-    printf("%d has %d digits\n", 17, getNumberOfDigits(17));
-    printf("%d has %d digits\n", 422512, getNumberOfDigits(422512));
-
-    BigInt(422512);
+    BigInt(1);
+    BigInt(12);
+    BigInt(123);
+    BigInt(1234);
+    BigInt(1234567890);
 
     return 0;
 }
@@ -77,24 +76,20 @@ void BigInt(unsigned int n)
     c = numOfDigits = getNumberOfDigits(n);
     int decimals[numOfDigits];
 
-    // saving the digits to the array from right to left
-    do
-    {
+    // saving the digits to the array from right to left, starting from the least significant number
+    do {
         decimals[c-1] = n % 10;
         c--;
-    }
-    while ((n /= 10));
-
-    printIntArray(decimals, sizeof(decimals));
+    } while ((n /= 10));
 
     for (int row = 0; row < NUMBER_OF_ROWS; row++)
     {
         for (int digit = 0; digit < numOfDigits; digit++)
         {
-            int bitPattern[8];
-            for (int bit = 0; bit < 8; bit++)
+            int bitPattern[NUMBER_OF_BITS];
+            for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
                 bitPattern[bit] = (BIG_DIGITS[row][decimals[digit]] >> bit) & 1;
-            for (int bit = 8; bit >= 0; bit--)
+            for (int bit = NUMBER_OF_BITS; bit >= 0; bit--)         // printing the most significant bits first
                 printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
         }
         printf("\n");
