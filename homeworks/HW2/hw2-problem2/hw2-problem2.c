@@ -64,17 +64,34 @@ int main()
     printf("%d has %d digits\n", 170, getNumberOfDigits(170));
     printf("%d has %d digits\n", 123, getNumberOfDigits(123));
     printf("%d has %d digits\n", 17, getNumberOfDigits(17));
-    BigInt(170);
+
+    BigInt(422512);
 
     return 0;
 }
 
-void BigInt(unsigned int n) 
-{
+void BigInt(unsigned int n) {
     unsigned int numOfDigits = getNumberOfDigits(n);
     int digits[numOfDigits];
-    for (int i = 0; i < numOfDigits; i++)
-        digits[i] = n / 10;
+
+//    int c = 0;
+//    do
+//    {
+//        digits[c] = n % 10;
+//        c++;
+//    }
+//    while ((n /= 10));
+
+
+    // saving the digits to the array from right to left
+    int c = numOfDigits;
+    do
+    {
+        digits[c-1] = n % 10;
+        c--;
+    }
+    while ((n /= 10));
+
     printIntArray(digits, sizeof(digits));
 
     for (int row = 0; row < NUMBER_OF_ROWS; row++)
