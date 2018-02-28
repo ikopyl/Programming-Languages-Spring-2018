@@ -70,7 +70,7 @@
 	\paragraph{1. Plateau program (max sequence length) (a combinatorial algorithm)}\
 	\rmfamily\\\
 	
-		The array a(1..n) contains sorted integers. Write a function maxlen(a,n) that returns the length of the longest sequence of identical numbers (for example, if a={ 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 } then maxlen returns 4 because the longest sequence 6, 6, 6, 6 contains 4 numbers. Write a demo main program for testing the work of maxlen. Explain your solution, and insert comments in your program. The time complexity of the solution should belong to O(n).
+		The array a(1..n) contains sorted integers. Write a function maxlen(a,n) that returns the length of the longest sequence of identical numbers (for example, if a={ 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 } then maxlen returns 4 because the longest sequence 6, 6, 6, 6 contains 4 numbers. Write a demo main program for testing the work of maxlen. Explain your solution, and insert comments in your program. The time complexity of the solution should be in O(n).
 		\newline
 		
 		The answer is listed on the pages 2 through TBD.
@@ -86,7 +86,7 @@
 
 
 \noindent A code listing of implementation of maxlen function:
-	\ttfamily
+\ttfamily
 	
 \begin{minted}[fontsize=\small]{c} 
 
@@ -194,21 +194,122 @@ Max sequence length of array g = 2
 	
 	
 \paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+
 	
 	
 	\rmfamily
 	
-	\paragraph{4. Write a BNF definition. }\
+	\paragraph{2. Integer plot function (find a smart way to code big integers) }\
 	
 	\rmfamily\
+	
+		Write a program BigInt(n) that displays an arbitrary positive integer n using big characters of size 7x7, as in the following example for BigInt(170):
+				
+	\ttfamily
+	\begin{lstlisting}[language=bash]
+			
+		   @@ 	 @@@@@@@  @@@@@  
+		  @@@  	      @@ @@   @@ 
+		   @@  	     @@  @@   @@ 
+		   @@  	    @@   @@   @@ 
+		   @@  	   @@    @@   @@ 
+		   @@  	  @@     @@   @@ 
+		 @@@@@@	 @@       @@@@@  
+
+	\end{lstlisting}
+	
+	\rmfamily\
+	The answer is listed on the pages TBD through TBD.
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
 
 	
-		Following is an example :
+	\rmfamily
+	
+	\paragraph{3. Array processing (elimination of three largest values) (one of many array reduction problems) }\
+	
+	\rmfamily\
+	
+		The array a(1..n) contains arbitrary integers. Write a function reduce(a, n) that reduces the array a(1..n) by eliminating from it all values that are equal to three largest different integers. For example, if a=(9, 1, 1, 6, 7, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9) then three largest different integers are 6, 7, 9, and after reduction the reduced array would be a=(1, 1, 1, 2, 3, 3, 5), n=7. The time complexity of the solution should be in O(n). 
+		\newline
+		
+		The answer is listed on the pages TBD through TBD.
 		
 	\ttfamily\
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\	
+\paragraph{}\	
+\paragraph{}\	
+	
+	
+	
+	\rmfamily
+	
+	\paragraph{4. Iteration versus recursion (an opportunity for performance measurement) }\
+	
+	\rmfamily\
+	
+		Make a sorted integer array a[i]=i, i=0,...,n-1.  Let bs(a, n, x) be a binary search program that returns the index i of the array a[0..n-1] where a[i]=x. Obviously, the result is bs(a, n, x)=x, and the binary search function can be tested using the loop
+		
+		\begin{minted}[fontsize=\small]{c}
+for (j=0; j < K; j++)
+    for (i=0; i < n; i++)
+        if (bs(a, n, i) != i)
+            cout << "\nERROR";
+		\end{minted}
+		
+		
+		Select the largest n your software can support and then K so that this loop with an iterative version of bs runs 3 seconds or more. Then measure and compare this run time and the run time of the loop that uses a recursive version of bs. Compare these run times using maximum compiler optimization (release version) and the slowest version (minimum optimization or the debug version). If you use a laptop, make measurements using AC power, and then the same measurements using only the battery. What conclusions can you derive from these experiments? Who is faster? Why?
+		\newline
+		
+		The answer is listed on the pages TBD through TBD.
+	
+	
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+	
+	\rmfamily
+	
+	\paragraph{5. Iteration versus recursion (another opportunity for performance measurement) }\
+	
+	\rmfamily\
+	
+		Following is 
+		
+	\ttfamily\
+
+
 
 	
 
