@@ -70,21 +70,13 @@ int main()
     return 0;
 }
 
-void BigInt(unsigned int n) {
-    unsigned int numOfDigits = getNumberOfDigits(n);
+void BigInt(unsigned int n)
+{
+    unsigned int numOfDigits, c;
+    c = numOfDigits = getNumberOfDigits(n);
     int digits[numOfDigits];
 
-//    int c = 0;
-//    do
-//    {
-//        digits[c] = n % 10;
-//        c++;
-//    }
-//    while ((n /= 10));
-
-
     // saving the digits to the array from right to left
-    int c = numOfDigits;
     do
     {
         digits[c-1] = n % 10;
