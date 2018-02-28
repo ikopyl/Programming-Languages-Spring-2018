@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 
     // input = 0b0111u;
     // input = 7;
-    input = 0b00011000u;
+    input = 0b00011001u;
     n_bits = 8u;
     bits = (unsigned int *) malloc(sizeof(unsigned int) * n_bits);
     bit = 0;
