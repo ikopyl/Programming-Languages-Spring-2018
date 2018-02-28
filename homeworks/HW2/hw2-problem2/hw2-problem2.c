@@ -96,7 +96,6 @@ void BigInt(unsigned int n)
         }
         puts("");
     }
-
 }
 
 unsigned int getNumberOfDigits(unsigned int n)
