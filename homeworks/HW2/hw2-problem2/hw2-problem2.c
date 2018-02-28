@@ -97,7 +97,7 @@ void BigInt(unsigned int n)
             for (int bit = NUMBER_OF_BITS; bit >= 0; bit--)
                 printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
         }
-        printf("\n");
+        puts("");
     }
 
 }
