@@ -238,59 +238,112 @@ Max sequence length of array g = 2
 \paragraph{}\
 
 	
-	The code listing of the two-dimensional array that stores bit pattern of each BigInt digit. It is declared in the global space.
+	\noindent The code listing of the two-dimensional array that stores bit pattern of each BigInt digit. It is declared in the global space.
 	
 	\begin{minted}[fontsize=\small]{c}
+	
+
 /**
  * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
+ * For convenience of bit extracting & printing, the bit pattern of each char
+ * is reversed.
  *
  * Each digit requires just 8 bytes of storage - which is polynomially smaller
  * than the storage in brute-force approach where each digit is represented by
  * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
-const unsigned char digits[8][10] = 
+#define NUMBER_OF_ROWS 8 
+
+const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = 
 {
-    {    // row 0 of all 10 digits
+    {    // row0 of all 10 digits
         0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u,
         0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u
     },
-    {    // row 1 of all 10 digits
-        0b00111110u, 0b00001100u, 0b00011110u, 0b00011110u, 0b00000110u,
-        0b00111111u, 0b00011110u, 0b01111111u, 0b00011110u, 0b00011110u
+    {    // row1 of all 10 digits
+        0b01111100u, 0b00110000u, 0b01111000u, 0b01111000u, 0b01100000u,
+        0b11111100u, 0b01111000u, 0b11111110u, 0b01111000u, 0b01111000u
     },
-    {    // row 2 of all 10 digits
-        0b01100011u, 0b00011100u, 0b00110011u, 0b00110011u, 0b00001110u,
-        0b00110000u, 0b00110011u, 0b00000011u, 0b00110011u, 0b00110011u
+    {    // row2 of all 10 digits
+        0b11000110u, 0b00111000u, 0b11001100u, 0b11001100u, 0b01110000u,
+        0b00001100u, 0b11001100u, 0b11000000u, 0b11001100u, 0b11001100u
     },
-    {    // row 3 of all 10 digits
-        0b01100011u, 0b00001100u, 0b00110011u, 0b00000011u, 0b00010110u,
-        0b00110000u, 0b00110000u, 0b00000110u, 0b00110011u, 0b00110011u
+    {    // row3 of all 10 digits
+        0b11000110u, 0b00110000u, 0b11001100u, 0b11000000u, 0b01101000u,
+        0b00001100u, 0b00001100u, 0b01100000u, 0b11001100u, 0b11001100u
     },
-    {    // row 4 of all 10 digits
-        0b01100011u, 0b00001100u, 0b00000110u, 0b00001100u, 0b00110110u,
-        0b00111110u, 0b00111110u, 0b00001100u, 0b00011110u, 0b00011111u
+    {    // row4 of all 10 digits
+        0b11000110u, 0b00110000u, 0b01100000u, 0b00110000u, 0b01101100u,
+        0b01111100u, 0b01111100u, 0b00110000u, 0b01111000u, 0b11111000u
     },
-    {    // row 5 of all 10 digits
-        0b01100011u, 0b00001100u, 0b00001100u, 0b00000011u, 0b01100110u,
-        0b00000011u, 0b00110011u, 0b00011000u, 0b00110011u, 0b00000011u
+    {    // row5 of all 10 digits
+        0b11000110u, 0b00110000u, 0b00110000u, 0b11000000u, 0b01100110u,
+        0b11000000u, 0b11001100u, 0b00011000u, 0b11001100u, 0b11000000u
     },
-    {    // row 6 of all 10 digits
-        0b01100011u, 0b00001100u, 0b00011000u, 0b00110011u, 0b01111111u,
-        0b00000011u, 0b00110011u, 0b00110000u, 0b00110011u, 0b00110011u
+    {    // row6 of all 10 digits
+        0b11000110u, 0b00110000u, 0b00011000u, 0b11001100u, 0b11111110u,
+        0b11000000u, 0b11001100u, 0b00001100u, 0b11001100u, 0b11001100u
     },
-    {    // row 7 of all 10 digits
-        0b00111110u, 0b00111111u, 0b00111111u, 0b00011110u, 0b00000110u,
-        0b00111110u, 0b00011110u, 0b01100000u, 0b00011110u, 0b00011110u
+    {    // row7 of all 10 digits
+        0b01111100u, 0b11111100u, 0b11111100u, 0b01111000u, 0b01100000u,
+        0b01111100u, 0b01111000u, 0b00000110u, 0b01111000u, 0b01111000u
     }
 };
 	\end{minted}
 	
+	\noindent Main program, excluding the declaration of BIG_DIGITS array:
 	
-	
-	
-	
+	\begin{minted}[fontsize=\small]{c}
+#include <stdio.h>
+#include <math.h>
 
-\paragraph{}\
+void BigInt(unsigned int);
+unsigned int getNumberOfDigits(unsigned int);
+
+#define NUMBER_OF_ROWS 8
+#define NUMBER_OF_BITS 8
+
+/** BIG_DIGITS[][] is declared here; its declaration is listed on the previous page */
+
+int main()
+{
+    BigInt(1);
+    BigInt(12);
+    BigInt(123);
+    BigInt(1234);
+    BigInt(1234567890);
+    return 0;
+}
+void BigInt(unsigned int n)
+{
+    unsigned int numOfDigits, c;
+    c = numOfDigits = getNumberOfDigits(n);
+    int decimals[numOfDigits];
+
+    // decomposing the number into an array of decimal digits
+    do {
+        decimals[c-1] = n % 10;
+        c--;
+    } while ((n /= 10));
+
+    // printing all digits at once, row by row
+    for (int row = 0; row < NUMBER_OF_ROWS; row++)
+    {
+        for (int digit = 0; digit < numOfDigits; digit++)
+        {
+            // iteratively extracting each bit from the bit pattern and printing it
+            for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
+                printf("%c", 
+                ((BIG_DIGITS[row][decimals[digit]] >> bit) & 1) == 1 ? '@' : ' ');
+        }
+        puts("");
+    }
+}
+unsigned int getNumberOfDigits(unsigned int n) {
+    return (unsigned int) log10(n) + 1;
+}
+	\end{minted}
+	
 
 	
 	\rmfamily
