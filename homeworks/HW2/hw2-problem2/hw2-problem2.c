@@ -64,6 +64,7 @@ int main()
     printf("%d has %d digits\n", 170, getNumberOfDigits(170));
     printf("%d has %d digits\n", 123, getNumberOfDigits(123));
     printf("%d has %d digits\n", 17, getNumberOfDigits(17));
+    printf("%d has %d digits\n", 422512, getNumberOfDigits(422512));
 
     BigInt(422512);
 
@@ -74,27 +75,29 @@ void BigInt(unsigned int n)
 {
     unsigned int numOfDigits, c;
     c = numOfDigits = getNumberOfDigits(n);
-    int digits[numOfDigits];
+    int decimals[numOfDigits];
 
     // saving the digits to the array from right to left
     do
     {
-        digits[c-1] = n % 10;
+        decimals[c-1] = n % 10;
         c--;
     }
     while ((n /= 10));
 
-    printIntArray(digits, sizeof(digits));
+    printIntArray(decimals, sizeof(decimals));
 
     for (int row = 0; row < NUMBER_OF_ROWS; row++)
     {
-        for (int digit = numOfDigits; digit--;)
+        for (int digit = 0; digit < numOfDigits; digit++)
         {
-            unsigned char bitPattern[sizeof(char)];
-            for (char bit = 0; bit < sizeof(char); bit++)
-                bitPattern[bit] = (digit >> bit) & 1;
-            for (char bit = sizeof(char); bit--;)
-                printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
+            int bitPattern[8];
+            for (int bit = 0; bit < 8; bit++) {
+                bitPattern[bit] = (digits[row][digit] >> bit) & 1;
+            }
+                //printf("%c", ((digits[row][digit] >> bit) & 1 == 1) ? '@' : '_');
+           for (int bit = 8; bit >= 0; bit--)
+                printf("%c", bitPattern[bit] == 1 ? '@' : '_');
 
         }
         printf("\n");
@@ -104,5 +107,5 @@ void BigInt(unsigned int n)
 
 unsigned int getNumberOfDigits(unsigned int n)
 {
-    return log10(n) + 1;
+    return (unsigned int) log10(n) + 1;
 }
