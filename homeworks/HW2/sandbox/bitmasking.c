@@ -17,8 +17,14 @@ int main(int argc, char** argv)
     bits = (unsigned int *) malloc(sizeof(unsigned int) * n_bits);
     bit = 0;
 
-    for (bit = 0; bit < n_bits; ++bit)
+    // right-shifting each of the bits into the least significant position,
+    // and then nullifying everything else by bit-masking with 1
+    for (bit = 0; bit < n_bits; ++bit) {
         bits[bit] = (input >> bit) & 1;
+        printf("%c", ((input >> bit) & 1) == 1 ? '@' : ' ');
+    }
+
+    puts("");
     
     for (bit = n_bits; bit--;)
         //printf("%u", bits[bit]);
