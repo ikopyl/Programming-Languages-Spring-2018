@@ -10,54 +10,12 @@ unsigned int getNumberOfDigits(unsigned int);
 
 /**
  * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
+ * For convenience of bit extracting & printing, the bit pattern of each char is reversed.
  *
  * Each digit requires just 8 bytes of storage - which is polynomially smaller
  * than the storage in brute-force approach where each digit is represented by
  * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
-// const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
-//        {       // row 0 of all 10 digits
-//                0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u,
-//                0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u
-//        },
-//
-//        {       // row 1 of all 10 digits
-//                0b00111110u, 0b00001100u, 0b00011110u, 0b00011110u, 0b00000110u,
-//                0b00111111u, 0b00011110u, 0b01111111u, 0b00011110u, 0b00011110u
-//        },
-//
-//        {       // row 2 of all 10 digits
-//                0b01100011u, 0b00011100u, 0b00110011u, 0b00110011u, 0b00001110u,
-//                0b00110000u, 0b00110011u, 0b00000011u, 0b00110011u, 0b00110011u
-//        },
-//
-//        {       // row 3 of all 10 digits
-//                0b01100011u, 0b00001100u, 0b00110011u, 0b00000011u, 0b00010110u,
-//                0b00110000u, 0b00110000u, 0b00000110u, 0b00110011u, 0b00110011u
-//        },
-//
-//        {       // row 4 of all 10 digits
-//                0b01100011u, 0b00001100u, 0b00000110u, 0b00001100u, 0b00110110u,
-//                0b00111110u, 0b00111110u, 0b00001100u, 0b00011110u, 0b00011111u
-//        },
-//
-//        {       // row 5 of all 10 digits
-//                0b01100011u, 0b00001100u, 0b00001100u, 0b00000011u, 0b01100110u,
-//                0b00000011u, 0b00110011u, 0b00011000u, 0b00110011u, 0b00000011u
-//        },
-//
-//        {       // row 6 of all 10 digits
-//                0b01100011u, 0b00001100u, 0b00011000u, 0b00110011u, 0b01111111u,
-//                0b00000011u, 0b00110011u, 0b00110000u, 0b00110011u, 0b00110011u
-//        },
-//
-//        {       // row 7 of all 10 digits
-//                0b00111110u, 0b00111111u, 0b00111111u, 0b00011110u, 0b00000110u,
-//                0b00111110u, 0b00011110u, 0b01100000u, 0b00011110u, 0b00011110u
-//        }
-//};
-
-// reverse digits:
 const unsigned char BIG_DIGITS[8][10] = {
 
         {       // row0 of all 10 digits
@@ -110,7 +68,6 @@ void BigInt(unsigned int n)
 {
     unsigned int numOfDigits, c;
     c = numOfDigits = getNumberOfDigits(n);
-//    int decimals[numOfDigits], bitPattern[NUMBER_OF_BITS];
     int decimals[numOfDigits];
 
     // decomposing the number into an array of decimal digits
@@ -124,15 +81,6 @@ void BigInt(unsigned int n)
     {
         for (int digit = 0; digit < numOfDigits; digit++)
         {
-            // solution for non-reversed digits:
-//            // iteratively extracting each bit, starting from the least significant position
-//            for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
-//                bitPattern[bit] = (BIG_DIGITS[row][decimals[digit]] >> bit) & 1;
-//
-//            // printing the most significant bits first
-//            for (int bit = NUMBER_OF_BITS; bit >= 0; bit--)
-//                printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
-
             // iteratively extracting each bit from the bit pattern and printing it
             for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
                 printf("%c", ((BIG_DIGITS[row][decimals[digit]] >> bit) & 1) == 1 ? '@' : ' ');
