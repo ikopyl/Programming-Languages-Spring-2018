@@ -76,20 +76,25 @@ void BigInt(unsigned int n)
     c = numOfDigits = getNumberOfDigits(n);
     int decimals[numOfDigits];
 
-    // saving the digits to the array from right to left, starting from the least significant number
+    // decomposing the number into an array of digits
     do {
         decimals[c-1] = n % 10;
         c--;
     } while ((n /= 10));
 
+    // printing all digits at once, row by row
     for (int row = 0; row < NUMBER_OF_ROWS; row++)
     {
         for (int digit = 0; digit < numOfDigits; digit++)
         {
             int bitPattern[NUMBER_OF_BITS];
+
+            // iteratively extracting each bit, starting from the least significant position
             for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
                 bitPattern[bit] = (BIG_DIGITS[row][decimals[digit]] >> bit) & 1;
-            for (int bit = NUMBER_OF_BITS; bit >= 0; bit--)         // printing the most significant bits first
+
+            // printing the most significant bits first
+            for (int bit = NUMBER_OF_BITS; bit >= 0; bit--)
                 printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
         }
         printf("\n");
