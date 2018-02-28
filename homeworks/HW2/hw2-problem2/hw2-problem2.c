@@ -16,7 +16,7 @@ unsigned int getNumberOfDigits(unsigned int);
  */
 #define NUMBER_OF_ROWS 8
 
-const unsigned char digits[NUMBER_OF_ROWS][10] = {
+const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
 
         {       // row 0 of all 10 digits
                 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u,
@@ -92,13 +92,10 @@ void BigInt(unsigned int n)
         for (int digit = 0; digit < numOfDigits; digit++)
         {
             int bitPattern[8];
-            for (int bit = 0; bit < 8; bit++) {
-                bitPattern[bit] = (digits[row][decimals[digit]] >> bit) & 1;
-            }
-                //printf("%c", ((digits[row][digit] >> bit) & 1 == 1) ? '@' : '_');
-           for (int bit = 8; bit >= 0; bit--)
-                printf("%c", bitPattern[bit] == 1 ? '@' : '_');
-
+            for (int bit = 0; bit < 8; bit++)
+                bitPattern[bit] = (BIG_DIGITS[row][decimals[digit]] >> bit) & 1;
+            for (int bit = 8; bit >= 0; bit--)
+                printf("%c", bitPattern[bit] == 1 ? '@' : ' ');
         }
         printf("\n");
     }
