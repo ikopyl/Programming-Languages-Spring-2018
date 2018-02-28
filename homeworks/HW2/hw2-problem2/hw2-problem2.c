@@ -4,15 +4,11 @@ void BigInt(unsigned int);
 
 
 /**
- * Digits are stored as the bit patterns
- * of 8-bit unsigned integer (char) numbers.
+ * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
  *
- * Each digit requires just 8 bytes of storage -
- * which is polynomially smaller than the storage
- * in brute-force approach where each digit is
- * represented by a 2D array of 8x8 characters,
- * with 64 bytes of storage per digit.
- *
+ * Each digit requires just 8 bytes of storage - which is polynomially smaller
+ * than the storage in brute-force approach where each digit is represented by
+ * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
 const unsigned char digits[8][10] = {
 
