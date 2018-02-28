@@ -76,7 +76,7 @@ void BigInt(unsigned int n)
     c = numOfDigits = getNumberOfDigits(n);
     int decimals[numOfDigits];
 
-    // decomposing the number into an array of digits
+    // decomposing the number into an array of decimal digits
     do {
         decimals[c-1] = n % 10;
         c--;
