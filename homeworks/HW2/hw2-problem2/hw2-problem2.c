@@ -5,6 +5,8 @@ void BigInt(unsigned int);
 
 unsigned int getNumberOfDigits(unsigned int);
 
+#define NUMBER_OF_ROWS 8
+#define NUMBER_OF_BITS 8
 
 /**
  * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
@@ -13,9 +15,6 @@ unsigned int getNumberOfDigits(unsigned int);
  * than the storage in brute-force approach where each digit is represented by
  * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
-#define NUMBER_OF_ROWS 8
-#define NUMBER_OF_BITS 8
-
 const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
 
         {       // row 0 of all 10 digits
@@ -74,7 +73,7 @@ void BigInt(unsigned int n)
 {
     unsigned int numOfDigits, c;
     c = numOfDigits = getNumberOfDigits(n);
-    int decimals[numOfDigits];
+    int decimals[numOfDigits], bitPattern[NUMBER_OF_BITS];
 
     // decomposing the number into an array of decimal digits
     do {
@@ -87,8 +86,6 @@ void BigInt(unsigned int n)
     {
         for (int digit = 0; digit < numOfDigits; digit++)
         {
-            int bitPattern[NUMBER_OF_BITS];
-
             // iteratively extracting each bit, starting from the least significant position
             for (int bit = 0; bit < NUMBER_OF_BITS; bit++)
                 bitPattern[bit] = (BIG_DIGITS[row][decimals[digit]] >> bit) & 1;
