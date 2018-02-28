@@ -17,7 +17,7 @@ unsigned int getNumberOfDigits(unsigned int);
  * than the storage in brute-force approach where each digit is represented by
  * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
  */
-const unsigned char BIG_DIGITS[8][10] = {
+const unsigned char BIG_DIGITS[NUMBER_OF_ROWS][10] = {
 
         {       // row0 of all 10 digits
                 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u, 0b00000000u,
