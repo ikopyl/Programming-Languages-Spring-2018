@@ -93,7 +93,7 @@ void BigInt(unsigned int n)
         {
             int bitPattern[8];
             for (int bit = 0; bit < 8; bit++) {
-                bitPattern[bit] = (digits[row][digit] >> bit) & 1;
+                bitPattern[bit] = (digits[row][decimals[digit]] >> bit) & 1;
             }
                 //printf("%c", ((digits[row][digit] >> bit) & 1 == 1) ? '@' : '_');
            for (int bit = 8; bit >= 0; bit--)
