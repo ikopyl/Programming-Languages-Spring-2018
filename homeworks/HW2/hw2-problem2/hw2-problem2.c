@@ -10,7 +10,8 @@ unsigned int getNumberOfDigits(unsigned int);
 
 /**
  * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
- * For convenience of bit extracting & printing, the bit pattern of each char is reversed.
+ * For convenience of bit extracting & printing, the bit pattern of each char
+ * is reversed.
  *
  * Each digit requires just 8 bytes of storage - which is polynomially smaller
  * than the storage in brute-force approach where each digit is represented by
