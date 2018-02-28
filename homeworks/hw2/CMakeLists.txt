@@ -9,6 +9,4 @@ add_executable(hw2-1
         hw2-problem1/hw2-problem1.c)
 
 add_executable(hw2-2
-        hw2-problem2/functions.c
-        hw2-problem2/functions.h
         hw2-problem2/hw2-problem2.c)
