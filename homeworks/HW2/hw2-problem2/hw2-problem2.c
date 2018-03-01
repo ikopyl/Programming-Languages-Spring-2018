@@ -96,5 +96,5 @@ void BigInt(unsigned int n)
 
 unsigned int getNumberOfDigits(unsigned int n)
 {
-    return (unsigned int) log10(n) + 1;
+    return (unsigned int) log10(n) + 1;      // floor of log10(n) + 1
 }
