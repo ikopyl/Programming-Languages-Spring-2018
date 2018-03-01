@@ -2,7 +2,7 @@
 #include <math.h>
 #include "functions.h"
 
-const unsigned long long K = 1000;              // system-dependent constant
+const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
 
 unsigned int bs(int *, unsigned int, unsigned int);
 void initializeArray(int *, unsigned int);
@@ -41,12 +41,14 @@ void initializeArray(int *a, unsigned int n)
 
 void binarySearchTest(int *a, unsigned int n)
 {
-    unsigned int i, j;
+    unsigned long long counter, j;
+    counter = 0;
+    unsigned int i;
     for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++) {
+        for (i = 0; i < n; i++)
             if (bs(a, n, i) != i)
-                puts("ERROR");
-
-        }
+//                puts("ERROR");
+                counter++;
+            printf("counter = %llu\n", counter);
 
 }
