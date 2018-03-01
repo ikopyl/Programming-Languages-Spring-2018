@@ -9,10 +9,11 @@ unsigned int moveZeroesToEndOfArray(int *, unsigned int);
 int main()
 {
     int a[16] = { 9, 1, 1, 6, 7, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 };
-    printIntArray(a, sizeof(a));
+    printIntArray(a, sizeof(a));                // printing original array
 
     int reducedN = reduce(a, 16);
-    printIntArray(a, reducedN * sizeof(int));
+    printIntArray(a, sizeof(a));                // printing reduced array with original bounds
+    printIntArray(a, reducedN * sizeof(int));   // printing reduced array with reduced bounds
     printf("reduced n = %d\n", reducedN);
 
     return 0;
