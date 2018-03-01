@@ -2,7 +2,7 @@
 #include <math.h>
 #include "functions.h"
 
-void initializeArray(int *, int);
+void initializeArray(int *, unsigned int);
 
 int main() 
 {
@@ -10,7 +10,8 @@ int main()
     printf("%f\n", log2(9));
     printf("%d\n", (unsigned int) log2(9));         // floor of log2(9)
 
-    int sizeOfArray = 10;
+
+    unsigned int sizeOfArray = 10;
     int a[sizeOfArray];
     initializeArray(a, sizeOfArray);
     printIntArray(a, sizeof(a));
@@ -20,8 +21,9 @@ int main()
     return 0;
 }
 
-void initializeArray(int *a, int n)
+void initializeArray(int *a, unsigned int n)
 {
-    for (int i = 0; i < n; i++)
+    unsigned int i;
+    for (i = 0; i < n; i++)
         a[i] = i;
 }
