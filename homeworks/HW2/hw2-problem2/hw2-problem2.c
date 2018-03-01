@@ -5,8 +5,8 @@ void BigInt(unsigned int);
 
 unsigned int getNumberOfDigits(unsigned int);
 
-#define NUMBER_OF_ROWS 8
 #define NUMBER_OF_BITS 8
+#define NUMBER_OF_ROWS 8
 
 /**
  * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
@@ -86,12 +86,10 @@ void BigInt(unsigned int n)
     for (int row = 0; row < NUMBER_OF_ROWS; row++)
     {
         for (int digit = 0; digit < numOfDigits; digit++)
-        {
-            // iteratively extracting each bit from the bit pattern and printing it,
-            // starting from the most significant bit first
+            /* iteratively extracting bit pattern of each char of BIG_DIGITS array
+               and printing it, starting from the most significant bit first */
             for (int bit = NUMBER_OF_BITS-1; bit >= 0; bit--)
                 printf("%c", ((BIG_DIGITS[row][decimals[digit]] >> bit) & 1) == 1 ? '@' : ' ');
-        }
         puts("");
     }
 }
