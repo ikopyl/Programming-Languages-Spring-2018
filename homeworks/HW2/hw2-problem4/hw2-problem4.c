@@ -4,7 +4,12 @@
 
 const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
 
-unsigned int bs(int *, unsigned int, unsigned int);
+int bs(int *, unsigned int, int);
+
+int iterativeBinarySearch(int *, unsigned int, int);
+
+
+
 void initializeArray(int *, unsigned int);
 void binarySearchTest(int *, unsigned int);
 
@@ -26,10 +31,33 @@ int main()
     return 0;
 }
 
-unsigned int bs(int *a, unsigned int n, unsigned int searchedValue)
+int iterativeBinarySearch(int *a, unsigned int n, int item) {
+
+    int itemLocation = -1;
+    unsigned int low, mid, high;
+    low = 1;
+    high = n;
+
+    while (high >= low && itemLocation == -1)
+    {
+        mid = (low + high) / 2;
+        if (item == a[mid])
+            itemLocation = mid;
+        else if (item < a[mid])
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+
+    return itemLocation;
+}
+
+
+
+int bs(int *a, unsigned int n, int item)
 {
 
-    return 0;
+    return -1;
 }
 
 void initializeArray(int *a, unsigned int n)
