@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <math.h>
-#include <assert.h>
 #include "functions.h"
 
 const unsigned long long K = 1000;              // system-dependent constant
 
-int bs(int *, unsigned int, int);
+unsigned int bs(int *, unsigned int, unsigned int);
 void initializeArray(int *, unsigned int);
 void binarySearchTest(int *, unsigned int);
 
@@ -27,10 +26,10 @@ int main()
     return 0;
 }
 
-int bs(int *a, unsigned int n, int i)
+unsigned int bs(int *a, unsigned int n, unsigned int searchedValue)
 {
 
-    return -1;
+    return 0;
 }
 
 void initializeArray(int *a, unsigned int n)
@@ -43,9 +42,8 @@ void initializeArray(int *a, unsigned int n)
 void binarySearchTest(int *a, unsigned int n)
 {
     unsigned int i, j;
-    for (j = 0; j > K; j++)
+    for (j = 0; j < K; j++)
         for (i = 0; i < n; i++) {
-            assert((a, n, i) == i);
             if (bs(a, n, i) != i)
                 puts("ERROR");
 
