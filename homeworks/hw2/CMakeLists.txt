@@ -10,3 +10,6 @@ add_executable(hw2-1
 
 add_executable(hw2-2
         hw2-problem2/hw2-problem2.c)
+
+add_executable(hw2-3
+        hw2-problem3/hw2-problem3.c)
