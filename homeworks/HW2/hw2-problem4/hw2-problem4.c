@@ -2,7 +2,8 @@
 #include <math.h>
 #include "functions.h"
 
-const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
+// const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
+const unsigned long long K = 10;              // system-dependent constant, 100k with bs-passthrough is 4sec.
 
 int bs(int *, unsigned int, int);
 
@@ -35,7 +36,7 @@ int iterativeBinarySearch(int *a, unsigned int n, int item) {
 
     int itemLocation = -1;
     unsigned int low, mid, high;
-    low = 1;
+    low = 0;
     high = n;
 
     while (high >= low && itemLocation == -1)
@@ -69,14 +70,18 @@ void initializeArray(int *a, unsigned int n)
 
 void binarySearchTest(int *a, unsigned int n)
 {
-    unsigned long long counter, j;
-    counter = 0;
+    unsigned long long j;
     unsigned int i;
     for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++)
-            if (bs(a, n, i) != i)
-//                puts("ERROR");
-                counter++;
-            printf("counter = %llu\n", counter);
+        for (i = 0; i < n; i++) {
+            int something;
+            if ((something = iterativeBinarySearch(a, n, a[i])) != i) {
+                puts("ERROR");
+                printf("\tERROR: %d\ti == %d\ta[i] == %d\t\n", something, i, a[i]);
+            }
+            else
+                printf("bs = %d\ti == %d\n", something, i);
+//            if (bs(a, n, i) != i)
+        }
 
 }
