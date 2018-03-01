@@ -333,7 +333,7 @@ void BigInt(unsigned int n)
             for (int bit = NUMBER_OF_BITS-1; bit >= 0; bit--)
                 printf("%c", 
                 ((BIG_DIGITS[row][decimals[digit]] >> bit) & 1) == 1 ? '@' : ' ');
-        puts("");
+        puts("");    // adds a newline character at the end of each printed row
     }
 }
 unsigned int getNumberOfDigits(unsigned int n) 
