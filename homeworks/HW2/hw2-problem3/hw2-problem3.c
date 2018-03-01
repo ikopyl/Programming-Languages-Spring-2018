@@ -15,8 +15,12 @@ unsigned int reduce(int * a, unsigned int n)
 
     return reducedArraySize;
 }
-
-unsigned int moveZeroesToEndOfArray(int * a, unsigned int n)
+/**
+ * Removes all zeroes from the array by copying all non-zero values
+ * to the beginning of the array and returning the total amount of
+ * non-zero values (i.e. the size of reduced array).
+ */
+unsigned int removeAllZeroes(int * a, unsigned int n)
 {
     unsigned int indexOfNullValue = 0;
 
