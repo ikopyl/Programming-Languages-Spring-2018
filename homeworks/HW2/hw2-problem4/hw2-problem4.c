@@ -7,9 +7,6 @@ const unsigned long long K = 10;              // system-dependent constant, 100k
 
 int bs(int *, unsigned int, int);
 
-int iterativeBinarySearch(int *, unsigned int, int);
-
-
 
 void initializeArray(int *, unsigned int);
 void binarySearchTest(int *, unsigned int);
@@ -32,8 +29,11 @@ int main()
     return 0;
 }
 
-int iterativeBinarySearch(int *a, unsigned int n, int item) {
-
+/**
+ * Iterative implementation of Binary Search
+ */
+int bs(int *a, unsigned int n, int item)
+{
     int itemLocation = -1;
     unsigned int low, mid, high;
     low = 0;
@@ -53,14 +53,6 @@ int iterativeBinarySearch(int *a, unsigned int n, int item) {
     return itemLocation;
 }
 
-
-
-int bs(int *a, unsigned int n, int item)
-{
-
-    return -1;
-}
-
 void initializeArray(int *a, unsigned int n)
 {
     unsigned int i;
@@ -74,14 +66,7 @@ void binarySearchTest(int *a, unsigned int n)
     unsigned int i;
     for (j = 0; j < K; j++)
         for (i = 0; i < n; i++) {
-            int something;
-            if ((something = iterativeBinarySearch(a, n, a[i])) != i) {
+            if (bs(a, n, i) != i)
                 puts("ERROR");
-                printf("\tERROR: %d\ti == %d\ta[i] == %d\t\n", something, i, a[i]);
-            }
-            else
-                printf("bs = %d\ti == %d\n", something, i);
-//            if (bs(a, n, i) != i)
         }
-
 }
