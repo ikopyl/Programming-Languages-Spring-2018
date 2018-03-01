@@ -15,3 +15,6 @@ add_executable(hw2-3
         hw2-problem3/functions.c
         hw2-problem3/functions.h
         hw2-problem3/hw2-problem3.c)
+
+add_executable(hw2-4
+        hw2-problem4/hw2-problem4.c)
