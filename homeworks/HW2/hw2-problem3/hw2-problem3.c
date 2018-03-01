@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "functions.h"
 
-unsigned int reduce(int *, int);
-void findTop3MaxValuesInArray(int *, int, int *, int *, int *);
-void nullifyTop3MaxValuesInArray(int *, int, int, int, int);
-unsigned int moveZeroesToEndOfArray(int *, int);
+unsigned int reduce(int *, unsigned int);
+void findTop3MaxValuesInArray(int *, unsigned int, int *, int *, int *);
+void nullifyTop3MaxValuesInArray(int *, unsigned int, int, int, int);
+unsigned int moveZeroesToEndOfArray(int *, unsigned int);
 
 int main()
 {
@@ -24,7 +24,7 @@ int main()
     return 0;
 }
 
-unsigned int reduce(int * a, int n)
+unsigned int reduce(int * a, unsigned int n)
 {
     int max1, max2, max3;
     max1 = max2 = max3 = 0;
@@ -38,9 +38,10 @@ unsigned int reduce(int * a, int n)
 /**
  * Setting all occurrences of numbers max1, max2, max3 in the array to zero.
  */
-void nullifyTop3MaxValuesInArray(int * a, int n, int max1, int max2, int max3)
+void nullifyTop3MaxValuesInArray(int * a, unsigned int n, int max1, int max2, int max3)
 {
-    for (int i = 0; i < n; i++)
+    unsigned int i;
+    for (i = 0; i < n; i++)
         if (a[i] == max1 || a[i] == max2 || a[i] == max3)
             a[i] = 0;
 }
@@ -48,10 +49,11 @@ void nullifyTop3MaxValuesInArray(int * a, int n, int max1, int max2, int max3)
 /**
  * Finding the first 3 maximum values of an array.
  */
-void findTop3MaxValuesInArray(int * a, int n, int *max1, int *max2, int *max3)
+void findTop3MaxValuesInArray(int * a, unsigned int n, int *max1, int *max2, int *max3)
 {
     *max1 = *max2 = *max3 = 0;
-    for (int i = 0; i < n; i++)
+    unsigned int i;
+    for (i = 0; i < n; i++)
     {
         if (a[i] > *max1)
         {
@@ -74,13 +76,14 @@ void findTop3MaxValuesInArray(int * a, int n, int *max1, int *max2, int *max3)
  * values to the beginning of the array and returning the total
  * amount of non-zero values (i.e. the size of reduced array).
  */
-unsigned int moveZeroesToEndOfArray(int * a, int n)
+unsigned int moveZeroesToEndOfArray(int * a, unsigned int n)
 {
     unsigned int indexOfNullValue, sizeOfReducedArray;
     indexOfNullValue = sizeOfReducedArray = 0;
 
     // copying all non-zero values to the beginning of array
-    for (int i = 0; i < n; i++)
+    unsigned int i;
+    for (i = 0; i < n; i++)
         if (a[i] != 0)
             a[indexOfNullValue++] = a[i];
 
