@@ -16,8 +16,8 @@ int main()
 
     initializeArray(a, sizeOfArray);
 
-    printf("Running time of iterative Binary Sort: %f seconds.\n", ibsTest(a, sizeOfArray));
-    printf("Running time of recursive Binary Sort: %f seconds.\n", rbsTest(a, sizeOfArray));
+    printf("Running time of iterative Binary Search: %f seconds.\n", ibsTest(a, sizeOfArray));
+    printf("Running time of recursive Binary Search: %f seconds.\n", rbsTest(a, sizeOfArray));
     puts("Benchmarking is complete!");
 
     return 0;
