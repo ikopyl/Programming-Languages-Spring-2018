@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <zconf.h>
+#include <time.h>
 
 int Frec(int);
 int Fit(int);
@@ -23,16 +25,16 @@ int main()
  *
  * @param f accepts any function that takes and returns an int value.
  * @param n int value that will be passed as a parameter to f
- * @return
+ * @return returns running time in seconds of function f for input n.
  */
 double benchmarkFibFunction(int (*f)(int), int n)
 {
-    unsigned long result = 0;
+    clock_t start_t, end_t = 0;
+    start_t = clock();
+    (*f)(n);
+    end_t = clock();
 
-    result = (*f)(n);
-    printf("Fib(%d) = %lu\n", n, result);
-
-    return 0;
+    return (double) (end_t - start_t)/CLOCKS_PER_SEC;
 }
 
 /**
