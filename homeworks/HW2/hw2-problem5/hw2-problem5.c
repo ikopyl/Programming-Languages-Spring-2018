@@ -24,10 +24,10 @@ int main()
     double runningTimeFit = benchmarkFibFunction(Fit, threshold);
     printf("Running time of Fit(%d) is %f seconds.\n", threshold, runningTimeFit);
 
-    double speedIncrease = runningTimeFrec / runningTimeFit;
+    double speedupFactor = runningTimeFrec / runningTimeFit;
 
     printf("Running time of Fit(%1$d) is %2$.2f times faster than running time of Frec(%1$d).\n",
-           threshold, speedIncrease);
+           threshold, speedupFactor);
 
 
     return 0;
