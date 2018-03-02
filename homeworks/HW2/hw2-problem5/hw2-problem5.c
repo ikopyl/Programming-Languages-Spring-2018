@@ -1,10 +1,15 @@
 #include <stdio.h>
 
 int Frec(int);
-unsigned long long int Fit(unsigned long long int);
+int Fit(int);
+
+double FrecBenchmark(int n);
+int findN10();
 
 int main()
 {
+    puts("Depending on the compiler optimizations, the results may vary.");
+
 
     return 0;
 }
@@ -22,9 +27,9 @@ int Frec(int n)
  * Iterative implementation of function
  * computing Fibonacci numbers.
  */
-unsigned long long int Fit(unsigned long long int n)
+int Fit(int n)
 {
-    unsigned long long int first, second, temp, i;
+    int first, second, temp, i;
     first = 0;
     second = 1;
 
