@@ -1,12 +1,25 @@
 $ gcc -Wall -std=c99 hw2-problem4.c -O3
 
 $ ./a.out && ./a.out && ./a.out
-Running time of iterative Binary Sort: 3.074647
-Running time of recursive Binary Sort: 2.805794
+Running time of iterative Binary Sort: 3.131201 seconds.
+Running time of recursive Binary Sort: 2.817843 seconds.
 Benchmarking is complete!
-Running time of iterative Binary Sort: 3.121910
-Running time of recursive Binary Sort: 2.835845
+Running time of iterative Binary Sort: 3.068580 seconds.
+Running time of recursive Binary Sort: 2.822027 seconds.
 Benchmarking is complete!
-Running time of iterative Binary Sort: 3.098879
-Running time of recursive Binary Sort: 2.825683
+Running time of iterative Binary Sort: 3.107107 seconds.
+Running time of recursive Binary Sort: 2.838324 seconds.
+Benchmarking is complete!
+
+
+wired, no monitors:
+$ ./a.out && ./a.out && ./a.out
+Running time of iterative Binary Sort: 3.046066 seconds.
+Running time of recursive Binary Sort: 2.860372 seconds.
+Benchmarking is complete!
+Running time of iterative Binary Sort: 3.047680 seconds.
+Running time of recursive Binary Sort: 2.848995 seconds.
+Benchmarking is complete!
+Running time of iterative Binary Sort: 3.064531 seconds.
+Running time of recursive Binary Sort: 2.860300 seconds.
 Benchmarking is complete!
