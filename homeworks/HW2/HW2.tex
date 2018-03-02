@@ -857,7 +857,7 @@ Benchmarking is complete!
 \paragraph{}\
 	\rmfamily
 	Initially, with minimal compiler optimization, the implementation of recursive Binary Search runs comparatively slower than iterative Binary Search.
-	However, as we increase the intensity of the compiler optimization, we shall see that the recursive Binary Search outperforms its iterative counterpart. One counterintuitive observation is related to the program performance while a laptop is powered by only a battery: as you can see, it runs a bit faster than while plugged in.
+	However, as we increase the intensity of the compiler optimization, we shall see that the recursive Binary Search outperforms its iterative counterpart. Another observation is related to the program performance while a laptop is powered by only a battery: as you can see, it runs a bit faster than while plugged in.
 
 	\ttfamily
 	\begin{lstlisting}[basicstyle=\small, language=bash][language=bash]	
@@ -874,7 +874,14 @@ Running time of iterative Binary Search: 3.029139 seconds.
 Running time of recursive Binary Search: 2.747411 seconds.
 Benchmarking is complete!
 	\end{lstlisting}
+	
+	\paragraph{}\
+	\rmfamily
+	One possible explanation to that counterintuitive phenomena could be related to behavior defined in operating system. When it activates a power savings mode, it is very likely that certain background processes halt, thus making my program run faster by tens of milliseconds.
 
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 \paragraph{}\
 
 	
@@ -910,12 +917,7 @@ double sec(void)
 
 \paragraph{}\
 \paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+
 
 
 		\noindent The code listing of the entire program for problem \#5: 
