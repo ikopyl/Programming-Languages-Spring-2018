@@ -4,7 +4,7 @@ int Frec(int);
 int Fit(int);
 
 int findN10();
-double benchmarkFibFunction(int (*f)(int), int);            // using the function pointer to avoid unnecessary code repetition
+double benchmarkFibFunction(int (*f)(int), int);       // using the function pointer to avoid unnecessary code repetition
 
 
 int main()
@@ -65,18 +65,4 @@ int Fit(int n)
         }
     return temp;        // the n-th value in Fibonacci sequence
 }
-
-double FrecBenchmark(int n)
-{
-
-    return 0;
-}
-
-
-double FitBenchmark(int n)
-{
-
-    return 0;
-}
-
 
