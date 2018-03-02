@@ -18,10 +18,7 @@ int main()
 
     printf("Running time of iterative Binary Sort: %f\n", ibsTest(a, sizeOfArray));
     printf("Running time of recursive Binary Sort: %f\n", rbsTest(a, sizeOfArray));
-
-    printf("%d\n", 10/2);
-    printf("%d\n", 9/2);
-    printf("%d\n", 1 % 2);
+    puts("Benchmarking is complete!");
 
     return 0;
 }
