@@ -218,16 +218,33 @@ int main()
 		\end{minted}
 
 
+\paragraph{}\
 
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+	\rmfamily
+	
+	Auxiliary functions (in separate file "functions.c"):
+	
+	\begin{minted}[fontsize=\small]{c} 
+#include <stdio.h>
+#include "functions.h"
+/** Passing the size of the array with sizeof() function */
+void printIntArray(int *array, unsigned int size)
+{
+    genericPrintNumArray(array, size, sizeof(int));
+}
+
+void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_size) 
+{
+    char *p = (char *) object;
+    while (p < (char *) object + size) {
+        printf("%d  ", *p);
+        p += elem_size;
+    }
+    printf("\n");
+}
+
+\end{minted}
+
 
 
 
@@ -285,7 +302,7 @@ Max sequence length of array g = 2
 	
 	
 
-
+\paragraph{}\
 	
 	
 	\rmfamily
@@ -616,6 +633,33 @@ unsigned int moveZeroesToEndOfArray(int * a, unsigned int n)
 }
 		\end{minted}
 		
+		
+\paragraph{}\
+\paragraph{}\
+
+	\rmfamily
+	\noindent Auxiliary functions (in separate file "functions.c"):	
+	\begin{minted}[fontsize=\small]{c} 
+#include <stdio.h>
+#include "functions.h"
+/** Passing the size of the array with sizeof() function */
+void printIntArray(int *array, unsigned int size)
+{
+    genericPrintNumArray(array, size, sizeof(int));
+}
+
+void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_size) 
+{
+    char *p = (char *) object;
+    while (p < (char *) object + size) {
+        printf("%d  ", *p);
+        p += elem_size;
+    }
+    printf("\n");
+}
+
+\end{minted}
+		
 \paragraph{}\
 \paragraph{}\
 		
@@ -635,6 +679,7 @@ Reduced array with new bounds (n = 7):
 		\end{lstlisting}
 		
 \paragraph{}\	
+\paragraph{}\
 \paragraph{}\
 \paragraph{}\
 
