@@ -1,0 +1,12 @@
+$ gcc -Wall -std=c99 hw2-problem4.c -O0
+
+$ ./a.out && ./a.out && ./a.out
+Running time of iterative Binary Sort: 12.771174
+Running time of recursive Binary Sort: 13.850865
+Benchmarking is complete!
+Running time of iterative Binary Sort: 12.625200
+Running time of recursive Binary Sort: 13.866875
+Benchmarking is complete!
+Running time of iterative Binary Sort: 12.631652
+Running time of recursive Binary Sort: 13.347881
+Benchmarking is complete!
