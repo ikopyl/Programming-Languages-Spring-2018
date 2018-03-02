@@ -615,8 +615,29 @@ unsigned int moveZeroesToEndOfArray(int * a, unsigned int n)
     return sizeOfReducedArray;
 }
 		\end{minted}
-	
+		
 \paragraph{}\
+\paragraph{}\
+		
+		\rmfamily
+		\noindent The result of the program execution:
+		
+		\ttfamily
+		\begin{lstlisting}[language=bash]
+$ gcc -Wall -std=c99 hw2-problem3.c functions.c -O3
+$ ./a.out
+Original array:
+9  1  1  6  7  1  2  3  3  5  6  6  6  6  7  9
+Reduced array with original bounds:
+1  1  1  2  3  3  5  0  0  0  0  0  0  0  0  0
+Reduced array with new bounds (n = 7):
+1  1  1  2  3  3  5
+		\end{lstlisting}
+		
+\paragraph{}\	
+\paragraph{}\
+\paragraph{}\
+
 	\rmfamily
 	
 	\paragraph{4. Iteration versus recursion (an opportunity for performance measurement) }\
@@ -638,20 +659,12 @@ for (j=0; j < K; j++)
 		
 		The answer is listed on the pages TBD through TBD.
 	
-	
-	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+
 \paragraph{}\
 \paragraph{}\
 
-
+		\rmfamily\
+		
 		\noindent The code listing of the entire program for problem \#4:
 		\begin{minted}[fontsize=\small]{c}
 #include <stdio.h>
@@ -799,6 +812,69 @@ double rbsTest(int *a, int n)
 
 
 \paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+
+
+
+\noindent The result of the program execution with different setup \& compiler optimizations:
+
+
+
+	
+	\ttfamily
+	\begin{lstlisting}[basicstyle=\small, language=bash][language=bash]
+
+# connected to charger, no Wi-Fi, no monitors connected:
+
+$ gcc -Wall -std=c99 hw2-problem4.c -O0
+$ ./a.out
+Running time of iterative Binary Search: 12.815268 seconds.
+Running time of recursive Binary Search: 13.416952 seconds.
+Benchmarking is complete!
+
+$ gcc -Wall -std=c99 hw2-problem4.c -O1
+$ ./a.out
+Running time of iterative Binary Search: 3.122441 seconds.
+Running time of recursive Binary Search: 3.351381 seconds.
+Benchmarking is complete!
+
+$ gcc -Wall -std=c99 hw2-problem4.c -O2
+$ ./a.out
+Running time of iterative Binary Search: 2.831430 seconds.
+Running time of recursive Binary Search: 2.775777 seconds.
+Benchmarking is complete!
+
+
+$ gcc -Wall -std=c99 hw2-problem4.c -O3
+$ ./a.out
+Running time of iterative Binary Search: 3.120335 seconds.
+Running time of recursive Binary Search: 2.861631 seconds.
+Benchmarking is complete!
+	\end{lstlisting}
+
+\paragraph{}\
+	\rmfamily
+	Initially, with minimal compiler optimization, the implementation of recursive Binary Search runs comparatively slower than iterative Binary Search.
+	However, as we increase the intensity of the compiler optimization, we shall see that the recursive Binary Search outperforms its iterative counterpart. One counterintuitive observation is related to the program performance while a laptop is powered by only a battery: as you can see, it runs a bit faster than while plugged in.
+
+	\ttfamily
+	\begin{lstlisting}[basicstyle=\small, language=bash][language=bash]	
+	
+$ gcc -Wall -std=c99 hw2-problem4.c -O0
+$ ./a.out
+Running time of iterative Binary Search: 12.409296
+Running time of recursive Binary Search: 13.290153
+Benchmarking is complete!
+
+$ gcc -Wall -std=c99 hw2-problem4.c -O3
+$ ./a.out
+Running time of iterative Binary Sort: 3.029139
+Running time of recursive Binary Sort: 2.747411
+Benchmarking is complete!
+	\end{lstlisting}
+
 \paragraph{}\
 
 	
