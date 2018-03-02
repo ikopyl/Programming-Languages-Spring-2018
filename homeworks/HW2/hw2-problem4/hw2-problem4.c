@@ -1,41 +1,62 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #include "functions.h"
 
 // const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
-const unsigned long long K = 10;              // system-dependent constant, 100k with bs-passthrough is 4sec.
+const int K = 10;              // system-dependent constant, 100k with bs-passthrough is 4sec.
 
-int bs(int *, unsigned int, int);
+int bs(int *, int, int);
 
-
-void initializeArray(int *, unsigned int);
-void binarySearchTest(int *, unsigned int);
+void initializeArray(int *, int);
+void binarySearchTest(int *, int);
 
 
 
 int main() 
 {
     printf("%f\n", log2(9));
-    printf("%d\n", (unsigned int) log2(9));         // floor of log2(9)
+    printf("%d\n", (int) log2(9));         // floor of log2(9)
 
 
-    unsigned int sizeOfArray = 10;
+    int sizeOfArray = 65536;               // 2^16
     int a[sizeOfArray];
+
     initializeArray(a, sizeOfArray);
-    printIntArray(a, sizeof(a));
+
+//    for (int i = 0; i < sizeOfArray; i++)
+//        printf("%d ", a[i]);
+//    printf("\n");
+
 
     binarySearchTest(a, sizeOfArray);
 
     return 0;
 }
 
+void initializeArray(int *a, int n)
+{
+    for (int i = 0; i < n; i++)
+        a[i] = i;
+}
+
+void binarySearchTest(int *a, int n)
+{
+    int i, j;
+    for (j = 0; j < K; j++)
+        for (i = 0; i < n; i++) {
+            if (bs(a, n, i) != i)
+                puts("ERROR");
+        }
+}
+
 /**
  * Iterative implementation of Binary Search
  */
-int bs(int *a, unsigned int n, int item)
+int bs(int *a, int n, int item)
 {
     int itemLocation = -1;
-    unsigned int low, mid, high;
+    int low, mid, high;
     low = 0;
     high = n;
 
@@ -51,22 +72,4 @@ int bs(int *a, unsigned int n, int item)
     }
 
     return itemLocation;
-}
-
-void initializeArray(int *a, unsigned int n)
-{
-    unsigned int i;
-    for (i = 0; i < n; i++)
-        a[i] = i;
-}
-
-void binarySearchTest(int *a, unsigned int n)
-{
-    unsigned long long j;
-    unsigned int i;
-    for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++) {
-            if (bs(a, n, i) != i)
-                puts("ERROR");
-        }
 }
