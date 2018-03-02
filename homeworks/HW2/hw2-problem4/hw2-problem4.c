@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-//const int K = 1000;                    // system-dependent constant
-const int K = 1;                    // system-dependent constant
+const int K = 1000;                    // system-dependent constant
+//const int K = 1;                    // system-dependent constant
 
 int ibs(int *, int, int);
 
@@ -9,22 +9,21 @@ int rbs(int *, int, int, int);
 //int rbs(int *, int, int);
 
 void initializeArray(int *, int);
-void binarySearchTest(int *, int);
+
+void ibsTest(int *, int);
+void rbsTest(int *, int);
 
 
 
 int main() 
 {
-//    printf("%f\n", log2(9));
-//    printf("%d\n", (int) log2(9));         // floor of log2(9)
-
-
-//    int sizeOfArray = 65536;               // 2^16
-    int sizeOfArray = 6;               // debugging rbs
+    int sizeOfArray = 65536;               // 2^16
     int a[sizeOfArray];
 
     initializeArray(a, sizeOfArray);
-    binarySearchTest(a, sizeOfArray);
+
+    ibsTest(a, sizeOfArray);
+    rbsTest(a, sizeOfArray);
 
     printf("%d\n", 10/2);
     printf("%d\n", 9/2);
@@ -39,26 +38,6 @@ void initializeArray(int *a, int n)
         a[i] = i;
 }
 
-
-
-
-
-
-
-
-
-void binarySearchTest(int *a, int n)
-{
-    int i, j;
-    for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++) {
-//            if (bs(a, n, i) != i)
-
-            if (rbs(a, 0, n, i) != i)
-                printf("\ti = %d\ta[i] = %d\trbs = %d\n", i, a[i], rbs(a, 0, n, i));
-//                puts("ERROR");
-        }
-}
 
 /**
  * Iterative implementation of Binary Search
@@ -101,4 +80,30 @@ int rbs(int *a, int low, int high, int value)
     return -1;
 }
 
+/**
+ * Function for testing the performance
+ * of iterative binary search.
+ */
+void ibsTest(int *a, int n)
+{
+    int i, j;
+    for (j = 0; j < K; j++)
+        for (i = 0; i < n; i++) {
+            if (ibs(a, n, i) != i)
+                puts("ERROR");
+        }
+}
 
+/**
+ * Function for testing the performance
+ * of recursive binary search.
+ */
+void rbsTest(int *a, int n)
+{
+    int i, j;
+    for (j = 0; j < K; j++)
+        for (i = 0; i < n; i++) {
+            if (rbs(a, 0, n, i) != i)
+                puts("ERROR");
+        }
+}
