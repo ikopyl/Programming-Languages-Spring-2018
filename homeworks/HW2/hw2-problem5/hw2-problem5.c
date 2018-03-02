@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int rFib(int);
-unsigned long long int iterativeFib(unsigned long long int);
+int Frec(int);
+unsigned long long int Fit(unsigned long long int);
 
 int main()
 {
@@ -13,16 +13,16 @@ int main()
  * Recursive implementation of function
  * computing Fibonacci numbers.
  */
-int rFib(int n)
+int Frec(int n)
 {
-    return n <= 1 ? n : rFib(n - 1) + rFib(n - 2);
+    return n <= 1 ? n : Frec(n - 1) + Frec(n - 2);
 }
 
 /**
  * Iterative implementation of function
  * computing Fibonacci numbers.
  */
-unsigned long long int iterativeFib(unsigned long long int n)
+unsigned long long int Fit(unsigned long long int n)
 {
     unsigned long long int first, second, temp, i;
     first = 0;
