@@ -685,9 +685,9 @@ int main()
 
     initializeArray(a, sizeOfArray);
 
-    printf("Running time of iterative Binary Sort: %f seconds.\n", 
+    printf("Running time of iterative Binary Search: %f seconds.\n", 
            ibsTest(a, sizeOfArray));
-    printf("Running time of recursive Binary Sort: %f seconds.\n",
+    printf("Running time of recursive Binary Search: %f seconds.\n",
            rbsTest(a, sizeOfArray));
            
     puts("Benchmarking is complete!");
@@ -864,14 +864,14 @@ Benchmarking is complete!
 	
 $ gcc -Wall -std=c99 hw2-problem4.c -O0
 $ ./a.out
-Running time of iterative Binary Search: 12.409296
-Running time of recursive Binary Search: 13.290153
+Running time of iterative Binary Search: 12.409296 seconds.
+Running time of recursive Binary Search: 13.290153 seconds.
 Benchmarking is complete!
 
 $ gcc -Wall -std=c99 hw2-problem4.c -O3
 $ ./a.out
-Running time of iterative Binary Sort: 3.029139
-Running time of recursive Binary Sort: 2.747411
+Running time of iterative Binary Search: 3.029139 seconds.
+Running time of recursive Binary Search: 2.747411 seconds.
 Benchmarking is complete!
 	\end{lstlisting}
 
