@@ -6,7 +6,9 @@ int Frec(int);
 int Fit(int);
 
 double findN(int *);
-double benchmarkFibFunction(int (*f)(int), int);       // using the function pointer to avoid unnecessary code repetition
+
+// using the function pointer to avoid unnecessary code repetition:
+double benchmarkFibFunction(int (*f)(int), int);
 
 
 int main()
@@ -14,11 +16,18 @@ int main()
     puts("Depending on the compiler optimizations, the results may vary. Please wait...");
 
     int threshold = 10;
-    double runningTimeFrec = findN(&threshold);     // !!! the value of threshold is now an index of Nth Fibonachi term
+    // !!! the value of threshold will become an index of Nth Fibonachi term
+    double runningTimeFrec = findN(&threshold);
+    printf("N10 = %d\n", threshold);
     printf("Running time of Frec(%d) is %f seconds.\n", threshold, runningTimeFrec);
 
     double runningTimeFit = benchmarkFibFunction(Fit, threshold);
     printf("Running time of Fit(%d) is %f seconds.\n", threshold, runningTimeFit);
+
+    double speedIncrease = runningTimeFrec / runningTimeFit;
+
+    printf("Running time of Fit(%1$d) is %.2f times faster than running time of Frec(%1$d)",
+           threshold, speedIncrease);
 
 
     return 0;
