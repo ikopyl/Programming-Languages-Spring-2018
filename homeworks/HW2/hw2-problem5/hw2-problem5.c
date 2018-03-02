@@ -18,6 +18,10 @@ int rFib(int n)
     return n <= 1 ? n : rFib(n - 1) + rFib(n - 2);
 }
 
+/**
+ * Iterative implementation of function
+ * computing Fibonacci numbers.
+ */
 unsigned long long int iterativeFib(unsigned long long int n)
 {
     unsigned long long int first, second, temp, i;
