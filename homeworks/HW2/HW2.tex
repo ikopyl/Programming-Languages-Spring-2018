@@ -1033,25 +1033,20 @@ int Fit(int n)
 	\begin{lstlisting}[language=bash]
 	
 $ gcc -std=c99 -Wall hw2-problem5.c -O0
-$ ./a.out && ./a.out && ./a.out
+$ ./a.out && ./a.out
 Depending on the compiler optimizations, the results may vary. Please wait...
 N10 = 46
-Running time of Frec(46) is 12.659873 seconds.
-Running time of Fit(46) is 0.000001 seconds.
-Fit(46) is 12659873.00 times faster than Frec(46).
+Running time of Frec(46) is 10.042850 seconds.
+Running time of Fit(46) is 0.000000 seconds.
+Fit(46) is inf times faster than Frec(46).
 Depending on the compiler optimizations, the results may vary. Please wait...
 N10 = 46
 Running time of Frec(46) is 12.380931 seconds.
 Running time of Fit(46) is 0.000002 seconds.
 Fit(46) is 6190465.50 times faster than Frec(46).
-Depending on the compiler optimizations, the results may vary. Please wait...
-N10 = 46
-Running time of Frec(46) is 12.498848 seconds.
-Running time of Fit(46) is 0.000001 seconds.
-Fit(46) is 12498848.00 times faster than Frec(46).
 
 $ gcc -std=c99 -Wall hw2-problem5.c -O1
-$ ./a.out && ./a.out && ./a.out
+$ ./a.out && ./a.out
 Depending on the compiler optimizations, the results may vary. Please wait...
 N10 = 47
 Running time of Frec(47) is 15.694785 seconds.
@@ -1059,16 +1054,14 @@ Running time of Fit(47) is 0.000001 seconds.
 Fit(47) is 15694785.00 times faster than Frec(47).
 Depending on the compiler optimizations, the results may vary. Please wait...
 N10 = 47
-Running time of Frec(47) is 15.843899 seconds.
-Running time of Fit(47) is 0.000002 seconds.
-Fit(47) is 7921949.50 times faster than Frec(47).
-Depending on the compiler optimizations, the results may vary. Please wait...
-N10 = 47
 Running time of Frec(47) is 15.601271 seconds.
 Running time of Fit(47) is 0.000001 seconds.
 Fit(47) is 15601271.00 times faster than Frec(47).
 	\end{lstlisting}
 	
-	
+
+	\paragraph{}\
+	\rmfamily
+	As you can see, a slightly more aggressive optimization enables Frec function to find 46-th term of Fibonacci sequence under 10 seconds, thus making a number 47 - index of 47th element of Fibonacci sequence - a new return value. Also worth noting that sometimes Fit function might produce a result in such a small amount of time that we don't even have enough precision in double precision floating point numbers to store such data, which would result in underflow. In such cases we can observe artifacts like in the first result, line 3: "Fit(46) is inf times faster than Frec(46)".
 		
 \end{document}
