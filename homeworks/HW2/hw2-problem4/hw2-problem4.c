@@ -90,7 +90,7 @@ double ibsTest(int *a, int n)
     end_t = clock();
     running_time += (end_t - start_t);
 
-    return (double) running_time/CLOCKS_PER_SEC;
+    return (double) running_time / CLOCKS_PER_SEC;
 }
 
 /**
@@ -112,5 +112,5 @@ double rbsTest(int *a, int n)
     end_t = clock();
     running_time += (end_t - start_t);
 
-    return (double) running_time/CLOCKS_PER_SEC;
+    return (double) running_time / CLOCKS_PER_SEC;
 }
