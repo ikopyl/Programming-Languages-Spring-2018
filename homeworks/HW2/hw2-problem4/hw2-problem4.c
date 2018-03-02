@@ -82,15 +82,17 @@ double ibsTest(int *a, int n)
 {
     clock_t start_t, end_t, running_time = 0;
     int i, j;
+
+    start_t = clock();
     for (j = 0; j < K; j++)
         for (i = 0; i < n; i++)
         {
-            start_t = clock();
             if (ibs(a, n, i) != i)
                 puts("ERROR");
-            end_t = clock();
-            running_time += (end_t - start_t);
         }
+    end_t = clock();
+    running_time += (end_t - start_t);
+
     return (double) running_time/CLOCKS_PER_SEC;
 }
 
@@ -102,14 +104,16 @@ double rbsTest(int *a, int n)
 {
     clock_t start_t, end_t, running_time = 0;
     int i, j;
+
+    start_t = clock();
     for (j = 0; j < K; j++)
         for (i = 0; i < n; i++)
         {
-            start_t = clock();
             if (rbs(a, 0, n, i) != i)
                 puts("ERROR");
-            end_t = clock();
-            running_time += (end_t - start_t);
         }
+    end_t = clock();
+    running_time += (end_t - start_t);
+
     return (double) running_time/CLOCKS_PER_SEC;
 }
