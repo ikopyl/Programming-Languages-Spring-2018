@@ -5,7 +5,7 @@
 int Frec(int);
 int Fit(int);
 
-int findN(int *);
+double findN(int *);
 double benchmarkFibFunction(int (*f)(int), int);       // using the function pointer to avoid unnecessary code repetition
 
 
@@ -14,13 +14,12 @@ int main()
     puts("Depending on the compiler optimizations, the results may vary.");
 
     int threshold = 10;
-    int result = findN(&threshold);
+    double runningTime = findN(&threshold);     // !!! the value of threshold becomes an index of Nth Fibonachi term
+    printf("Running time of Frec[%d] is %f seconds.\n", threshold, runningTime);
 
-    printf("Frec[%d] is Frec[%]\n", threshold, result);
 
-
-    printf("Running time of Fit(35) = %f seconds.\n", benchmarkFibFunction(Fit, 35));
-    printf("Running time of Frec(35) = %f seconds.\n", benchmarkFibFunction(Frec, 35));
+//    printf("Running time of Fit(35) = %f seconds.\n", benchmarkFibFunction(Fit, 35));
+//    printf("Running time of Frec(35) = %f seconds.\n", benchmarkFibFunction(Frec, 35));
 
 
     return 0;
@@ -29,13 +28,15 @@ int main()
 /**
  * Function that iteratively runs benchmarks against recursive Fibonacci function
  * until the running time exceeds the given time threshold in seconds.
- * @return index of nth Fibonacci term is returned through pointe
+ * @return index of nth Fibonacci term is returned through parameter (dirty hack).
  * @return the time it took to compute nth Fibonacci term.
  */
-int findN(int *timeThreshold) {
+double findN(int *timeThreshold) {
     int n = 0;
-    while (benchmarkFibFunction(Frec, ++n) < *timeThreshold);
-    return n;
+    double runningTime = 0;
+    while ((runningTime = benchmarkFibFunction(Frec, ++n)) < *timeThreshold);
+    *timeThreshold = n;         // returning the index of nth Fionacci term
+    return runningTime;
 }
 
 /**
