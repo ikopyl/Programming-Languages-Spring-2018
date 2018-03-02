@@ -3,13 +3,34 @@
 int Frec(int);
 int Fit(int);
 
-double FrecBenchmark(int n);
 int findN10();
+double benchmarkFibFunction(int (*f)(int), int);            // using the function pointer to avoid unnecessary code repetition
+
 
 int main()
 {
     puts("Depending on the compiler optimizations, the results may vary.");
 
+    benchmarkFibFunction(Fit, 10);
+    benchmarkFibFunction(Frec, 10);
+
+
+    return 0;
+}
+
+/**
+ * Function measures the performance of both Fibonacci functions.
+ *
+ * @param f accepts any function that takes and returns an int value.
+ * @param n int value that will be passed as a parameter to f
+ * @return
+ */
+double benchmarkFibFunction(int (*f)(int), int n)
+{
+    unsigned long result = 0;
+
+    result = (*f)(n);
+    printf("Fib(%d) = %lu\n", n, result);
 
     return 0;
 }
@@ -44,3 +65,18 @@ int Fit(int n)
         }
     return temp;        // the n-th value in Fibonacci sequence
 }
+
+double FrecBenchmark(int n)
+{
+
+    return 0;
+}
+
+
+double FitBenchmark(int n)
+{
+
+    return 0;
+}
+
+
