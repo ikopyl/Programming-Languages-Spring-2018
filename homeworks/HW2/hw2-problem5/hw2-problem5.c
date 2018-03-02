@@ -34,7 +34,7 @@ double findN(int *timeThreshold) {
     int n = 0;
     double runningTime = 0;
     while ((runningTime = benchmarkFibFunction(Frec, ++n)) < *timeThreshold);
-    *timeThreshold = n;         // returning the index of nth Fibonacci term
+    *timeThreshold = n;         // returning the index of nth Fibonacci term through parameter
     return runningTime;
 }
 
