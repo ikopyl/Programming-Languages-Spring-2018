@@ -11,7 +11,7 @@ double rbsTest(int *, int);
 
 int main() 
 {
-    int sizeOfArray = 65535;        // 2^16-1
+    int sizeOfArray = 65535;        // 2^16-1, staying conservative
     int a[sizeOfArray];
 
     initializeArray(a, sizeOfArray);
