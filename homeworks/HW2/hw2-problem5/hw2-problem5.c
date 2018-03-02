@@ -13,8 +13,8 @@ int main()
 {
     puts("Depending on the compiler optimizations, the results may vary.");
 
-    benchmarkFibFunction(Fit, 10);
-    benchmarkFibFunction(Frec, 10);
+    printf("Running time of Fit(35) = %f seconds.\n", benchmarkFibFunction(Fit, 35));
+    printf("Running time of Frec(35) = %f seconds.\n", benchmarkFibFunction(Frec, 35));
 
 
     return 0;
