@@ -79,7 +79,7 @@ void findTop3MaxValuesInArray(int * a, unsigned int n, int *max1, int *max2, int
 unsigned int moveZeroesToEndOfArray(int * a, unsigned int n)
 {
     unsigned int indexOfNullValue, sizeOfReducedArray;
-    indexOfNullValue = sizeOfReducedArray = 0;
+    indexOfNullValue = 0;
 
     // copying all non-zero values to the beginning of array
     unsigned int i;
