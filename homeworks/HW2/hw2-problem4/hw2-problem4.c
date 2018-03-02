@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 const int K = 1000;                    // system-dependent constant
-//const int K = 1;                    // system-dependent constant
 
 int ibs(int *, int, int);
 
@@ -38,7 +37,6 @@ void initializeArray(int *a, int n)
         a[i] = i;
 }
 
-
 /**
  * Iterative implementation of Binary Search
  */
@@ -67,7 +65,10 @@ int ibs(int *a, int n, int value)
  */
 int rbs(int *a, int low, int high, int value)
 {
-    if (high >= low) {
+    if (high < low)
+        return -1;
+    else
+    {
         int mid = low + (high - low) / 2;
         if (a[mid] == value)
             return mid;
@@ -76,8 +77,6 @@ int rbs(int *a, int low, int high, int value)
         else
             return rbs(a, mid+1, high, value);
     }
-
-    return -1;
 }
 
 /**
@@ -88,10 +87,9 @@ void ibsTest(int *a, int n)
 {
     int i, j;
     for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++) {
+        for (i = 0; i < n; i++)
             if (ibs(a, n, i) != i)
                 puts("ERROR");
-        }
 }
 
 /**
@@ -102,8 +100,7 @@ void rbsTest(int *a, int n)
 {
     int i, j;
     for (j = 0; j < K; j++)
-        for (i = 0; i < n; i++) {
+        for (i = 0; i < n; i++)
             if (rbs(a, 0, n, i) != i)
                 puts("ERROR");
-        }
 }
