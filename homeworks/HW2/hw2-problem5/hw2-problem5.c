@@ -11,15 +11,14 @@ double benchmarkFibFunction(int (*f)(int), int);       // using the function poi
 
 int main()
 {
-    puts("Depending on the compiler optimizations, the results may vary.");
+    puts("Depending on the compiler optimizations, the results may vary. Please wait...");
 
     int threshold = 10;
-    double runningTime = findN(&threshold);     // !!! the value of threshold becomes an index of Nth Fibonachi term
-    printf("Running time of Frec[%d] is %f seconds.\n", threshold, runningTime);
+    double runningTimeFrec = findN(&threshold);     // !!! the value of threshold is now an index of Nth Fibonachi term
+    printf("Running time of Frec(%d) is %f seconds.\n", threshold, runningTimeFrec);
 
-
-//    printf("Running time of Fit(35) = %f seconds.\n", benchmarkFibFunction(Fit, 35));
-//    printf("Running time of Frec(35) = %f seconds.\n", benchmarkFibFunction(Frec, 35));
+    double runningTimeFit = benchmarkFibFunction(Fit, threshold);
+    printf("Running time of Fit(%d) is %f seconds.\n", threshold, runningTimeFit);
 
 
     return 0;
@@ -35,7 +34,7 @@ double findN(int *timeThreshold) {
     int n = 0;
     double runningTime = 0;
     while ((runningTime = benchmarkFibFunction(Frec, ++n)) < *timeThreshold);
-    *timeThreshold = n;         // returning the index of nth Fionacci term
+    *timeThreshold = n;         // returning the index of nth Fibonacci term
     return runningTime;
 }
 
