@@ -21,6 +21,8 @@ int rFib(int n)
 unsigned long long int iterativeFib(unsigned long long int n)
 {
     unsigned long long int first, second, temp, i;
+    first = 0;
+    second = 1;
 
     if (n <= 1)
         return n;
