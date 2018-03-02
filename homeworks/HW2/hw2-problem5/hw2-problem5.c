@@ -52,7 +52,7 @@ double benchmarkFibFunction(int (*f)(int), int n)
     (*f)(n);
     end_t = clock();
 
-    return (double) (end_t - start_t)/CLOCKS_PER_SEC;
+    return (double) (end_t - start_t) / CLOCKS_PER_SEC;
 }
 
 /**
