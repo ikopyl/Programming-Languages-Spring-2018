@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-const int K = 1000;                 // system-dependent constant
+#define K 1000                      // system-dependent constant
 
 void initializeArray(int *, int);
 int ibs(int *, int, int);
