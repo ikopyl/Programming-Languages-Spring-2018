@@ -1,10 +1,6 @@
 #include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-#include "functions.h"
 
-// const unsigned long long K = 1000000000000000000;              // system-dependent constant, 100k with bs-passthrough is 4sec.
-const int K = 10;              // system-dependent constant, 100k with bs-passthrough is 4sec.
+const int K = 1000;                    // system-dependent constant
 
 int bs(int *, int, int);
 
@@ -15,20 +11,14 @@ void binarySearchTest(int *, int);
 
 int main() 
 {
-    printf("%f\n", log2(9));
-    printf("%d\n", (int) log2(9));         // floor of log2(9)
+//    printf("%f\n", log2(9));
+//    printf("%d\n", (int) log2(9));         // floor of log2(9)
 
 
     int sizeOfArray = 65536;               // 2^16
     int a[sizeOfArray];
 
     initializeArray(a, sizeOfArray);
-
-//    for (int i = 0; i < sizeOfArray; i++)
-//        printf("%d ", a[i]);
-//    printf("\n");
-
-
     binarySearchTest(a, sizeOfArray);
 
     return 0;
@@ -70,6 +60,5 @@ int bs(int *a, int n, int item)
         else
             low = mid + 1;
     }
-
     return itemLocation;
 }
