@@ -26,7 +26,7 @@ int main()
 
     double speedIncrease = runningTimeFrec / runningTimeFit;
 
-    printf("Running time of Fit(%1$d) is %.2f times faster than running time of Frec(%1$d)",
+    printf("Running time of Fit(%1$d) is %2$.2f times faster than running time of Frec(%1$d).\n",
            threshold, speedIncrease);
 
 
