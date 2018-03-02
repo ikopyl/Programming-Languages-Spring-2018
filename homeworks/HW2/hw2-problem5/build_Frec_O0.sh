@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc -std=c99 -Wall fib01.c -O0
+gcc -std=c99 -Wall hw2-problem5.c -O0
