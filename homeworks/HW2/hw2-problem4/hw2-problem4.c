@@ -1,28 +1,23 @@
 #include <stdio.h>
+#include <time.h>
 
-const int K = 1000;                    // system-dependent constant
-
-int ibs(int *, int, int);
-
-int rbs(int *, int, int, int);
-//int rbs(int *, int, int);
+const int K = 1000;                 // system-dependent constant
 
 void initializeArray(int *, int);
-
-void ibsTest(int *, int);
-void rbsTest(int *, int);
-
-
+int ibs(int *, int, int);
+int rbs(int *, int, int, int);
+double ibsTest(int *, int);
+double rbsTest(int *, int);
 
 int main() 
 {
-    int sizeOfArray = 65536;               // 2^16
+    int sizeOfArray = 65535;        // 2^16-1
     int a[sizeOfArray];
 
     initializeArray(a, sizeOfArray);
 
-    ibsTest(a, sizeOfArray);
-    rbsTest(a, sizeOfArray);
+    printf("Running time of iterative Binary Sort: %f\n", ibsTest(a, sizeOfArray));
+    printf("Running time of recursive Binary Sort: %f\n", rbsTest(a, sizeOfArray));
 
     printf("%d\n", 10/2);
     printf("%d\n", 9/2);
@@ -83,24 +78,38 @@ int rbs(int *a, int low, int high, int value)
  * Function for testing the performance
  * of iterative binary search.
  */
-void ibsTest(int *a, int n)
+double ibsTest(int *a, int n)
 {
+    clock_t start_t, end_t, running_time = 0;
     int i, j;
     for (j = 0; j < K; j++)
         for (i = 0; i < n; i++)
+        {
+            start_t = clock();
             if (ibs(a, n, i) != i)
                 puts("ERROR");
+            end_t = clock();
+            running_time += (end_t - start_t);
+        }
+    return (double) running_time/CLOCKS_PER_SEC;
 }
 
 /**
  * Function for testing the performance
  * of recursive binary search.
  */
-void rbsTest(int *a, int n)
+double rbsTest(int *a, int n)
 {
+    clock_t start_t, end_t, running_time = 0;
     int i, j;
     for (j = 0; j < K; j++)
         for (i = 0; i < n; i++)
+        {
+            start_t = clock();
             if (rbs(a, 0, n, i) != i)
                 puts("ERROR");
+            end_t = clock();
+            running_time += (end_t - start_t);
+        }
+    return (double) running_time/CLOCKS_PER_SEC;
 }
