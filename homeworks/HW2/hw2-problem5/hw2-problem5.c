@@ -16,7 +16,7 @@ int main()
     puts("Depending on the compiler optimizations, the results may vary. Please wait...");
 
     int threshold = 10;
-    // !!! the value of threshold will become an index of Nth Fibonachi term
+    // !!! the value of threshold will become an index of Nth Fibonacci term
     double runningTimeFrec = findN(&threshold);
     printf("N10 = %d\n", threshold);
     printf("Running time of Frec(%d) is %f seconds.\n", threshold, runningTimeFrec);
