@@ -4,7 +4,7 @@
 /**
  * Passing the size of the array with sizeof() function
  */
-void printIntArray(int *array, unsigned int size) 
+void printIntArray(int *array, unsigned int size)
 {
     genericPrintNumArray(array, size, sizeof(int));
 }
@@ -18,3 +18,4 @@ void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_siz
     }
     printf("\n");
 }
+
