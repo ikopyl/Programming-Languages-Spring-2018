@@ -1,0 +1,16 @@
+$ ./a.out && ./a.out && ./a.out
+Depending on the compiler optimizations, the results may vary. Please wait...
+N10 = 46
+Running time of Frec(46) is 12.659873 seconds.
+Running time of Fit(46) is 0.000001 seconds.
+Running time of Fit(46) is 12659873.00 times faster than running time of Frec(46).
+Depending on the compiler optimizations, the results may vary. Please wait...
+N10 = 46
+Running time of Frec(46) is 12.380931 seconds.
+Running time of Fit(46) is 0.000002 seconds.
+Running time of Fit(46) is 6190465.50 times faster than running time of Frec(46).
+Depending on the compiler optimizations, the results may vary. Please wait...
+N10 = 46
+Running time of Frec(46) is 12.498848 seconds.
+Running time of Fit(46) is 0.000001 seconds.
+Running time of Fit(46) is 12498848.00 times faster than running time of Frec(46).
