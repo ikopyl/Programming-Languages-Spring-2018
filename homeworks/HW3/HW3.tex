@@ -66,13 +66,36 @@
 
 
 
-	\paragraph{1. Plateau program (max sequence length) (a combinatorial algorithm)}\
+	\paragraph{1. Write a PROLOG program that investigates family relationships using lists. The facts should be organized as follows:}\
 	\rmfamily\\\
 	
-		The array a(1..n) contains sorted integers. Write a function maxlen(a,n) that returns the length of the longest sequence of identical numbers (for example, if a={ 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 } then maxlen returns 4 because the longest sequence 6, 6, 6, 6 contains 4 numbers. Write a demo main program for testing the work of maxlen. Explain your solution, and insert comments in your program. The time complexity of the solution should be in O(n).
-		\newline
-		
-		The answer is listed on the pages 2 through 5.
+	\ttfamily
+	\begin{minted}[fontsize=\small]{prolog} 
+m([first_male_name, second_male_name, ..., last_male_name]).
+f([first_female_name, second_female_name, ..., last_female_name]).
+family( [father, mother, [child1, child2, ..., child_n]] ).
+	\end{minted}
+	
+	\rmfamily
+	Write rules that define the following relationships:
+	
+	\begin{lstlisting}[language=bash]
+male(X)
+female(X)
+father, mother, parent
+siblings1, siblings2
+brother1, brother2
+sister1, sister2
+cousins
+uncle, aunt
+grandchild, grandson, granddaughter
+greatgrandparent
+ancestor
+	\end{lstlisting}
+	
+	For each of these rules show an example of its use.
+\paragraph{}\
+	The answer is listed on the pages TBD through TBD.
 
 \paragraph{}\
 \paragraph{}\
@@ -116,24 +139,6 @@ somePredicate(A, B) :-
 
 
 \paragraph{}\
-
-	\rmfamily
-	
-	Auxiliary functions (in separate file "functions.c"):
-	
-	\begin{minted}[fontsize=\small]{prolog} 
-somePredicate(A, B) :-
-    arbitraryPredicate(A, _, 1, 2),
-    predicateWithAtom(someAtom),
-    anotherPredicate(B, someAtom, myPredicate(A, _)),
-    findall(X, ('testString'(X), myPredicate(A, X)), L1),
-    member(A, L1),
-    !.
-	\end{minted}
-
-
-
-
 	
 	\rmfamily\
 	
