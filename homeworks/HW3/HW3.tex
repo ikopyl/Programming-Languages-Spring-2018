@@ -239,49 +239,13 @@ somePredicate(A, B) :-
 	
 	\rmfamily
 	
-	\paragraph{3. Array processing (elimination of three largest values) (one of many array reduction problems) }\
-	
+	\paragraph{3. Write a PROLOG program that solves the 8 queens problem (location of 8 queens on a chess board so that no queens have each other in check, i.e. are not located in the same row/column/diagonal). }\
+	\newline
 	\rmfamily\
 	
-		The array a(1..n) contains arbitrary integers. Write a function reduce(a, n) that reduces the array a(1..n) by eliminating from it all values that are equal to three largest different integers. For example, if a=(9, 1, 1, 6, 7, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9) then three largest different integers are 6, 7, 9, and after reduction the reduced array would be a=(1, 1, 1, 2, 3, 3, 5), n=7. The time complexity of the solution should be in O(n). 
-		\newline
-		
-		The answer is listed on the pages 11 through 13.
-		
-	\ttfamily\
+	The answer is listed on the pages TBD through TBD.
 	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\	
-\paragraph{}\	
-\paragraph{}\
-\paragraph{}\	
-
 	
-		\rmfamily
-		\noindent The code listing of the entire program for problem \#3:
-		\begin{minted}[fontsize=\small]{prolog}
-somePredicate(A, B) :-
-    arbitraryPredicate(A, _, 1, 2),
-    predicateWithAtom(someAtom),
-    anotherPredicate(B, someAtom, myPredicate(A, _)),
-    findall(X, ('testString'(X), myPredicate(A, X)), L1),
-    member(A, L1),
-    !.		\end{minted}
-		
-		
-\paragraph{}\
-\paragraph{}\
-
-	\rmfamily
 
 		
 \end{document}
