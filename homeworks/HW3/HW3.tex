@@ -1,0 +1,272 @@
+\documentclass{article}
+
+\usepackage{listings}
+
+\usepackage{minted}
+
+\usepackage{syntax}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{courier} % tt
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{microtype}
+\DisableLigatures[<]{encoding = T1}
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+
+
+\begin{document}
+
+	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+%	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+	\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
+%	\setlength{\grammarindent}{5cm} 
+
+
+
+
+	\begin{titlepage}
+		\vspace*{\stretch{1.0}}
+		\begin{center}
+				\Large\textsc{CSc 600-01 (Section 1)}
+				
+				\Large\textbf{Homework 3 - Logic Programming in Prolog}\\
+
+				\Large\textit{prepared by Ilya Kopyl}
+				
+		\end{center}	
+		\vspace*{\stretch{2.0}}
+	\end{titlepage}
+
+
+	\title{\textsc{CSc 600 Homework 3 - Logic Programming in Prolog}}	
+	\maketitle
+	
+		\textit{Homework is prepared by: Ilya Kopyl.}
+
+		\textit{It is formatted in LaTeX, using TeXShop editor (under GNU GPL license).}
+		
+		\textit{Diagrams are created in LucidChart online editor (lucidchart.com).}
+
+	\rmfamily\
+
+
+
+
+	\paragraph{1. Plateau program (max sequence length) (a combinatorial algorithm)}\
+	\rmfamily\\\
+	
+		The array a(1..n) contains sorted integers. Write a function maxlen(a,n) that returns the length of the longest sequence of identical numbers (for example, if a={ 1, 1, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9 } then maxlen returns 4 because the longest sequence 6, 6, 6, 6 contains 4 numbers. Write a demo main program for testing the work of maxlen. Explain your solution, and insert comments in your program. The time complexity of the solution should be in O(n).
+		\newline
+		
+		The answer is listed on the pages 2 through 5.
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+
+
+\noindent The code listing of maxlen function:
+\ttfamily
+	
+\begin{minted}[fontsize=\small]{prolog} 
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+\end{minted}
+	
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+		\rmfamily
+		\noindent The code listing of main program:
+		\begin{minted}[fontsize=\small]{prolog}
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+		\end{minted}
+
+
+\paragraph{}\
+
+	\rmfamily
+	
+	Auxiliary functions (in separate file "functions.c"):
+	
+	\begin{minted}[fontsize=\small]{prolog} 
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+	\end{minted}
+
+
+
+
+	
+	\rmfamily\
+	
+		\noindent The result of the program execution:
+		
+	\ttfamily
+	\begin{lstlisting}[language=bash]
+
+Standard output:
+
+	\end{lstlisting}
+	
+	
+\paragraph{}\
+
+	
+	
+	\rmfamily
+	
+	\paragraph{2. Integer plot function (find a smart way to code big integers) }\
+	
+	\rmfamily\
+	
+		Write a program BigInt(n) that displays an arbitrary positive integer n using big characters of size 7x7, as in the following example for BigInt(170):
+				
+	\ttfamily
+	\begin{lstlisting}[language=bash]		
+Standard output:
+		 
+	\end{lstlisting}
+	
+	\rmfamily\
+	Write a demo main program that illustrates the work of BigInt(n) and prints the following sequence of big numbers 1, 12, 123, 1234,..., 1234567890, one below the other.
+	\newline
+	
+	The answer is listed on the pages 7 through 9.
+	
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+	
+	\noindent The code listing of the two-dimensional array that stores bit pattern of each BigInt digit. It is declared in the global space (outside of any function).
+	
+	\begin{minted}[fontsize=\small]{prolog}
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+	\end{minted}
+	
+	\rmfamily\
+	\newline
+	\noindent Main program, excluding the declaration of BIG_DIGITS array:
+	
+	\begin{minted}[fontsize=\small]{prolog}
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.
+	\end{minted}
+	
+
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+
+	
+	\rmfamily
+	
+	\paragraph{3. Array processing (elimination of three largest values) (one of many array reduction problems) }\
+	
+	\rmfamily\
+	
+		The array a(1..n) contains arbitrary integers. Write a function reduce(a, n) that reduces the array a(1..n) by eliminating from it all values that are equal to three largest different integers. For example, if a=(9, 1, 1, 6, 7, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9) then three largest different integers are 6, 7, 9, and after reduction the reduced array would be a=(1, 1, 1, 2, 3, 3, 5), n=7. The time complexity of the solution should be in O(n). 
+		\newline
+		
+		The answer is listed on the pages 11 through 13.
+		
+	\ttfamily\
+	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\	
+\paragraph{}\	
+\paragraph{}\
+\paragraph{}\	
+
+	
+		\rmfamily
+		\noindent The code listing of the entire program for problem \#3:
+		\begin{minted}[fontsize=\small]{prolog}
+somePredicate(A, B) :-
+    arbitraryPredicate(A, _, 1, 2),
+    predicateWithAtom(someAtom),
+    anotherPredicate(B, someAtom, myPredicate(A, _)),
+    findall(X, ('testString'(X), myPredicate(A, X)), L1),
+    member(A, L1),
+    !.		\end{minted}
+		
+		
+\paragraph{}\
+\paragraph{}\
+
+	\rmfamily
+
+		
+\end{document}
