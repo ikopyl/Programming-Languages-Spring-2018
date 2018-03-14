@@ -33,10 +33,21 @@ suffix(Xs, Ys) :-
 
 % recursive definition of sublist:
 % preferred solution:
-sublist(Xs, Ys) :-
-    prefix(Xs, Ys).
-sublist(Xs, [_|Ys]) :-
-    sublist(Xs, Ys).
+%sublist(Xs, Ys) :-
+%    prefix(Xs, Ys).
+%sublist(Xs, [_|Ys]) :-
+%    sublist(Xs, Ys).
+
+% sublist as suffix of a prefix, using append
+% the same result as in the recursive definition
+sublist(Xs, AsXsBs) :-
+    append1(_, XsBs, AsXsBs),
+    append1(Xs, _, XsBs).
+
+% sublist as prefix of a suffix, using append
+%sublist(Xs, AsXsBs) :-
+%    append1(AsXs, _, AsXsBs),
+%    append1(_, Xs, AsXs).
 
 
 % HW3.2 answers:
