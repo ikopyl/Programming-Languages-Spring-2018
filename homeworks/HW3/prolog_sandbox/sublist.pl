@@ -17,16 +17,16 @@ suffix(Xs, [_|Ys]) :-
 
 
 % sublist as a prefix of a suffix:
-%sublist(Xs, Ys) :-
-%    prefix(Ps, Ys),
-%    suffix(Xs, Ps).
+sublist(Xs, Ys) :-
+    prefix(Xs, Ss),
+    suffix(Ss, Ys).
 
 % recursive definition of sublist:
 % preferred solution:
-sublist(Xs, Ys) :-
-    prefix(Xs, Ys).
-sublist(Xs, [_|Ys]) :-
-    sublist(Xs, Ys).
+%sublist(Xs, Ys) :-
+%    prefix(Xs, Ys).
+%sublist(Xs, [_|Ys]) :-
+%    sublist(Xs, Ys).
 
 
 % HW3.2 answers:
