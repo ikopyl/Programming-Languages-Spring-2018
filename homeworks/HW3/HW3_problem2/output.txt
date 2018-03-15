@@ -35,3 +35,26 @@ X = 1.
 ?- last_element(X, [1,2,3]).
 X = 3 ;
 false.
+
+?- two_adjacent(X, Y, [1,2,3,4]).
+X = 1,
+Y = 2 ;
+X = 2,
+Y = 3 ;
+X = 3,
+Y = 4 ;
+false.
+
+?- three_adjacent(X, Y, Z, [1,2,3,4,5]).
+X = 1,
+Y = 2,
+Z = 3 ;
+X = 2,
+Y = 3,
+Z = 4 ;
+X = 3,
+Y = 4,
+Z = 5 ;
+false.
+
+
