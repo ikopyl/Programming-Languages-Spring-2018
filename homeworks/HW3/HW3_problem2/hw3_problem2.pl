@@ -44,21 +44,28 @@ three_adjacent(X, Y, Z, List) :-
 
 
 % delete element from a list (delete all occurrences)
-del([], _, []).
-del([H|T], H, Result) :-
-    delete(T, H, Result).
-del([H|T1], Z, [H|T2]) :-
-    H=\=Z,
-    delete(T1, Z, T2).
-
+del(_, [], []).
+del(H, [H|T], Result) :-
+    del(H, T, Result).
+del(X, [H|T1], [H|T2]) :-
+    H=\=X,
+    del(X, T1, T2).
 
 
 % append element to a list
-append_element(X, List, ListPlusX) :-
-    append1(List, [X], ListPlusX).
+append_element(X, List, Result) :-
+    append1(List, [X], Result).
+
+
+%auxiliary definition
+select(X, [X|Xs], Xs).
+select(X, [Y|Ys], [Y|Zs]) :-
+    select(X, Ys, Zs).
 
 
 % insert element in a list
+insert_element(X, List, Result) :-
+    select(X, Result, List).
 
 
 % compute the length of a list
