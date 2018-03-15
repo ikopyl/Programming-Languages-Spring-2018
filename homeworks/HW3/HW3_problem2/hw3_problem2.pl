@@ -27,4 +27,10 @@ first_element(X1, List) :-
 last_element(Xn, List) :-
     suffix([Xn], List).
 
+two_adjacent(X, Y, List) :-
+    sublist([X, Y], List).
+
+three_adjacent(X, Y, Z, List) :-
+    sublist([X, Y, Z], List).
+
 
