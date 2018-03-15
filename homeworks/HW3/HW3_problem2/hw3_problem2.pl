@@ -57,7 +57,12 @@ append_element(X, List, ListPlusX) :-
 % compute the length of a list
 
 
-% reverse a list
+% reverse a list in linear time:
+reverse(List, ReversedList) :-
+    reverse(List, [], ReversedList).
+reverse([H|T], Buffer, ReversedList) :-
+    reverse(T, [H|Buffer], ReversedList).
+reverse([], ReversedList, ReversedList).
 
 
 % check whether a list is a palindrome
