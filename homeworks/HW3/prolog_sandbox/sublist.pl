@@ -85,5 +85,11 @@ member(X, [_|Ys]) :-
 % X = [1, 2],
 % Y = [] ;
 
-
+% append element X to list L IFF there exist 
+% list Lx such that [L1,L2, ... , Ln, X, []]
+append_element(X, L, Lx) :-
+    append1(L,[X], Lx).
+    
+natural_number(s(0), 0).
+natural_number(s(s(X)), N) :- natural_number(s(X), S), N is S + 1.
 
