@@ -87,6 +87,14 @@ reverse([H|T], Buffer, ReversedList) :-
 
 
 % display a list
+print([]).
+print([H|T]) :-
+    write(H),
+    write(' '),
+    print(T).
+
+
+
 
 
 
