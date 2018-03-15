@@ -76,14 +76,16 @@ len([_|Tail], N0, N) :-
 
 
 % reverse a list in linear time:
-reverse(List, ReversedList) :-
-    reverse(List, [], ReversedList).
-reverse([], ReversedList, ReversedList).
-reverse([H|T], Buffer, ReversedList) :-
-    reverse(T, [H|Buffer], ReversedList).
+reverse(List, Reversed) :-
+    reverse(List, [], Reversed).
+reverse([], Reversed, Reversed).
+reverse([H|T], Acc, Reversed) :-
+    reverse(T, [H|Acc], Reversed).
 
 
 % check whether a list is a palindrome
+palindrome(List) :-
+    reverse(List, List).
 
 
 % display a list
