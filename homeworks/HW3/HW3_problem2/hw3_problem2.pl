@@ -89,14 +89,9 @@ palindrome(List) :-
 
 
 % display a list
-print([]).
-print([H|T]) :-
+puts([]).
+puts([H|T]) :-
     write(H),
     write(' '),
-    print(T).
-
-
-
-
-
+    puts(T).
 

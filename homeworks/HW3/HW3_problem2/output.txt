@@ -91,3 +91,8 @@ true.
 
 ?- palindrome([1,0,0,1,0,0,1]).
 true.
+
+?- puts(['Apple', 'Banana', 'Kiwi', 'Mango', 'Papaya']).
+Apple Banana Kiwi Mango Papaya
+true.
+
