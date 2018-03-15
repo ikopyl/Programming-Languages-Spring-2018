@@ -43,7 +43,14 @@ three_adjacent(X, Y, Z, List) :-
     sublist([X, Y, Z], List).
 
 
-% delete element from a list
+% delete element from a list (delete all occurrences)
+del([], _, []).
+del([H|T], H, Result) :-
+    delete(T, H, Result).
+del([H|T1], Z, [H|T2]) :-
+    H=\=Z,
+    delete(T1, Z, T2).
+
 
 
 % append element to a list
@@ -75,3 +82,6 @@ reverse([H|T], Buffer, ReversedList) :-
 
 
 % display a list
+
+
+
