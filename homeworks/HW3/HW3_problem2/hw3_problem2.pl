@@ -42,6 +42,10 @@ two_adjacent(X, Y, List) :-
 three_adjacent(X, Y, Z, List) :-
     sublist([X, Y, Z], List).
 
+% delete an element from a list (delete 1 occurrence)
+select(X, [X|Xs], Xs).
+select(X, [Y|Ys], [Y|Zs]) :-
+    select(X, Ys, Zs).
 
 % delete element from a list (delete all occurrences)
 del(_, [], []).
@@ -55,12 +59,6 @@ del(X, [H|T1], [H|T2]) :-
 % append element to a list
 append_element(X, List, Result) :-
     append1(List, [X], Result).
-
-
-%auxiliary definition
-select(X, [X|Xs], Xs).
-select(X, [Y|Ys], [Y|Zs]) :-
-    select(X, Ys, Zs).
 
 
 % insert element in a list
