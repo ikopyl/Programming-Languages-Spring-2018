@@ -55,9 +55,6 @@ append_element(X, List, ListPlusX) :-
 
 
 % compute the length of a list
-% List X contains N elements,
-% where N is a natural number
-
 len(L, N) :-
     len(L, 0, N).
 len([], N, N).
