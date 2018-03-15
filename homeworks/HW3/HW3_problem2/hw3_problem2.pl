@@ -1,8 +1,11 @@
-% Operations on lists:
+% Operations on lists.
 
-append1([], L2, L3).
+% Base case: if List1 is empty list, then result is List2.
+% Otherwise, if List1 is not empty, chop the head from both 
+% List1 & List3 until you approach the base case.
+append1([], L2, L2).
 append1([H|T1], L2, [H|T3]) :-
-    append1(T1, T2, L3).
+    append1(T1, L2, T3).
 
 prefix(Prefix, List) :-
     append1(Prefix, _, List).
