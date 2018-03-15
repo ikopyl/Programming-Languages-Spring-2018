@@ -9,7 +9,7 @@ append1([H|T1], L2, [H|T3]) :-
     append1(T1, L2, T3).
 
 % auxiliary definition
-prefix(Prefix, List) :-
+prefix1(Prefix, List) :-
     append1(Prefix, _, List).
 
 % auxiliary definition
@@ -43,13 +43,13 @@ three_adjacent(X, Y, Z, List) :-
     sublist([X, Y, Z], List).
 
 % auxiliary definition
-select(X, [X|Xs], Xs).
-select(X, [Y|Ys], [Y|Zs]) :-
-    select(X, Ys, Zs).
+select1(X, [X|Xs], Xs).
+select1(X, [Y|Ys], [Y|Zs]) :-
+    select1(X, Ys, Zs).
 
 % delete an element from a list (delete 1 occurrence)
 del1(X, List, Result) :-
-    select(X, List, Result).
+    select1(X, List, Result).
 
 % delete element from a list (delete all occurrences)
 del_all(_, [], []).
@@ -67,7 +67,7 @@ append_element(X, List, Result) :-
 
 % insert element in a list
 insert_element(X, List, Result) :-
-    select(X, Result, List).
+    select1(X, Result, List).
 
 
 % compute the length of a list
@@ -80,16 +80,16 @@ len([_|Tail], N0, N) :-
 
 
 % reverse a list in linear time:
-reverse(List, Reversed) :-
-    reverse(List, [], Reversed).
-reverse([], Reversed, Reversed).
-reverse([H|T], Acc, Reversed) :-
-    reverse(T, [H|Acc], Reversed).
+reverse1(List, Reversed) :-
+    reverse1(List, [], Reversed).
+reverse1([], Reversed, Reversed).
+reverse1([H|T], Acc, Reversed) :-
+    reverse1(T, [H|Acc], Reversed).
 
 
 % check whether a list is a palindrome
 palindrome(List) :-
-    reverse(List, List).
+    reverse1(List, List).
 
 
 % display a list
