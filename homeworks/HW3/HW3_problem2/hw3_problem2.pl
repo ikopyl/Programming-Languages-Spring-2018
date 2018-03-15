@@ -43,3 +43,24 @@ three_adjacent(X, Y, Z, List) :-
     sublist([X, Y, Z], List).
 
 
+% delete element from a list
+
+
+% append element to a list
+append_element(X, List, ListPlusX) :-
+    append1(List, [X], ListPlusX).
+
+
+% insert element in a list
+
+
+% compute the length of a list
+
+
+% reverse a list
+
+
+% check whether a list is a palindrome
+
+
+% display a list
