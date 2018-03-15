@@ -55,14 +55,23 @@ append_element(X, List, ListPlusX) :-
 
 
 % compute the length of a list
+% List X contains N elements,
+% where N is a natural number
+
+len(L, N) :-
+    len(L, 0, N).
+len([], N, N).
+len([_|Tail], N0, N) :-
+    N1 is N0 + 1,
+    len(Tail, N1, N).
 
 
 % reverse a list in linear time:
 reverse(List, ReversedList) :-
     reverse(List, [], ReversedList).
+reverse([], ReversedList, ReversedList).
 reverse([H|T], Buffer, ReversedList) :-
     reverse(T, [H|Buffer], ReversedList).
-reverse([], ReversedList, ReversedList).
 
 
 % check whether a list is a palindrome
