@@ -15,13 +15,13 @@ sublist(Sublist, List) :-
     prefix(Sublist, Suffix),
     suffix(Suffix, List).
 
-member_of_list(X, List) :-
+member1(X, List) :-
     sublist([X], List).
 
-first_element_of_list(X1, List) :-
+first_element(X1, List) :-
     prefix([X1], List).
 
-last_element_of_list(Xn, List) :-
+last_element(Xn, List) :-
     suffix([Xn], List).
 
 
