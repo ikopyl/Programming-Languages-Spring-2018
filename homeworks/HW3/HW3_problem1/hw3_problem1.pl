@@ -203,4 +203,8 @@ cousins(X, Y) :-
     parent(Parent2, Y),
     siblings2(Parent1, Parent2).
 
+% X is uncle of Person if X is a brother of a parent of that person
+uncle(X, Person) :-
+    brother2(X, Parent),
+    parent(Parent, Person).
 

@@ -183,3 +183,14 @@ false.
 X = 'David Armstrong-Jones' ;
 X = 'Lady Sarah Chatto' ;
 false.
+
+?- uncle('Prince Charles', X).
+X = 'Peter Philips' ;
+X = 'Zara Tindall' ;
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'James, Viscount Severn' ;
+false.
+
+
