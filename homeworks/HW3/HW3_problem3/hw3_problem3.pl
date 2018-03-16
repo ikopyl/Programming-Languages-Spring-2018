@@ -12,10 +12,9 @@
 
 
 % nocheck(Y,L) takes a queen Y and a list
-% of other queens. Succeed if and only if the
-% Y queen holds none of the others in check
-%nocheck(_, []).
-
+% of other queens. Succeeds if and only if 
+% the Y queen holds none of the others in 
+% check.
 nocheck(_, [], _) :- !.
 nocheck(Y, [Y1 | Rest], N) :-
     Y =\= Y1,
@@ -42,3 +41,4 @@ natural_number(0).
 natural_number(N) :- 
     M is N - 1, 
     natural_number(M).
+
