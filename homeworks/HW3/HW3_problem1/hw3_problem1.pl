@@ -242,5 +242,13 @@ greatgrandparent(X, Y) :-
     parent(X, Parent),
     grandparent(Parent, Y).
 
+% Base case: X is ancestor of Y if X is a parent of Y
+ancestor(X, Y) :-
+    parent(X, Y).
+
+% Recursive defintion:
+ancestor(X, Y) :-
+    parent(X, Parent),
+    ancestor(Parent, Y).
 
 

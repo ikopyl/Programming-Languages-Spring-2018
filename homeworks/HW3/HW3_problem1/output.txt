@@ -239,3 +239,18 @@ X = 'King George VI' ;
 X = 'Princess Alice of Battenberg' ;
 X = 'Elizabeth the Queen Mother' ;
 false.
+
+?- ancestor('Queen Elizabeth II', X).
+X = 'Prince Charles' ;
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+X = 'Prince William' ;
+X = 'Prince Harry' ;
+X = 'Peter Philips' ;
+X = 'Zara Tindall' ;
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'James, Viscount Severn' ;
+false.
