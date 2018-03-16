@@ -1,6 +1,5 @@
 % Family relationships
 
-
 m([
     'Prince Andrew of Greece and Denmark',
     'King George VI',
@@ -40,9 +39,67 @@ f([
 family([
     'Prince Andrew of Greece and Denmark',
     'Princess Alice of Battenberg',
-    ['Prince Philip']
+    [
+        'Prince Philip'
+    ]
 ]).
 
+family([
+    'King George VI',
+    'Elizabeth the Queen Mother',
+    [
+        'Queen Elizabeth II',
+        'Princess Margaret'
+    ]
+]).
+
+family([
+    'Prince Philip',
+    'Queen Elizabeth II',
+    [
+        'Prince Charles',
+        'Princess Anne',
+        'Prince Andrew',
+        'Prince Edward'
+    ] 
+]).
+
+family([
+    'Antony Armstrong-Jones',
+    'Princess Margaret',
+    [
+        'David Armstrong-Jones',
+        'Lady Sarah Chatto'
+    ]
+]).
+
+family([
+    'Antony Armstrong-Jones',
+    'Someone else',
+    [
+        'Polly Higson',
+        'Jasper Cable-Alexander',
+        'Lady Frances von Hofmannsthal'
+    ]
+]).
+
+family([
+    'Prince Charles',
+    'Princess Diana',
+    [
+        'Prince William',
+        'Prince Harry'
+    ]
+]).
+
+family([
+    'Mark Philips',
+    'Princess Anne',
+    [
+        'Peter Philips',
+        'Zara Tindall'
+    ]
+]).
 
 
 family([]).
