@@ -891,23 +891,115 @@ true.
 	
 
 	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-
-
-	
 	\rmfamily
 	
 	\paragraph{3. Write a PROLOG program that solves the 8 queens problem (location of 8 queens on a chess board so that no queens have each other in check, i.e. are not located in the same row/column/diagonal). }\
 	\newline
-	\rmfamily\
-	
-	The answer is listed on the pages TBD through TBD.
-	
-	
 
+	
+	
+	\rmfamily\
+	\newline
+	\noindent The code listing of the entire program 3:
+	
+	\begin{minted}[fontsize=\small]{prolog}
+% N Queens problem. 
+% 
+% Predicates nocheck and legal initially were
+% intellectual property of Adam Brooks Webber,
+% but I took some liberty and modified them to 
+% solve N Queens problem. 
+%
+% I also took a liberty of representing 
+% the queen's position with just one number - 
+% the second coordinate is implied by the index 
+% of that element in the list.
+
+% nocheck(Y,L) takes a queen Y and a list
+% of other queens. Succeeds if and only if 
+% the Y queen holds none of the others in 
+% check.
+nocheck(_, [], _) :- !.
+nocheck(Y, [Y1 | Rest], N) :-
+    Y =\= Y1,
+    abs(Y1-Y) =\= N,
+    N1 is N + 1,
+    nocheck(Y, Rest, N1).
+
+
+legal([], _).
+legal([Y | Rest], NumList) :-
+    legal(Rest, NumList),
+    member(Y, NumList),
+    nocheck(Y, Rest, 1).
+
+
+n_queens(N, L) :-
+    natural_number(N),
+    numlist(1, N, NumList),
+    permutation(NumList, L),
+    legal(L, NumList).
+
+
+natural_number(0).
+natural_number(N) :- 
+    M is N - 1, 
+    natural_number(M).
+	\end{minted}
+		
+	\rmfamily\
+	\newline
+	\noindent Examples of the program execution:
+	
+	\begin{minted}[fontsize=\small]{prolog}
+?- n_queens(8,L).
+L = [1, 7, 5, 8, 2, 4, 6, 3] ;
+L = [1, 7, 4, 6, 8, 2, 5, 3] ;
+L = [1, 6, 8, 3, 7, 4, 2, 5] ;
+L = [1, 5, 8, 6, 3, 7, 2, 4] ;
+L = [6, 1, 5, 2, 8, 3, 7, 4] ;
+L = [4, 1, 5, 8, 2, 7, 3, 6] ;
+L = [5, 1, 8, 4, 2, 7, 3, 6] ;
+L = [3, 1, 7, 5, 8, 2, 4, 6] ;
+L = [5, 1, 4, 6, 8, 2, 7, 3] ;
+L = [7, 1, 3, 8, 6, 4, 2, 5] ;
+L = [5, 1, 8, 6, 3, 7, 2, 4] ;
+L = [4, 1, 5, 8, 6, 3, 7, 2] ;
+L = [2, 6, 1, 7, 4, 8, 3, 5] ;
+L = [5, 3, 1, 7, 2, 8, 6, 4] ;
+L = [8, 3, 1, 6, 2, 5, 7, 4] ;
+L = [4, 6, 1, 5, 2, 8, 3, 7] ;
+L = [5, 7, 1, 4, 2, 8, 6, 3] ;
+L = [6, 3, 1, 8, 4, 2, 7, 5] ;
+L = [5, 3, 1, 6, 8, 2, 4, 7] ;
+L = [6, 3, 1, 8, 5, 2, 4, 7] ;
+L = [4, 8, 1, 3, 6, 2, 7, 5] ;
+L = [8, 4, 1, 3, 6, 2, 7, 5] 
+
+?- n_queens(9, L).
+L = [1, 5, 2, 6, 9, 3, 8, 4, 7] ;
+L = [1, 4, 2, 8, 6, 9, 3, 5, 7] ;
+L = [1, 6, 2, 9, 7, 4, 8, 3, 5] ;
+L = [1, 3, 7, 2, 8, 5, 9, 4, 6] ;
+L = [1, 6, 4, 2, 8, 3, 9, 7, 5] ;
+L = [1, 5, 7, 2, 6, 3, 9, 4, 8] ;
+L = [1, 6, 4, 2, 7, 9, 3, 5, 8] ;
+L = [1, 5, 9, 2, 6, 8, 3, 7, 4] ;
+L = [1, 8, 4, 2, 7, 9, 6, 3, 5] ;
+L = [1, 3, 6, 8, 2, 4, 9, 7, 5] ;
+L = [1, 4, 6, 8, 2, 5, 3, 9, 7] ;
+L = [1, 7, 5, 8, 2, 9, 3, 6, 4]
+
+?- n_queens(5, L).
+L = [1, 3, 5, 2, 4] ;
+L = [1, 4, 2, 5, 3] ;
+L = [2, 4, 1, 3, 5] ;
+L = [2, 5, 3, 1, 4] ;
+L = [3, 1, 4, 2, 5] ;
+L = [3, 5, 2, 4, 1] ;
+L = [4, 1, 3, 5, 2] ;
+L = [4, 2, 5, 3, 1]
+
+	\end{minted}
 		
 \end{document}
