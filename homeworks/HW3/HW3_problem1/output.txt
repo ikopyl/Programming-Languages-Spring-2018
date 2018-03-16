@@ -226,4 +226,16 @@ X = 'Lady Louise Windsor' ;
 X = 'Zara Tindall' ;
 false.
 
+?- grandparent(X, 'Prince Andrew').
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'King George VI' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
 
+?- greatgrandparent(X, 'Princess Beatrice').
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'King George VI' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'Elizabeth the Queen Mother' ;
+false.

@@ -232,4 +232,15 @@ granddaughter(X, Y) :-
     grandchild(X, Y),
     female(X).
 
+% X is a grandparent of Y if X is a parent of a parent of Y
+grandparent(X, Y) :-
+    parent(X, Parent),
+    parent(Parent, Y).
+
+% X is a greatgrandparent of Y if X is a parent of a grandparent of Y
+greatgrandparent(X, Y) :-
+    parent(X, Parent),
+    grandparent(Parent, Y).
+
+
 
