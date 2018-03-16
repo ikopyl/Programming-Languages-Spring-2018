@@ -179,4 +179,7 @@ X = 'Lady Louise Windsor',
 Y = 'James, Viscount Severn' ;
 false.
 
-
+?- cousins('Prince Charles', X).
+X = 'David Armstrong-Jones' ;
+X = 'Lady Sarah Chatto' ;
+false.

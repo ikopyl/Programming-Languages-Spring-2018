@@ -202,3 +202,5 @@ cousins(X, Y) :-
     parent(Parent1, X),
     parent(Parent2, Y),
     siblings2(Parent1, Parent2).
+
+
