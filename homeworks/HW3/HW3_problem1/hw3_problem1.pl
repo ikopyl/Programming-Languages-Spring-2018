@@ -1,4 +1,4 @@
-% Family relationships
+% Facts:
 
 m([
     'Prince Andrew of Greece and Denmark',
@@ -118,5 +118,17 @@ family([
         'James, Viscount Severn'
     ]
 ]).
+
+% Rules:
+
+% X is male if it is a member of a list m.
+male(X) :-
+    m(List),
+    member(X, List), !.     % the first match would suffice
+
+% Y is female if it is a member of a list f.
+female(Y) :-
+    f(List),
+    member(Y, List), !.     % the first match would suffice
 
 
