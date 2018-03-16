@@ -19,6 +19,7 @@
 % nocheck(Y, [Y1 | Rest]) :-
 %     N is 1,
 %     nocheck(Y, [Y1 | Rest], N).
+
 nocheck(_, [], _) :- !.
 nocheck(Y, [Y1 | Rest], N) :-
     Y =\= Y1,
@@ -44,6 +45,10 @@ eight_queens(N, L) :-
     natural_number(N),
     %    print(N),
     numlist(1, N, NumList),
+
+    %goal(permutation(NumList, L)),
+    permutation(NumList, L),
+
     %print(NumList),
     %print(L),
     legal(L, NumList).
@@ -55,12 +60,12 @@ natural_number(N) :-
     natural_number(M).
 
 
-len(L, N) :-
-    len(L, 0, N).
-len([], N, N).
-len([_|Tail], N0, N) :-
-    N1 is N0 + 1,
-    len(Tail, N1, N).
+% len(L, N) :-
+%     len(L, 0, N).
+% len([], N, N).
+% len([_|Tail], N0, N) :-
+%     N1 is N0 + 1,
+%     len(Tail, N1, N).
 
 
 goal([ _, _, _, _, _, _, _, _]).
