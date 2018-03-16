@@ -136,7 +136,6 @@ parent(X) :-
     family([X,_|_]), !;
     family([_,X|_]), !.
 
-% auxiliary definition
 parentof(X, Child) :-
     family([X, _, Children]),
     member(Child, Children), !;
