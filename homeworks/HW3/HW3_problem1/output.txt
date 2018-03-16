@@ -193,4 +193,11 @@ X = 'Lady Louise Windsor' ;
 X = 'James, Viscount Severn' ;
 false.
 
+?- aunt('Princess Margaret', X).
+X = 'Prince Charles' ;
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+false.
+
 
