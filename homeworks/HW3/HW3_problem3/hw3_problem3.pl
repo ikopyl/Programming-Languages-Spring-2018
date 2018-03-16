@@ -3,7 +3,7 @@
 % Predicates nocheck and legal initially were
 % intellectual property of Adam Brooks Webber,
 % but I took some liberty and modified them to 
-% solve n queens problem. 
+% solve N Queens problem. 
 %
 % I also took a liberty of representing 
 % the queen's position with just one number - 
