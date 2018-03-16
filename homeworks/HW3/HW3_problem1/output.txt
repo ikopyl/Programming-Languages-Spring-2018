@@ -73,3 +73,101 @@ Y = 'David Armstrong-Jones' ;
 X = 'Lady Frances von Hofmannsthal',
 Y = 'Lady Sarah Chatto' ;
 false.
+
+?- brother1(X, Y).
+X = 'David Armstrong-Jones',
+Y = 'Polly Higson' ;
+X = 'David Armstrong-Jones',
+Y = 'Jasper Cable-Alexander' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Jasper Cable-Alexander',
+Y = 'David Armstrong-Jones' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Sarah Chatto' ;
+false.
+
+?- sister1(X, Y).
+X = 'Lady Sarah Chatto',
+Y = 'Polly Higson' ;
+X = 'Lady Sarah Chatto',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Lady Sarah Chatto',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Polly Higson',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Lady Sarah Chatto' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'David Armstrong-Jones' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Lady Sarah Chatto' ;
+false.
+
+?- brother2(X,Y).
+X = 'Prince Charles',
+Y = 'Princess Anne' ;
+X = 'Prince Charles',
+Y = 'Prince Andrew' ;
+X = 'Prince Charles',
+Y = 'Prince Edward' ;
+X = 'Prince Andrew',
+Y = 'Prince Charles' ;
+X = 'Prince Andrew',
+Y = 'Princess Anne' ;
+X = 'Prince Andrew',
+Y = 'Prince Edward' ;
+X = 'Prince Edward',
+Y = 'Prince Charles' ;
+X = 'Prince Edward',
+Y = 'Princess Anne' ;
+X = 'Prince Edward',
+Y = 'Prince Andrew' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Sarah Chatto' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Polly Higson' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Prince William',
+Y = 'Prince Harry' ;
+X = 'Prince Harry',
+Y = 'Prince William' ;
+X = 'Peter Philips',
+Y = 'Zara Tindall' ;
+X = 'James, Viscount Severn',
+Y = 'Lady Louise Windsor' ;
+false.
+
+?- sister2(X,Y).
+X = 'Queen Elizabeth II',
+Y = 'Princess Margaret' ;
+X = 'Princess Margaret',
+Y = 'Queen Elizabeth II' ;
+X = 'Princess Anne',
+Y = 'Prince Charles' ;
+X = 'Princess Anne',
+Y = 'Prince Andrew' ;
+X = 'Princess Anne',
+Y = 'Prince Edward' ;
+X = 'Lady Sarah Chatto',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Polly Higson',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Polly Higson' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Zara Tindall',
+Y = 'Peter Philips' ;
+X = 'Princess Beatrice',
+Y = 'Princess Eugenie' ;
+X = 'Princess Eugenie',
+Y = 'Princess Beatrice' ;
+X = 'Lady Louise Windsor',
+Y = 'James, Viscount Severn' ;
+false.
+
+

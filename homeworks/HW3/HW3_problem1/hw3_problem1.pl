@@ -168,3 +168,25 @@ siblings1(X, Y) :-
     Children1 \= Children2,
     member(X, Children1),
     member(Y, Children2).
+
+% X is brother1 to Y if X is sibling1 to Y and is male.
+brother1(X, Y) :-
+    siblings1(X, Y),
+    male(X).
+
+% Y is sister1 to Y if X is sibling1 to Y and is female.
+sister1(X, Y) :-
+    siblings1(X, Y),
+    female(X).
+
+% X is brother2 to Y if X is sibling2 to Y and is male.
+brother2(X, Y) :-
+    siblings2(X, Y),
+    male(X).
+
+% X is sister2 to Y if X is sibling2 to Y and is female.
+sister2(X, Y) :-
+    siblings2(X, Y),
+    female(X).
+
+
