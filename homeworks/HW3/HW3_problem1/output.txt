@@ -46,3 +46,30 @@ X = 'Princess Anne' ;
 X = 'Prince Andrew' ;
 X = 'Prince Edward' ;
 false.
+
+?- siblings1(X, Y).
+X = 'David Armstrong-Jones',
+Y = 'Polly Higson' ;
+X = 'David Armstrong-Jones',
+Y = 'Jasper Cable-Alexander' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Lady Sarah Chatto',
+Y = 'Polly Higson' ;
+X = 'Lady Sarah Chatto',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Lady Sarah Chatto',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Polly Higson',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Lady Sarah Chatto' ;
+X = 'Jasper Cable-Alexander',
+Y = 'David Armstrong-Jones' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Sarah Chatto' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'David Armstrong-Jones' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Lady Sarah Chatto' ;
+false.

@@ -152,3 +152,19 @@ siblings2(X, Y) :-
     member(X, Children),
     member(Y, Children),
     X \= Y.
+
+% X and Y are siblings1 if they come from 
+% different families, but have 1 parent in common.
+siblings1(X, Y) :-
+    family([Father,_,Children1]),
+    family([Father,_,Children2]),
+    Children1 \= Children2,
+    member(X, Children1),
+    member(Y, Children2).
+
+siblings1(X, Y) :-
+    family([_,Mother,Children1]),
+    family([_,Mother,Children2]),
+    Children1 \= Children2,
+    member(X, Children1),
+    member(Y, Children2).
