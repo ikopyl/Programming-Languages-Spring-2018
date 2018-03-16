@@ -129,6 +129,19 @@ male(X) :-
 % Y is female if it is a member of a list f.
 female(Y) :-
     f(List),
-    member(Y, List), !.     % the first match would suffice
+    member(Y, List), !.
 
+% parent is either a first or second element of the list family
+parent(X) :-
+    family([X,_|_]), !;
+    family([_,X|_]), !.
 
+% X is father if X is a parent and is male.
+father(X) :-
+    parent(X),
+    male(X).
+
+% Y is a mother if Y is a parent and is female.
+mother(Y) :-
+    parent(Y),
+    female(Y).

@@ -1,0 +1,35 @@
+?- male('Prince Philip').
+true.
+
+?- male('Princess Diana').
+false.
+
+?- female('Princess Diana').
+true.
+
+?- female('Prince Philip').
+false.
+
+?- parent('Prince Philip').
+true.
+
+?- parent('Princess Beatrice').
+false.
+
+?- mother('Prince William').
+false.
+
+?- father('Ilya').
+false.
+
+?- mother('Prince Philip').
+false.
+
+?- father('Prince Philip').
+true.
+
+?- mother('Princess Diana').
+true.
+
+?- father('Princess Diana').
+false.
