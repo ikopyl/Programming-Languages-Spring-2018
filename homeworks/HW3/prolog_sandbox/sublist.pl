@@ -94,3 +94,4 @@ natural_number(s(0), 0).
 natural_number(s(s(X)), N) :- natural_number(s(X), S), N is S + 1.
 
 
+
