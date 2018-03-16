@@ -200,4 +200,30 @@ X = 'Prince Andrew' ;
 X = 'Prince Edward' ;
 false.
 
+?- child('Queen Elizabeth II', X).
+X = 'King George VI' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- grandchild('Prince Charles', X).
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'King George VI' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- grandson(X, 'Queen Elizabeth II').
+X = 'Prince William' ;
+X = 'Prince Harry' ;
+X = 'James, Viscount Severn' ;
+X = 'Peter Philips' ;
+false.
+
+?- granddaughter(X, 'Queen Elizabeth II').
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'Zara Tindall' ;
+false.
+
 

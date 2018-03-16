@@ -213,4 +213,23 @@ aunt(X, Y) :-
     sister2(X, Parent),
     parent(Parent, Y).
 
+% child X of Y if Y is a father of X
+child(X, Y) :-
+    parent(Y, X).
+
+% X is grandchild of Y if Y is a parent of a parent of X.
+grandchild(X, Y) :-
+    parent(Parent, X),
+    parent(Y, Parent).
+
+% X is grandson of Y if X is grandchild of Y and is male.
+grandson(X, Y) :-
+    grandchild(X, Y),
+    male(X).
+
+% X is a granddaughter of Y if X is granddaughter of Y and if female.
+granddaughter(X, Y) :-
+    grandchild(X, Y),
+    female(X).
+
 
