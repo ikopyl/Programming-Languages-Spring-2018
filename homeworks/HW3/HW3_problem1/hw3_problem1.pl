@@ -136,6 +136,14 @@ parent(X) :-
     family([X,_|_]), !;
     family([_,X|_]), !.
 
+% auxiliary definition
+parentof(X, Child) :-
+    family([X, _, Children]),
+    member(Child, Children), !;
+    parent(X),
+    family([_, X, Children]),
+    member(Child, Children), !.
+
 % X is father if X is a parent and is male.
 father(X) :-
     parent(X),
@@ -188,5 +196,4 @@ brother2(X, Y) :-
 sister2(X, Y) :-
     siblings2(X, Y),
     female(X).
-
 

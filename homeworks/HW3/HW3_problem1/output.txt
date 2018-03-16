@@ -16,6 +16,15 @@ true.
 ?- parent('Princess Beatrice').
 false.
 
+?- parentof('Prince Philip', 'Prince Charles').
+true.
+
+?- parentof('Princess Diana', 'Prince Harry').
+true.
+
+?- parentof('Princess Margaret', 'Prince Charles').
+false.
+
 ?- mother('Prince William').
 false.
 
