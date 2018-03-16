@@ -33,3 +33,16 @@ true.
 
 ?- father('Princess Diana').
 false.
+
+?- siblings2('Princess Diana', 'Prince Philip').
+false.
+
+?- siblings2('Prince William', 'Prince Harry').
+true ;
+false.
+
+?- siblings2('Prince Charles', X).
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+false.

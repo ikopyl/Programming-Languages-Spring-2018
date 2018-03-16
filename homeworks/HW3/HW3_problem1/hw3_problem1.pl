@@ -145,3 +145,10 @@ father(X) :-
 mother(Y) :-
     parent(Y),
     female(Y).
+
+% X and Y are siblings2 if they have both parents in common
+siblings2(X, Y) :-
+    family([_,_,Children]),
+    member(X, Children),
+    member(Y, Children),
+    X \= Y.
