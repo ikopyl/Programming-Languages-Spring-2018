@@ -118,7 +118,7 @@ ancestor
 
 
 
-\noindent The entire code listing of problem 1:
+\noindent The code listing of the entire program 1:
 \ttfamily
 	
 \begin{minted}[fontsize=\small]{prolog}
@@ -375,45 +375,278 @@ ancestor(X, Y) :-
 ancestor(X, Y) :-
     parent(X, Parent),
     ancestor(Parent, Y).
-
 \end{minted}
 	
-
-\paragraph{}\
-\paragraph{}\
 \paragraph{}\
 
 		\rmfamily
-		\noindent The code listing of main program:
+		\noindent Examples of use of each rule in problem 1:
 		\begin{minted}[fontsize=\small]{prolog}
-somePredicate(A, B) :-
-    arbitraryPredicate(A, _, 1, 2),
-    predicateWithAtom(someAtom),
-    anotherPredicate(B, someAtom, myPredicate(A, _)),
-    findall(X, ('testString'(X), myPredicate(A, X)), L1),
-    member(A, L1),
-    !.
+?- male('Prince Philip').
+true.
+
+?- male('Princess Diana').
+false.
+
+?- female('Princess Diana').
+true.
+
+?- female('Prince Philip').
+false.
+
+?- parent('Prince Philip').
+true.
+
+?- parent('Princess Beatrice').
+false.
+
+?- parentof('Prince Philip', 'Prince Charles').
+true.
+
+?- parentof('Princess Diana', 'Prince Harry').
+true.
+
+?- parentof('Princess Margaret', 'Prince Charles').
+false.
+
+?- mother('Prince William').
+false.
+
+?- father('Ilya').
+false.
+
+?- mother('Prince Philip').
+false.
+
+?- father('Prince Philip').
+true.
+
+?- mother('Princess Diana').
+true.
+
+?- father('Princess Diana').
+false.
+
+?- siblings2('Princess Diana', 'Prince Philip').
+false.
+
+?- siblings2('Prince William', 'Prince Harry').
+true ;
+false.
+
+?- siblings2('Prince Charles', X).
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+false.
+
+?- siblings1(X, Y).
+X = 'David Armstrong-Jones',
+Y = 'Polly Higson' ;
+X = 'David Armstrong-Jones',
+Y = 'Jasper Cable-Alexander' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Lady Sarah Chatto',
+Y = 'Polly Higson' ;
+X = 'Lady Sarah Chatto',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Lady Sarah Chatto',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Polly Higson',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Lady Sarah Chatto' ;
+X = 'Jasper Cable-Alexander',
+Y = 'David Armstrong-Jones' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Sarah Chatto' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'David Armstrong-Jones' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Lady Sarah Chatto' ;
+false.
+
+
+
+
+?- brother1(X, Y).
+X = 'David Armstrong-Jones',
+Y = 'Polly Higson' ;
+X = 'David Armstrong-Jones',
+Y = 'Jasper Cable-Alexander' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Jasper Cable-Alexander',
+Y = 'David Armstrong-Jones' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Sarah Chatto' ;
+false.
+
+?- sister1(X, Y).
+X = 'Lady Sarah Chatto',
+Y = 'Polly Higson' ;
+X = 'Lady Sarah Chatto',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Lady Sarah Chatto',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Polly Higson',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Lady Sarah Chatto' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'David Armstrong-Jones' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Lady Sarah Chatto' ;
+false.
+
+?- brother2(X,Y).
+X = 'Prince Charles',
+Y = 'Princess Anne' ;
+X = 'Prince Charles',
+Y = 'Prince Andrew' ;
+X = 'Prince Charles',
+Y = 'Prince Edward' ;
+X = 'Prince Andrew',
+Y = 'Prince Charles' ;
+X = 'Prince Andrew',
+Y = 'Princess Anne' ;
+X = 'Prince Andrew',
+Y = 'Prince Edward' ;
+X = 'Prince Edward',
+Y = 'Prince Charles' ;
+X = 'Prince Edward',
+Y = 'Princess Anne' ;
+X = 'Prince Edward',
+Y = 'Prince Andrew' ;
+X = 'David Armstrong-Jones',
+Y = 'Lady Sarah Chatto' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Polly Higson' ;
+X = 'Jasper Cable-Alexander',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Prince William',
+Y = 'Prince Harry' ;
+X = 'Prince Harry',
+Y = 'Prince William' ;
+X = 'Peter Philips',
+Y = 'Zara Tindall' ;
+X = 'James, Viscount Severn',
+Y = 'Lady Louise Windsor' ;
+false.
+
+?- sister2(X,Y).
+X = 'Queen Elizabeth II',
+Y = 'Princess Margaret' ;
+X = 'Princess Margaret',
+Y = 'Queen Elizabeth II' ;
+X = 'Princess Anne',
+Y = 'Prince Charles' ;
+X = 'Princess Anne',
+Y = 'Prince Andrew' ;
+X = 'Princess Anne',
+Y = 'Prince Edward' ;
+X = 'Lady Sarah Chatto',
+Y = 'David Armstrong-Jones' ;
+X = 'Polly Higson',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Polly Higson',
+Y = 'Lady Frances von Hofmannsthal' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Polly Higson' ;
+X = 'Lady Frances von Hofmannsthal',
+Y = 'Jasper Cable-Alexander' ;
+X = 'Zara Tindall',
+Y = 'Peter Philips' ;
+X = 'Princess Beatrice',
+Y = 'Princess Eugenie' ;
+X = 'Princess Eugenie',
+Y = 'Princess Beatrice' ;
+X = 'Lady Louise Windsor',
+Y = 'James, Viscount Severn' ;
+false.
+
+?- cousins('Prince Charles', X).
+X = 'David Armstrong-Jones' ;
+X = 'Lady Sarah Chatto' ;
+false.
+
+?- uncle('Prince Charles', X).
+X = 'Peter Philips' ;
+X = 'Zara Tindall' ;
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'James, Viscount Severn' ;
+false.
+
+?- aunt('Princess Margaret', X).
+X = 'Prince Charles' ;
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+false.
+
+?- child('Queen Elizabeth II', X).
+X = 'King George VI' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- grandchild('Prince Charles', X).
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'King George VI' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- grandson(X, 'Queen Elizabeth II').
+X = 'Prince William' ;
+X = 'Prince Harry' ;
+X = 'James, Viscount Severn' ;
+X = 'Peter Philips' ;
+false.
+
+?- granddaughter(X, 'Queen Elizabeth II').
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'Zara Tindall' ;
+false.
+
+?- grandparent(X, 'Prince Andrew').
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'King George VI' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- greatgrandparent(X, 'Princess Beatrice').
+X = 'Prince Andrew of Greece and Denmark' ;
+X = 'King George VI' ;
+X = 'Princess Alice of Battenberg' ;
+X = 'Elizabeth the Queen Mother' ;
+false.
+
+?- ancestor('Queen Elizabeth II', X).
+X = 'Prince Charles' ;
+X = 'Princess Anne' ;
+X = 'Prince Andrew' ;
+X = 'Prince Edward' ;
+X = 'Prince William' ;
+X = 'Prince Harry' ;
+X = 'Peter Philips' ;
+X = 'Zara Tindall' ;
+X = 'Princess Beatrice' ;
+X = 'Princess Eugenie' ;
+X = 'Lady Louise Windsor' ;
+X = 'James, Viscount Severn' ;
+false.
 		\end{minted}
 
 
 \paragraph{}\
 	
-	\rmfamily\
-	
-		\noindent The result of the program execution:
 		
-	\ttfamily
-	\begin{lstlisting}[language=bash]
-
-Standard output:
-
-	\end{lstlisting}
-	
-	
-\paragraph{}\
-
-	
-	
 	\rmfamily
 	
 	\paragraph{2. Write a PROLOG program that includes the following operations with lists: }\
@@ -443,45 +676,217 @@ display a list
 	
 	The answer is listed on the pages TBD through TBD.
 	
-	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+
+
 
 	
-	\noindent The code listing of the two-dimensional array that stores bit pattern of each BigInt digit. It is declared in the global space (outside of any function).
+	\noindent The code listing of the entire program 2.
 	
 	\begin{minted}[fontsize=\small]{prolog}
-somePredicate(A, B) :-
-    arbitraryPredicate(A, _, 1, 2),
-    predicateWithAtom(someAtom),
-    anotherPredicate(B, someAtom, myPredicate(A, _)),
-    findall(X, ('testString'(X), myPredicate(A, X)), L1),
-    member(A, L1),
-    !.
+% Operations on lists.
+
+% append list1 to list2 producing list3
+% Base case: if List1 is empty list, then result is List2.
+% Otherwise, if List1 is not empty, chop the head from both 
+% List1 & List3 until you approach the base case.
+append1([], L2, L2).
+append1([H|T1], L2, [H|T3]) :-
+    append1(T1, L2, T3).
+
+% auxiliary definition
+prefix1(Prefix, List) :-
+    append1(Prefix, _, List).
+
+% auxiliary definition
+suffix(Suffix, List) :-
+    append1(_, Suffix, List).
+
+% auxiliary definition
+% sublist is a prefix of a suffix of a list
+sublist(Sublist, List) :-
+    prefix(Sublist, Suffix),
+    suffix(Suffix, List).
+
+% membership testing (checks if an element is a member of a list)
+member1(X, List) :-
+    sublist([X], List).
+
+% first element of the list
+first_element(X1, List) :-
+    prefix([X1], List).
+
+% last element of the list
+last_element(Xn, List) :-
+    suffix([Xn], List).
+
+% two adjacent elements in the list
+two_adjacent(X, Y, List) :-
+    sublist([X, Y], List).
+
+% three adjacent elements in the list
+three_adjacent(X, Y, Z, List) :-
+    sublist([X, Y, Z], List).
+
+% auxiliary definition
+select1(X, [X|Xs], Xs).
+select1(X, [Y|Ys], [Y|Zs]) :-
+    select1(X, Ys, Zs).
+
+
+% delete an element from a list (delete 1 occurrence)
+del1(X, List, Result) :-
+    select1(X, List, Result).
+
+% delete element from a list (delete all occurrences)
+del_all(_, [], []).
+del_all(H, [H|T], Result) :-
+    del_all(H, T, Result).
+del_all(X, [H|T1], [H|T2]) :-
+    H=\=X,
+    del_all(X, T1, T2).
+
+
+% append element to a list
+append_element(X, List, Result) :-
+    append1(List, [X], Result).
+
+
+% insert element in a list
+insert_element(X, List, Result) :-
+    select1(X, Result, List).
+
+
+% compute the length of a list
+len(L, N) :-
+    len(L, 0, N).
+len([], N, N).
+len([_|Tail], N0, N) :-
+    N1 is N0 + 1,
+    len(Tail, N1, N).
+
+
+% reverse a list in linear time:
+reverse1(List, Reversed) :-
+    reverse1(List, [], Reversed).
+reverse1([], Reversed, Reversed).
+reverse1([H|T], Acc, Reversed) :-
+    reverse1(T, [H|Acc], Reversed).
+
+% check whether a list is a palindrome
+palindrome(List) :-
+    reverse1(List, List).
+
+
+% display a list
+puts([]).
+puts([H|T]) :-
+    write(H),
+    write(' '),
+    puts(T).
 	\end{minted}
 	
 	\rmfamily\
 	\newline
-	\noindent Main program, excluding the declaration of BIG_DIGITS array:
+	\noindent Examples of use of each rule in problem 2:
 	
 	\begin{minted}[fontsize=\small]{prolog}
-somePredicate(A, B) :-
-    arbitraryPredicate(A, _, 1, 2),
-    predicateWithAtom(someAtom),
-    anotherPredicate(B, someAtom, myPredicate(A, _)),
-    findall(X, ('testString'(X), myPredicate(A, X)), L1),
-    member(A, L1),
-    !.
+?- append1(X, Y, [1,2,3]).
+X = [],
+Y = [1, 2, 3] ;
+X = [1],
+Y = [2, 3] ;
+X = [1, 2],
+Y = [3] ;
+X = [1, 2, 3],
+Y = [] ;
+false.
+
+?- prefix1(X, [1,2,3]).
+X = [] ;
+X = [1] ;
+X = [1, 2] ;
+X = [1, 2, 3] ;
+false.
+
+?- suffix(X, [1,2,3]).
+X = [1, 2, 3] ;
+X = [2, 3] ;
+X = [3] ;
+X = [] ;
+false.
+
+?- member1(X, [1,2,3]).
+X = 1 ;
+X = 2 ;
+X = 3 ;
+false.
+
+?- first_element(X, [1,2,3]).
+X = 1.
+
+?- last_element(X, [1,2,3]).
+X = 3 ;
+false.
+
+?- two_adjacent(X, Y, [1,2,3,4]).
+X = 1,
+Y = 2 ;
+X = 2,
+Y = 3 ;
+X = 3,
+Y = 4 ;
+false.
+
+?- three_adjacent(X, Y, Z, [1,2,3,4,5]).
+X = 1,
+Y = 2,
+Z = 3 ;
+X = 2,
+Y = 3,
+Z = 4 ;
+X = 3,
+Y = 4,
+Z = 5 ;
+false.
+
+?- del1(1, [1,2,3,21,1,2,1], X).
+X = [2, 3, 21, 1, 2, 1] ;
+X = [1, 2, 3, 21, 2, 1] ;
+X = [1, 2, 3, 21, 1, 2] ;
+false.
+
+?- del_all(3, [1,2,3,2,3,4,3,5,3,1], X).
+X = [1, 2, 2, 4, 5, 1] ;
+false.
+
+?- append_element(213, [1,2,3], X).
+X = [1, 2, 3, 213].
+
+?- insert_element(2, [1,4,9], X).
+X = [2, 1, 4, 9] ;
+X = [1, 2, 4, 9] ;
+X = [1, 4, 2, 9] ;
+X = [1, 4, 9, 2] ;
+false.
+
+?- len([1,2,3,2,5,1], N).
+N = 6.
+
+?- reverse1([1,2,3,4,5,6,7], X).
+X = [7, 6, 5, 4, 3, 2, 1].
+
+?- palindrome([1,2]).
+false.
+
+?- palindrome([1,1]).
+true.
+
+?- palindrome([1,0,0,1,0,0,1]).
+true.
+
+?- puts(['Apple', 'Banana', 'Kiwi', 'Mango', 'Papaya']).
+Apple Banana Kiwi Mango Papaya
+true.
 	\end{minted}
 	
 
