@@ -131,17 +131,18 @@ female(Y) :-
     f(List),
     member(Y, List), !.
 
-% parent is either a first or second element of the list family
-parent(X) :-
-    family([X,_|_]), !;
-    family([_,X|_]), !.
+%% parent is either a first or second element of the list family
+%parent(X) :-
+%    family([X,_|_]), !;
+%    family([_,X|_]), !.
 
-parentof(X, Child) :-
+parent(X, Child) :-
     family([X, _, Children]),
-    member(Child, Children), !;
-    parent(X),
+    member(Child, Children);
     family([_, X, Children]),
-    member(Child, Children), !.
+    member(Child, Children).
+parent(X) :-
+    parent(X, _), !.
 
 % X is father if X is a parent and is male.
 father(X) :-
@@ -196,3 +197,8 @@ sister2(X, Y) :-
     siblings2(X, Y),
     female(X).
 
+% X and Y are cousins if a Parent of X is a sibling2 to a Parent of Y
+cousins(X, Y) :-
+    parent(Parent1, X),
+    parent(Parent2, Y),
+    siblings2(Parent1, Parent2).
