@@ -101,9 +101,22 @@ family([
     ]
 ]).
 
+family([
+    'Prince Andrew',
+    'Sarah Margaret Ferguson',
+    [
+        'Princess Beatrice',
+        'Princess Eugenie'
+    ]
+]).
 
-family([]).
-family([]).
-family([]).
+family([
+    'Prince Edward',
+    'Sophie Helen Rhys-Jones',
+    [
+        'Lady Louise Windsor',
+        'James, Viscount Severn'
+    ]
+]).
 
 
