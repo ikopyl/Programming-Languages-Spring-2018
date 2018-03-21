@@ -60,24 +60,16 @@ unsigned int sum(int n)
  * A function that return 1 if all components of the positive integer array 
  * a[0..na-1] have different sums of digits; otherwise it returns 0.
  */
-short allDifferent(unsigned int *a, unsigned int na) {
+short allDifferent(unsigned int *a, unsigned int na)
+{
+    unsigned int sums[na];
+    for (int i = 0; i < na; i++)
+        sums[i] = sum(a[i]);
 
-    unsigned int sumsOfDigits[na];
-    initializeUIntArray(sumsOfDigits, na);
-    // number of comparisons would increase per each iteration
-    int temp;
-
-    for (int i = 0; i < na; i++) {
-        printf("Current number: %d, ", a[i]);
-        temp = sum(a[i]);
-        if (i > 0)
-            for (int j = 0; j < i; j++)             // sequential search for now - assuming non sorted array
-                if (sumsOfDigits[j] == temp)
-                    return 0;
-
-        sumsOfDigits[i] = temp;                     // should do mergesort insert && binary search
-        printUIntArray(sumsOfDigits, sizeof(sumsOfDigits));
-    }
+    for (int i = 0; i < na - 1; i++)
+        for (int j = i + 1; j < na; j++)
+            if (sums[i] == sums[j])
+                return 0;
 
     return 1;
 }
