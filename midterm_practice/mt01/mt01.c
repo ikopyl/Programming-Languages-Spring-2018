@@ -7,37 +7,21 @@ short allDifferent(unsigned int[], unsigned int);
 
 int main() {
 
-    printf("sum(654321) == 21 ? %s\n",
-            sum(654321) == 21 ? "True" : "False");
-
-    printf("sum(-654321) = %d\n\n", 
-            sum(-654321));
-
+    short trueOrFalse = 0;
 
     unsigned int a[5] = { 17, 22, 33, 41, 9 };
     printUIntArray(a, sizeof(a));
-
-    puts("");
-    short trueOrFalse = allDifferent(a, 5);
-    puts("");
-
-    printf("allDifferent(a, 5) == 1 ? %s\n",
+    trueOrFalse = allDifferent(a, 5);
+    printf("allDifferent(a, 5) ? %s\n",
             trueOrFalse == 1 ? "True" : "False");
-    printf("allDifferent(a, 5) =  %d\n\n", 
-            trueOrFalse);
-
+    puts("");
 
     unsigned int b[5] = { 17, 22, 33, 42, 9 };
     printUIntArray(b, sizeof(b));
-
-    puts("");
     trueOrFalse = allDifferent(b, 5);
-    puts("");
-
-    printf("allDifferent(a, 6) == 1 ? %s\n",
+    printf("allDifferent(a, 6) ? %s\n",
             trueOrFalse == 1 ? "True" : "False");
-    printf("allDifferent(a, 6) =  %d\n\n", 
-            trueOrFalse);
+    puts("");
 
     return 0;
 }
@@ -48,11 +32,10 @@ int main() {
 unsigned int sum(int n)
 {
     unsigned int sumOfDigits = 0;
-    do {
+    do
         sumOfDigits += n % 10;
-    } while ((n /= 10) != 0);
+    while (n /= 10);
     
-    printf("sumOfDigits = %d\n", sumOfDigits);
     return abs(sumOfDigits);
 }
 
@@ -65,6 +48,8 @@ short allDifferent(unsigned int *a, unsigned int na)
     unsigned int sums[na];
     for (int i = 0; i < na; i++)
         sums[i] = sum(a[i]);
+
+    printIntArray(sums, sizeof(sums));
 
     for (int i = 0; i < na - 1; i++)
         for (int j = i + 1; j < na; j++)
