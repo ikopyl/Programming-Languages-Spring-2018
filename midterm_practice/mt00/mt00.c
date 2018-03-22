@@ -45,7 +45,7 @@ int rsum(int num)
     if (num == 0)
         return 0;
     else
-        return 1 + rsum(num & (num - 1));       // Brian Kernigan's Algorithm
+        return 1 + rsum((num - 1) & num);       // Brian Kernigan's Algorithm
 }
 
 int isum1(int num)
