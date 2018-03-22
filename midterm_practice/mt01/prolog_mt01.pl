@@ -3,6 +3,7 @@
 male(tom, 35).
 male(peter, 65).
 female(ann, 65).
+female(elizabeth, 37).
 
 
 % find the name and the age of a person
@@ -50,7 +51,13 @@ mean(L, Mean) :-
 
 % display the list of age of male members and 
 % return the mean age of all male members
-
+meanAgeM(MeanAgeM) :-
+    findall(Age, male(_, Age), MaleAgeList),
+    mean(MaleAgeList, MeanAgeM).
 
 % display the list of age of female members and
-% return the mean age of all male members
+% return the mean age of all female members
+meanAgeF(MeanAgeF) :-
+    findall(Age, female(_, Age), FemaleAgeList),
+    mean(FemaleAgeList, MeanAgeF).
+
