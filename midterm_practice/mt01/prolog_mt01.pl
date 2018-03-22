@@ -34,16 +34,15 @@ oldest(Name) :-
 
 % find the mean value of the numbers in the list
 mean([X], X, 0, 0).
-mean([H|T], Mean, Sum, N) :-
-    T = [],
-    Sum1 is Sum + H,
-    N1 is N + 1,
-    Mean is Sum1 / N1, !.
 
 mean([H|T], Mean, Sum, N) :-
     Sum1 is Sum + H,
     N1 is N + 1,
-    mean(T, Mean, Sum1, N1).
+    (
+        T = [],
+        Mean is Sum1 / N1, !;
+        mean(T, Mean, Sum1, N1)
+    ).
 
 mean(L, Mean) :-
     mean(L, Mean, 0, 0), !.
