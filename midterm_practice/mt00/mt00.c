@@ -3,6 +3,7 @@
 int rsum(int);
 int isum1(int);
 int isum2(int);
+int isum3(int);
 
 int main()
 {
@@ -26,12 +27,14 @@ int main()
     printf("num65 = %c\n", num65);
     printf("isum1(num65) == %d\n", isum1(num65));
     printf("isum2(num65) == %d\n", isum2(num65));
+    printf("isum3(num65) == %d\n", isum3(num65));
     printf("rsum(num65) == %d\n", rsum(num65));
 
 
     printf("numWhatever = %u\n", numWhatever);
     printf("isum1(numWhatever) == %d\n", isum1(numWhatever));
     printf("isum2(numWhatever) == %d\n", isum2(numWhatever));
+    printf("isum3(numWhatever) == %d\n", isum3(numWhatever));
     printf("rsum(numWhatever) == %d\n", rsum(numWhatever));
 
     return 0;
@@ -63,6 +66,17 @@ int isum2(int num)
     {
         sumOfBits += num & 1;
         num = num >> 1;
+    }
+    return sumOfBits;
+}
+
+int isum3(int num)
+{
+    int sumOfBits = 0;
+    while (num)
+    {
+        sumOfBits++;
+        num = (num - 1) & num;
     }
     return sumOfBits;
 }
