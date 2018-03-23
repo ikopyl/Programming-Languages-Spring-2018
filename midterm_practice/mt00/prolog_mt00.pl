@@ -22,6 +22,7 @@ density([Country, Density]) :-
 makelist(CDList) :-
     findall(X, density(X), CDList).
 
+
 % auxiliary definition
 maxlist([X], X).
 maxlist([H|T], Max) :-
@@ -29,22 +30,12 @@ maxlist([H|T], Max) :-
     Max is max(H, Tmax), !.
 
 
-listmax([], []).
-listmax([[C, D]], [C, D]) :-
-    display([C, D]).
-listmax([[C, D]], [Cmax, Dmax]) :-
-    Cmax \= C,
-    Dmax \= D,
-    display([Cmax, Dmax]).
-listmax([[C, D] | T], [Cmax, Dmax]) :-
-    (
-        D > Dmax,
-        Dmax is D,
-        Cmax is C
-    ),
-    listmax(T, [Cmax, Dmax]).
+listmax(MaxKey) :-
+    findall(D, density([_, D]), Keys),
+    maxlist(Keys, MaxKey).
 
-maxden([Country, Density]) :-
-    makelist(CDL),
-    listmax(CDL, [Country, Density]).
+
+maxden([Cmax, Dmax]) :-
+    listmax(Dmax),
+    density([Cmax, Dmax]).
 
