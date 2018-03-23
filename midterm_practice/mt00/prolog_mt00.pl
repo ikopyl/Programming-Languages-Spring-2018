@@ -28,12 +28,23 @@ maxlist([H|T], Max) :-
     maxlist(T, Tmax),
     Max is max(H, Tmax), !.
 
-listmax(CDList, [Cmax, Dmax]) :-
-    maxlist(CDList, Dmax),
-    density([Cmax, Dmax]).
 
-maxden() :-
+listmax([], []).
+listmax([[C, D]], [C, D]) :-
+    display([C, D]).
+listmax([[C, D]], [Cmax, Dmax]) :-
+    Cmax \= C,
+    Dmax \= D,
+    display([Cmax, Dmax]).
+listmax([[C, D] | T], [Cmax, Dmax]) :-
+    (
+        D > Dmax,
+        Dmax is D,
+        Cmax is C
+    ),
+    listmax(T, [Cmax, Dmax]).
+
+maxden([Country, Density]) :-
     makelist(CDL),
-    listmax(CDL, [Country, Density]),
-    display(Country),
-    display(Density).
+    listmax(CDL, [Country, Density]).
+
