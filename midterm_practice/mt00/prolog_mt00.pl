@@ -14,4 +14,26 @@ area('Indonesia', 1.8).
 area('Brasil', 8.4).
 area('Japan', 0.36).
 
+density([Country, Density]) :-
+    population(Country, Population),
+    area(Country, Area),
+    Density is Population / Area.
 
+makelist(CDList) :-
+    findall(X, density(X), CDList).
+
+% auxiliary definition
+maxlist([X], X).
+maxlist([H|T], Max) :-
+    maxlist(T, Tmax),
+    Max is max(H, Tmax), !.
+
+listmax(CDList, [Cmax, Dmax]) :-
+    maxlist(CDList, Dmax),
+    density([Cmax, Dmax]).
+
+maxden() :-
+    makelist(CDL),
+    listmax(CDL, [Country, Density]),
+    display(Country),
+    display(Density).
