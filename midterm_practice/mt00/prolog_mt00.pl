@@ -30,12 +30,39 @@ maxlist([H|T], Max) :-
     Max is max(H, Tmax), !.
 
 
-listmax(MaxKey) :-
+% auxiliary definition
+minlist([X], X).
+minlist([H|T], Min) :-
+    minlist(T, Tmin),
+    Min is min(H, Tmin), !.
+
+
+listmax([Cmax, Dmax]) :-
     findall(D, density([_, D]), Keys),
-    maxlist(Keys, MaxKey).
+    maxlist(Keys, Dmax),
+    density([Cmax, Dmax]), !.
 
 
-maxden([Cmax, Dmax]) :-
-    listmax(Dmax),
-    density([Cmax, Dmax]).
+listmin([Cmin, Dmin]) :-
+    findall(D, density([_, D]), Keys),
+    minlist(Keys, Dmin),
+    density([Cmin, Dmin]), !.
+
+
+maxden(Cmax, Dmax) :-
+    listmax([Cmax, Dmax]).
+maxden() :-
+    maxden(Cmax, Dmax),
+    display(Cmax),
+    nl,
+    display(Dmax).
+
+
+minden(Cmin, Dmin) :-
+    listmin([Cmin, Dmin]).
+minden() :-
+    minden(Cmin, Dmin),
+    display(Cmin),
+    nl,
+    display(Dmin).
 
