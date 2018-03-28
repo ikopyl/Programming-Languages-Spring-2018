@@ -8,11 +8,14 @@ int main()
     char n1 = 1;
     char n2 = 2;
     char n3 = 3;
+    unsigned char n4 = 128;
 
-    printCharBitPattern(n0);
-    printCharBitPattern(n1);
-    printCharBitPattern(n2);
-    printCharBitPattern(n3);
+    genericPrintNumBitPattern(n0, 8);
+    genericPrintNumBitPattern(n1, 8);
+    genericPrintNumBitPattern(n2, 8);
+    genericPrintNumBitPattern(n3, 8);
+    
+    genericPrintNumBitPattern(n4, 8);
 
     return 0;
 }

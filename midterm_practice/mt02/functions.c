@@ -31,12 +31,15 @@ void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_siz
 
 void printCharBitPattern(int n)
 {
-    int counter = 0;
-    while (counter < 8)
+    genericPrintNumBitPattern(n, 8);
+}
+
+void genericPrintNumBitPattern(int n, unsigned char numberOfBits)
+{
+    while (numberOfBits--)
     {
         printf("%d  ", (n & 128) == 128 ? 1 : 0);
         n = n << 1;
-        counter++;
     }
     printf("\n");
 }
