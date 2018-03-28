@@ -41,20 +41,18 @@ int main()
 
 void align(char * s, int n) 
 {
-    int count = 0;
+    int count, i;
+    count = i = 0;
+
     while (s[count] == ' ')
         count++;
 
-    for (int i = 0; i < n; i++, count++) 
+    for (i = 0; i < n; i++, count++) 
     {
         s[i] = s[count];
-        if (s[count] == '\0' || count == n) 
-        {
-            count = i;
+        if (s[count] == '\0' || count >= n - 1) 
             break;
-        }
     }
-    while (count++ < n)
-        s[count] = 0;
-
+    while (i++ < n)
+        s[i] = 0;
 }
