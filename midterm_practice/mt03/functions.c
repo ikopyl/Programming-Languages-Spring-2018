@@ -26,12 +26,6 @@ void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_siz
         printf("%d  ", *p);
         p += elem_size;
     }
-
-    //the same as:
-//    printf("\n");
-//    for (char *p = (char *) object; p < (char *) object + size; p += elem_size) {
-//        printf("%d\t", *p);
-//    }
     printf("\n");
 }
 
@@ -39,7 +33,7 @@ void genericPrintCharArray(void *object, unsigned int size, unsigned int elem_si
 {
     char *p = (char *) object;
     while (p < (char *) object + size) {
-        printf("'%c' ", *p);
+        printf("'%c'   ", *p);
         p += elem_size;
     }
     printf("\n");
