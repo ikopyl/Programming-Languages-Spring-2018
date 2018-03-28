@@ -29,6 +29,16 @@ void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_siz
     printf("\n");
 }
 
+void genericPrintNumBitPattern(void *object, unsigned int elem_size)
+{
+    char *p = (char *) object;
+    while (p < object + elem_size) {
+        printf("%d  ", *p);
+        p += 1;
+    }
+    printf("\n");
+}
+
 void genericPrintCharArray(void *object, unsigned int size, unsigned int elem_size) 
 {
     char *p = (char *) object;
