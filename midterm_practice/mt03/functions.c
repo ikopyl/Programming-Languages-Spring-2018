@@ -18,7 +18,7 @@ void genericPrintNumArray(void *object, unsigned int size, unsigned int elem_siz
 {
     char *p = (char *) object;
     while (p < (char *) object + size) {
-        printf("%d\t", *p);
+        printf("%d  ", *p);
         p += elem_size;
     }
 
