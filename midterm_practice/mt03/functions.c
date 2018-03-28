@@ -4,7 +4,7 @@
 /**
  * Correct way to pass the size of the array is to use sizeof() function
  */
-void printCharArray(int *array, unsigned int size)
+void printCharArray(char *array, unsigned int size)
 {
     genericPrintCharArray(array, size, sizeof(char));
 }
