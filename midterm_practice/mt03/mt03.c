@@ -38,7 +38,7 @@ int main()
 void align(char * s, int n) 
 {
     int count = 0;
-    while (s[count] == 0)
+    while (s[count] == ' ')
         count++;
     printf("First non-zero element index: %d\n", count);
 
