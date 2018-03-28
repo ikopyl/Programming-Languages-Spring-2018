@@ -34,6 +34,16 @@ void printCharBitPattern(int n)
     genericPrintNumBitPattern(&n, 8);
 }
 
+void printShortBitPattern(int n)
+{
+    genericPrintNumBitPattern(&n, 16);
+}
+
+void printIntBitPattern(int n)
+{
+    genericPrintNumBitPattern(&n, 32);
+}
+
 void genericPrintNumBitPattern(int *n, unsigned char numberOfBits)
 {
     while (numberOfBits--)

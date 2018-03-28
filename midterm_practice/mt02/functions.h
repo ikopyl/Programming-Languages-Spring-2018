@@ -3,6 +3,8 @@ void printUIntArray(unsigned int *, unsigned int);
 void genericPrintNumArray(void *, unsigned int, unsigned int);
 
 void printCharBitPattern(int);
+void printShortBitPattern(int);
+void printIntBitPattern(int);
 void genericPrintNumBitPattern(int *, unsigned char);
 
 void printCharArray(char *, unsigned int);
