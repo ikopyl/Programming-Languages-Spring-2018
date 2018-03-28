@@ -44,22 +44,17 @@ void align(char * s, int n)
     int count = 0;
     while (s[count] == ' ')
         count++;
-    printf("First non-zero element index: %d\n", count);
 
     for (int i = 0; i < n; i++, count++) 
     {
         s[i] = s[count];
-        if (s[count] == '\0' || count >= n) 
+        if (s[count] == '\0' || count == n) 
         {
             count = i;
-            printf("count = i == %d\n", count);
             break;
         }
     }
-    while (count++ <= n)
-    {
-        printf(" count++ = %d\n", count);
+    while (count++ < n)
         s[count] = 0;
-    }
 
 }
