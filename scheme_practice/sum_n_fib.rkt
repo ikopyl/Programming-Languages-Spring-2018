@@ -15,7 +15,7 @@
     (cond 
            [(empty? sequence) null]
            
-           [(list? (car sequence))
+           [(list? sequence)
             (append (flatten1 (car sequence))
                     (flatten1 (cdr sequence)))]
            
@@ -24,3 +24,10 @@
            
            )
   )
+
+
+(define (sorted? num-list)
+  (or (< (length num-list) 2)
+      (and (<= (car num-list)
+               (cadr num-list))
+           (sorted? (cdr num-list)))))
