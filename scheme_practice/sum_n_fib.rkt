@@ -31,3 +31,9 @@
       (and (<= (car num-list)
                (cadr num-list))
            (sorted? (cdr num-list)))))
+
+(define (sorted2? seq comp)
+  (or (comp (length seq) 2)
+      (and (comp (car seq)
+                 (cadr seq))
+           (sorted2? (cdr seq) comp))))
