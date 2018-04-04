@@ -15,7 +15,7 @@
     (cond 
            [(empty? sequence) null]
            
-           [(list? sequence)
+           [(list? (car sequence))
             (append (flatten1 (car sequence))
                     (flatten1 (cdr sequence)))]
            
@@ -37,3 +37,39 @@
       (and (comp (car seq)
                  (cadr seq))
            (sorted2? (cdr seq) comp))))
+
+
+(define (double-all ls)
+  (if (empty? ls) null
+      (cons (* 2 (car ls))
+            (double-all (cdr ls)))))
+
+(define (incr-all ls)
+  (if (empty? ls) null
+      (cons (+ 1 (car ls))
+            (incr-all (cdr ls)))))
+
+(define (generic-mod ls comp operand)
+  (if (empty? ls) null
+      (cons (comp operand (car ls))
+            (generic-mod (cdr ls) comp operand))))
+
+(define (double x) (* x 2))
+
+(define (inc x) (+ x 1))
+
+(define (my-unary-map fun ls)
+  (if (empty? ls) null
+      (cons (fun (car ls))
+            (my-unary-map fun (cdr ls)))))
+
+(define (average num-list)
+  (/ (apply + num-list)
+     (length num-list)))
+
+(define (flatten2 seq)
+  (if (not (list? seq)) (list seq)
+           (apply append (map flatten2 seq))))
+
+(define (translate points delta)
+  (map (lambda (x) (+ x delta)) points))
