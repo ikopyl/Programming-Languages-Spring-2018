@@ -88,13 +88,5 @@
   (if (not (list? seq)) (list seq)
            (apply append (map flatten2 seq))))
 
-<<<<<<< HEAD
-(define c 0)
-(define (fib2 n c s)
-  (if (<= n 1) n
-      (if (n <= c) (let c (sum c 1))
-      
-=======
 (define (translate points delta)
   (map (lambda (x) (+ x delta)) points))
->>>>>>> 576722b6bb246d1b9ed9e426bad8631fab2f3038
