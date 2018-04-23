@@ -107,7 +107,7 @@
 Problem 1a: show an example of the anonymous function and its use:
 \newline
 \newline
-At the very basic case, an anonymous function is nothing more but a body of a function definition. Since it is not associated with any identifier (i.e. when it is unnamed), we may use it only once - when we explicitly make it a part of an expression:
+At the very basic case, an anonymous function is nothing more but a lambda expression - a body of a function. Since it is not associated with any identifier (i.e. when it is unnamed), we may use it only once - when we explicitly use it in other expressions:
 \ttfamily
 	
 \begin{minted}[fontsize=\small]{scheme} 
@@ -118,7 +118,7 @@ At the very basic case, an anonymous function is nothing more but a body of a fu
 \end{minted}
 
 \rmfamily
-\noindent - also, an anonymous function can be used in cases when we would otherwise have to define an inner function:
+\noindent Also, an anonymous function can be used in cases when we would otherwise have to define an inner function (inside another function):
 
 \begin{minted}[fontsize=\small]{scheme} 
 (define (add-num-to-each-element-in-list num lst)
