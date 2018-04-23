@@ -99,68 +99,43 @@
 			
 		\end{enumerate}
 		
-		\rmfamily\
-		
+\paragraph{}\
 		The answer is listed on the pages TBD through TBD.
-
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
 \paragraph{}\
 
 
-
-\noindent The code listing of maxlen function:
+Problem 1a: show an example of the anonymous function and its use:
+\newline
+\newline
+At the very basic case, an anonymous function is nothing more but a body of a function definition. Since it is not associated with any identifier (i.e. when it is unnamed), we may use it only once - when we explicitly make it a part of an expression:
 \ttfamily
 	
-\begin{minted}[fontsize=\small]{c} 
+\begin{minted}[fontsize=\small]{scheme} 
+
+> ((lambda(x) (* x x)) 2) 
+4
+
+\end{minted}
+
+\rmfamily
+\noindent - also, an anonymous function can be used in cases when we would otherwise have to define an inner function:
+
+\begin{minted}[fontsize=\small]{scheme} 
+(define (add-num-to-each-element-in-list num lst)
+  (map (lambda (x) (+ x num)) lst))
+  
+> (add-num-to-each-element-in-list 10 '(1 2 3))
+(11 12 13)
+
+\end{minted}
+
+\paragraph{}\
+\rmfamily
+Problem 1b: show examples of defining and using named functions:
 
 
-unsigned int maxlen(int *a, unsigned int n)
-{
-    // handling the edge cases - arrays of size 0 and 1:
-    if (n < 2)                                      
-        return n;
 
-    unsigned int max_count, current_count, i;
-    i = max_count = 0;
-    current_count = 1;
-
-    printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
-           i, a[i], current_count, max_count);
-
-    for (i = 1; i < n; ++i)
-    {
-        if (a[i] == a[i-1])         // counting the current sequence
-        {
-            current_count++;
-
-            // checking whether the longest sequence is at the end of array
-            if(i == n-1 && current_count > max_count)
-                max_count = current_count;
-        }
-        else            	    // starting the count of the new sequence
-        {
-            // before resetting the counter, save it's value if it is above threshold
-            if (current_count > max_count)
-                max_count = current_count;
-
-            // exit the loop if max_count is sufficiently large
-            if (max_count >= n-i)
-                break;
-                
-            current_count = 1;
-        }
-
-        printf("    a[%d]=%d; \tcurrent_count=%d; \tmax_count=%d\n",
-               i, a[i], current_count, max_count);
-    }
-    return max_count;
-}
-\end{minted}	
+	
 	
 
 \paragraph{}\
