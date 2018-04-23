@@ -132,11 +132,45 @@ At the very basic case, an anonymous function is nothing more but a lambda expre
 \paragraph{}\
 \rmfamily
 Problem 1b: show examples of defining and using named functions:
+\newline
+\newline
+Since we already know what a lambda function is, we can now take it and associate it with a name (identifier) - and then we could use just this name to evaluate any expression with it:
 
+\begin{minted}[fontsize=\small]{scheme} 
+> square
+. . square: undefined;
+ cannot reference an identifier before its definition
+ 
+> (define square (lambda(x) (* x x)))
 
+> square
+#<procedure:square>
 
-	
-	
+> (square 2)
+4
+> (square 4)
+16
+\end{minted}
+- thus the function definition is a process of binding a lambda expression to some identifier. For simplicity and convenience we could make the same function definition with the use of syntactic sugar and omit 'lambda' keyword. Semantically, such function definition would still remain the same:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define (square x) (* x x))
+
+> (square 2)
+4
+> (square 4)
+16
+\end{minted}
+
+The reason why we define functions is to follow the Single Responsibility Principle, when each function is doing only one thing. But at certain point we would need to do a function composition, i.e. to define a function that is composed of series of expressions that use previously defined functions:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define (sum-of-squares lst)
+    (apply + (map square lst)))
+    
+> (sum-of-squares '(1 2 3 4))
+30
+\end{minted}
 
 \paragraph{}\
 \paragraph{}\
