@@ -18,7 +18,7 @@
 (define fmax
   (lambda (f x1 x2)
     (cond
-      [(< (- x2 x1) 1e-10) (display "maximum: f")
+      [(< (- x2 x1) 1e-10) (display "maximum: f(")
                            (disp (/ (+ x1 x2) 2) 4)
                            (display ") = ")
                            (disp (f (/ (+ x1 x2) 2)) 4)]
