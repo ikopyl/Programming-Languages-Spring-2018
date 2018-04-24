@@ -103,20 +103,18 @@
 
 
 Problem 1a: show an example of the anonymous function and its use:
-\newline
-\newline
+\paragraph{}\
 At the very basic case, an anonymous function is nothing more but a lambda expression - a body of a function. Since it is not associated with any identifier (i.e. when it is unnamed), we may use it only when we explicitly write it inside of other expressions:
 \ttfamily
 	
 \begin{minted}[fontsize=\small]{scheme} 
-
 > ((lambda(x) (* x x)) 2) 
 4
-
 \end{minted}
 
 \rmfamily
-\noindent Also, an anonymous function can be used in cases when we would otherwise have to define an inner function (inside another function):
+\paragraph{}\
+Also, an anonymous function can be used in cases when we would otherwise have to define an inner function (inside another function):
 
 \begin{minted}[fontsize=\small]{scheme} 
 (define (add-num-to-each-element-in-list num lst)
@@ -124,14 +122,12 @@ At the very basic case, an anonymous function is nothing more but a lambda expre
   
 > (add-num-to-each-element-in-list 10 '(1 2 3))
 (11 12 13)
-
 \end{minted}
 
 \paragraph{}\
-\rmfamily
+\paragraph{}\
 Problem 1b: show examples of defining and using named functions:
-\newline
-\newline
+\paragraph{}\
 Since we already know what a lambda function is, we can now take it and associate it with a name (identifier) - and then we could use just this name to evaluate any expression with it:
 
 \begin{minted}[fontsize=\small]{scheme} 
@@ -181,10 +177,9 @@ The reason why we define functions is to follow the Single Responsibility Princi
 30
 \end{minted}
 \paragraph{}\
-\rmfamily
+\paragraph{}\
 Problem 1c: show an example of a data structure (e.g. a list) that contains functions:
-\newline
-\newline
+\paragraph{}\
 If we think of a function as an entity that is responsible for only one operation/modification, then chaining different functions to each other to perform sequential modification of the same data can viewed as a sort of Henry Ford's conveyor belt. In the previous code we considered a case when the number, kinds of functions and their order of evaluation are known and determined, but a data is not. But let's consider a situation when we initially don't know a number, nor kinds of functions, nor their order of evaluation at all. We would need to figure out how to modify a given data dynamically, at runtime. The approach is to pass a list of functions as an extra argument to our master function. With the help of a tail recursion we could take one function at a time from that list, and evaluate it with our data, provided that the arity of these functions match with the number of data arguments. Let's first define a list of functions:
 
 \begin{minted}[fontsize=\small]{scheme} 
@@ -194,10 +189,10 @@ If we think of a function as an entity that is responsible for only one operatio
 (* - / +)
 \end{minted}
 \paragraph{}\
+\paragraph{}\
 \rmfamily
 Problem 1d: show an example of comparing functions and lists for equality:
-\newline
-\newline
+\paragraph{}\
 To answer this question we must first understand what equality means, when it comes to comparing functions or lists with each other. For any object to be equal to some other object in Scheme it either needs to have an identical pointer as the other object, or to have the same type and value, or to have the same, equal numerical value. But by definition, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem.
 
 
