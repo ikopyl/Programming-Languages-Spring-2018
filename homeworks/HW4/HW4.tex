@@ -157,6 +157,20 @@ Since we already know what a lambda function is, we can now take it and associat
 16
 \end{minted}
 
+We could also take our defined function square and store it in a variable:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define a sqr)
+
+> a
+#<procedure:sqr>
+
+> (a 2)
+4
+> (a 4)
+16
+\end{minted}
+
 The reason why we define functions is to follow the Single Responsibility Principle, when each function is doing only one thing. But at certain point we would need to do a function composition, i.e. to define a function that is composed of series of expressions that use previously defined functions:
 
 \begin{minted}[fontsize=\small]{scheme} 
