@@ -192,10 +192,10 @@ If we think of a function as an entity that is responsible for only one operatio
 (define (double x)
     (* x 2))
 
-; example of a quoted list of functions: function names turn into atoms
+; example of a list of quoted functions: function names turned into atoms
 > (quote (square double))
 (square double)
-> '(square double)
+> '(square double)			; syntactic sugar equivalent
 (square double)
 
 ; example of a list of functions:
@@ -203,10 +203,18 @@ If we think of a function as an entity that is responsible for only one operatio
 (#<procedure:square> #<procedure:double>)
 
 
-; we can assign a variable to both lists: 
+; we can assign both lists to variables: 
 (define lst-of-fun1 '(square double))
 
 (define lst-of-fun2 (list square double))
+
+; differences in use:
+> ((car (list square)) 5)
+25
+
+> ((eval (car '(square))) 5)
+25
+
 \end{minted}
 \paragraph{}\
 \paragraph{}\
