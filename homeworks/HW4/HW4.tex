@@ -182,8 +182,6 @@ Problem 1c: show an example of a data structure (e.g. a list) that contains func
 \paragraph{}\
 If we think of a function as an entity that is responsible for only one operation/modification, then chaining different functions to each other to perform sequential modification of the same data can be viewed as a sort of Henry Ford's conveyor belt. In the previous code we considered a case when the number, kinds of functions and their order of evaluation are known and determined, but a data is not. But let's consider a situation when we initially don't know a number, nor kinds of functions, nor their order of evaluation at all. We would need to figure out how to modify a given data dynamically, at runtime. The approach is to pass a list of functions as an extra argument to our master function. With the help of a tail recursion we could take one function at a time from that list, and evaluate it with our data, provided that the arity of these functions match with the number of data arguments. But I digressed. There are two data structures to store functions in: a list and a quoted list. Let's consider both approaches:
 
-
-
 \begin{minted}[fontsize=\small]{scheme} 
 ; functions we are going to work on
 (define (square x)
@@ -227,11 +225,54 @@ If we think of a function as an entity that is responsible for only one operatio
 \rmfamily
 Problem 1d: show an example of comparing functions and lists for equality:
 \paragraph{}\
-To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to some other object in Scheme it either needs to have an identical pointer as the other object, or to have the same type and value, or to have the same, equal numerical value. But by definition, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem.
+To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to some other object in Scheme it either needs to have an identical pointer as the other object, or to have the same type and value, or to have the same, equal numerical value. But by definition, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
+\paragraph{}\
+Let's consider a series of experiments to prove this point:
 
-\begin{minted}[fontsize=\small]{scheme} 
+\begin{minted}[fontsize=\small]{scheme}
 
+> (define (square x)
+    (* x x))
+> (eq? square square)
+#t
+> (equal? square square)
+#t
+> (eqv? square square)
+#t
+
+> (define a square)
+> (eq? a square)
+#t
+> (equal? a square)
+#t
+> (eqv? a square)
+#t
+
+> (define (sqr x)
+    (* x x))
+> (eq? square sqr)
+#f
+> (equal? square sqr)
+#f
+> (eqv? square sqr)
+#f
 \end{minted}
+- as you can see, if two identifiers both point to the same object (a function) in memory, the result of comparison of these two identifiers with any of the predicates eq?, equal?, eqv? will always result in true. However, there are no means to check the equivalence of functions located in two different places in memory, even if their instructions are identical.
+\paragraph{}\
+\noindent Per Revised Report on the Algorithms Language Scheme (r7rs):
+
+	\begin{enumerate}[label=-]
+				
+		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 should normally be regarded as the same object and \#f otherwise.
+					
+		\item The equal? predicate returns \#t if and only if the (possibly infinite) unfoldings of its arguments into regular trees are equal as ordered trees.
+					
+		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?.
+					
+	\end{enumerate}
+
+
+
 
 
 
