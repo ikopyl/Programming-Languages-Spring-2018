@@ -117,8 +117,8 @@ At the very basic case, an anonymous function is nothing more but a lambda expre
 Also, an anonymous function can be used in cases when we otherwise would have to define an inner function (inside another function):
 
 \begin{minted}[fontsize=\small]{scheme} 
-(define (add-num-to-each-element-in-list num lst)
-  (map (lambda (x) (+ x num)) lst))
+> (define (add-num-to-each-element-in-list num lst)
+    (map (lambda (x) (+ x num)) lst))
   
 > (add-num-to-each-element-in-list 10 '(1 2 3))
 (11 12 13)
@@ -184,10 +184,10 @@ If we think of a function as an entity that is responsible for only one operatio
 
 \begin{minted}[fontsize=\small]{scheme} 
 ; functions we are going to work on
-(define (square x)
+> (define (square x)
     (* x x))
 
-(define (double x)
+> (define (double x)
     (* x 2))
 
 ; example of a quoted list: functions turned into symbols
@@ -208,9 +208,9 @@ If we think of a function as an entity that is responsible for only one operatio
 
 
 ; we can assign both lists to variables: 
-(define lst-of-fun1 '(square double))
+> (define lst-of-fun1 '(square double))
 
-(define lst-of-fun2 (list square double))
+> (define lst-of-fun2 (list square double))
 
 
 ; differences in use:
@@ -232,16 +232,16 @@ Per Revised Report on the Algorithmic Language Scheme (r7rs):
 
 	\begin{enumerate}[label=-]
 				
-		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 should normally be regarded as the same object and \#f otherwise.
+		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 are pairs, vectors, bytevectors, records, or strings that denote the same location in the store; or if obj1 and obj2 are procedures whose location tags are equal.
 					
-		\item The equal? predicate returns \#t if and only if the (possibly infinite) unfoldings of its arguments into regular trees are equal as ordered trees.
+		\item The equal? procedure, when applied to pairs, vectors, strings and bytevectors, recursively compares them, returning \#t when the unfoldings of its arguments into (possibly infinite) trees are equal (in the sense of equal?) as ordered trees, and \#f otherwise. It returns the same as eqv? when applied to booleans, symbols, numbers, characters, ports, procedures, and the empty list. If two objects are eqv?, they must be equal? as well. In all other cases, equal? may return either \#t or \#f.
 					
-		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?.
+		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?. On symbols, booleans, the empty list, pairs, and records, and also on non-empty strings, vectors, and bytevectors, eq? and eqv? are guaranteed to have the same behavior. On procedures, eq? must return true if the arguments? lo- cation tags are equal. On numbers and characters, eq?'s behavior is implementation-dependent, but it will always return either true or false. On empty strings, empty vec- tors, and empty bytevectors, eq? may also behave differ- ently from eqv?.
 					
 	\end{enumerate}
 	
 \paragraph{}\
-But by the definition of function, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
+By mathematical definition of a function, the only valid way to compare two functions for their equivalence is to verify that for every valid input both functions produce the same output, and that both functions also have the same domain and range. This means that a function equality can only be defined correctly in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
 \paragraph{}\
 Let's consider a series of experiments to prove this point:
 
@@ -256,6 +256,7 @@ Let's consider a series of experiments to prove this point:
 > (eqv? square square)
 #t
 
+
 > (define a square)
 > (eq? a square)
 #t
@@ -263,6 +264,7 @@ Let's consider a series of experiments to prove this point:
 #t
 > (eqv? a square)
 #t
+
 
 > (define (sqr x)
     (* x x))
