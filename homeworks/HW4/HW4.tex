@@ -225,7 +225,23 @@ If we think of a function as an entity that is responsible for only one operatio
 \rmfamily
 Problem 1d: show an example of comparing functions and lists for equality:
 \paragraph{}\
-To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to some other object in Scheme it either needs to have an identical pointer as the other object, or to have the same type and value, or to have the same, equal numerical value. But by definition, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
+To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to another object in Scheme it either needs to point to the same location in memory as the other one, or to have the same type and value, or to have the same, equal numerical value. 
+
+\paragraph{}\
+Per Revised Report on the Algorithmic Language Scheme (r7rs):
+
+	\begin{enumerate}[label=-]
+				
+		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 should normally be regarded as the same object and \#f otherwise.
+					
+		\item The equal? predicate returns \#t if and only if the (possibly infinite) unfoldings of its arguments into regular trees are equal as ordered trees.
+					
+		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?.
+					
+	\end{enumerate}
+	
+\paragraph{}\
+But by the definition of function, the only valid way to compare both functions for their equivalence is to verify that for every valid input both functions produce the same output, and also that both functions have the same domain and range. This means that function equality can really only be correctly defined in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
 \paragraph{}\
 Let's consider a series of experiments to prove this point:
 
@@ -257,19 +273,9 @@ Let's consider a series of experiments to prove this point:
 > (eqv? square sqr)
 #f
 \end{minted}
-- as you can see, if two identifiers both point to the same object (a function) in memory, the result of comparison of these two identifiers with any of the predicates eq?, equal?, eqv? will always result in true. However, there are no means to check the equivalence of functions located in two different places in memory, even if their instructions are identical.
+- as you can see, if two identifiers both point to the same object (a function) in memory, the result of comparison of these two identifiers with any of the predicates eq?, equal?, eqv? would result in true. However, there are no means to check the equivalence of functions located in two different locations in memory, even if they consist of the same sequence of expressions.
 \paragraph{}\
-\noindent Per Revised Report on the Algorithmic Language Scheme (r7rs):
 
-	\begin{enumerate}[label=-]
-				
-		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 should normally be regarded as the same object and \#f otherwise.
-					
-		\item The equal? predicate returns \#t if and only if the (possibly infinite) unfoldings of its arguments into regular trees are equal as ordered trees.
-					
-		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?.
-					
-	\end{enumerate}
 
 
 
