@@ -434,6 +434,10 @@ Apple
 
 > ((multiple-fun +) 256)
 65536
+
+; leveraging the function conveyor defined in the previous problem (1e)
+> (conveyor (list (multiple-fun +)) '(1 2 3 4))
+(1 4 9 16) 
 \end{minted}
 
 
