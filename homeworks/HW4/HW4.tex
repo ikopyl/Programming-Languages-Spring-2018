@@ -312,6 +312,26 @@ Examples of comparing lists for equality:
 > (eqv? '(a (b) c) '(a (b) c))
 #f
 
+
+> (define list1 '(1 2 3))
+> (define list2 '(1 2 3))
+
+> (equal? list1 list2)
+#t
+> (eq? list1 list2)
+#f
+> (eqv? list1 list2)
+#f
+
+> (define list11 list1)
+
+> (equal? list11 list1)
+#t
+> (eq? list11 list1)
+#t
+> (eqv? list11 list1)
+#t
+
 \end{minted}
 
 
