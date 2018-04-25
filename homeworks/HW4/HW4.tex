@@ -277,8 +277,42 @@ Let's consider a series of experiments to prove this point:
 \end{minted}
 - as you can see, if two identifiers both point to the same object (a function) in memory, the result of comparison of these two identifiers with any of the predicates eq?, equal?, eqv? would result in true. However, there are no means to check the equivalence of functions located in two different locations in memory, even if they consist of the same sequence of expressions.
 \paragraph{}\
+Examples of comparing lists for equality:
+\begin{minted}[fontsize=\small]{scheme} 
+
+; base case: an empty list
+> (equal? '() '())
+#t
+> (eq? '() '())
+#t
+> (eqv? '() '())
+#t 
+
+; a list of 1 symbol
+> (equal? '(a) '(a))
+#t
+> (eq? '(a) '(a))
+#f
+> (eqv? '(a) '(a))
+#f
+
+; same as:
+> (equal? (list 'a) (list 'a))
+#t
+> (eq? (list 'a) (list 'a))
+#f
+> (eqv? (list 'a) (list 'a))
+#f
 
 
+> (equal? '(a (b) c) '(a (b) c))
+#t
+> (eq? '(a (b) c) '(a (b) c))
+#f
+> (eqv? '(a (b) c) '(a (b) c))
+#f
+
+\end{minted}
 
 
 
