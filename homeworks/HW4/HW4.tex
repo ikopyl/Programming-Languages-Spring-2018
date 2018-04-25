@@ -333,9 +333,59 @@ Examples of comparing lists for equality:
 #t
 
 \end{minted}
+\paragraph{}\
+\paragraph{}\
+\rmfamily
+Problem 1e: show an example of passing function as an argument to another function:
+\paragraph{}\
+Let's continue the discussion started in problem 1c and define a function conveyor that takes as its arguments a list of numbers (as data that we want to modify), and either a single function or a list of functions (as a sequence of operations to perform on that data):
+\begin{minted}[fontsize=\small]{scheme} 
+; initial setup:
+(define (square x)
+    (* x x))
 
+(define (double x)
+    (* x 2))
+    
+(define (atom? x)
+  (and (not (pair? x))
+       (not (null? x))))    
+    
+(define (conveyor lst-functions lst-data-operand1)
+    (cond
+      [(empty? lst-functions) lst-data-operand1]
+      [(atom? lst-functions) (map lst-functions lst-data-operand1)]
+      [else (conveyor (cdr lst-functions)
+                      (if (procedure? (car lst-functions))
+                          (map (car lst-functions) lst-data-operand1)
+                          (map (eval (car lst-functions)) lst-data-operand1)))]))
 
+; passing a single function as an argument:                          
+> (conveyor square '(1 2 3 4))
+(1 4 9 16)
 
+> (conveyor double '(1 2 3 4))
+(2 4 6 8)
+
+> (define lst-fun1 '(square double))
+> lst-fun1
+(square double)
+
+> (define lst-fun2 (list square double))
+> lst-fun2
+(#<procedure:square> #<procedure:double>)
+
+; passing a quoted list of functions (where functions are symbols) as an argument:
+> (conveyor lst-fun1 '(1 2 3 4))
+(2 8 18 32)
+
+; passing a list of functions as an argument:
+> (conveyor lst-fun2 '(1 2 3 4))
+(2 8 18 32)
+
+> (conveyor '(square double sqrt) '(1 2 3 4))
+(1.4142135623730951 2.8284271247461903 4.242640687119285 5.656854249492381)
+\end{minted}
 
 
 \paragraph{}\
