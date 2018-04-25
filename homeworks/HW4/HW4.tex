@@ -414,20 +414,11 @@ In order to return a function we must put a lambda expression as the last expres
 > ((multiple-fun 123) 32)
 1024
 
-> (multiple-fun 'a)
-#<procedure:...hw4-problem1.rkt:53:15>
-
 > ((multiple-fun 'a) "Hello, world!")
 Hello, world!
 
-> (multiple-fun '(a b c))
-#<procedure:...hw4-problem1.rkt:54:10>
-
 > ((multiple-fun '(a b c)) '(Apple Banana))
 Apple
-
-> (multiple-fun (lambda(n) (+ n n)))
-#<procedure:...hw4-problem1.rkt:52:20>
 
 > ((multiple-fun (lambda(n) (+ n n))) 256)
 65536
@@ -438,6 +429,10 @@ Apple
 ; leveraging the function conveyor defined in the previous problem (1e)
 > (conveyor (list (multiple-fun +)) '(1 2 3 4))
 (1 4 9 16) 
+
+; which is the same as:
+> (map (multiple-fun +) '(1 2 3 4))
+(1 4 9 16)
 \end{minted}
 
 
