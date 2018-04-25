@@ -331,7 +331,6 @@ Examples of comparing lists for equality:
 #t
 > (eqv? list11 list1)
 #t
-
 \end{minted}
 \paragraph{}\
 \paragraph{}\
@@ -386,6 +385,57 @@ Let's continue the discussion started in problem 1c and define a function convey
 > (conveyor '(square double sqrt) '(1 2 3 4))
 (1.4142135623730951 2.8284271247461903 4.242640687119285 5.656854249492381)
 \end{minted}
+\paragraph{}\
+\paragraph{}\
+\rmfamily
+Problem 1f: show an example of returning a function as a result of another function:
+\paragraph{}\
+In order to return a function we must put a lambda expression as the last expression to evaluate inside another function. Let's consider the following code:
+\begin{minted}[fontsize=\small]{scheme}
+; auxiliary function
+(define (atom? x)
+  (and (not (pair? x))
+       (not (null? x))))   
+ 
+; two hard things in Computer Science: cache invalidation and naming things
+(define (multiple-fun x)
+  (cond
+    [(number? x) (lambda(d) (* d d))]
+    [(procedure? x) (lambda(d) (* d d))]
+    [(atom? x) (lambda(d) (display d))]
+    [else (lambda(d) (car d))]))
+    
+    
+    
+; examples of use:
+> (multiple-fun 123)
+#<procedure:...hw4-problem1.rkt:51:17>
+
+> ((multiple-fun 123) 32)
+1024
+
+> (multiple-fun 'a)
+#<procedure:...hw4-problem1.rkt:53:15>
+
+> ((multiple-fun 'a) "Hello, world!")
+Hello, world!
+
+> (multiple-fun '(a b c))
+#<procedure:...hw4-problem1.rkt:54:10>
+
+> ((multiple-fun '(a b c)) '(Apple Banana))
+Apple
+
+> (multiple-fun (lambda(n) (+ n n)))
+#<procedure:...hw4-problem1.rkt:52:20>
+
+> ((multiple-fun (lambda(n) (+ n n))) 256)
+65536
+
+> ((multiple-fun +) 256)
+65536
+\end{minted}
+
 
 
 \paragraph{}\
