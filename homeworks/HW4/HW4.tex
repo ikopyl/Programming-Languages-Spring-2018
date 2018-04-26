@@ -478,180 +478,56 @@ Problem 1g: show examples of reading function(s) from the keyboard, reading func
 \begin{minted}[fontsize=\small]{scheme} 
 > (sigma 1 2 3 2 1)
 0.748331477354788
-
 > (sigma 1 3 1 3 1 3)
 1.
-
 > (sigma 1 3)
 1.
-
 > (sigma 1)
 0.
 \end{minted}
 
 \paragraph{}\	
-	The answer is listed on the pages TBD through TBD.
+Source code of the program:
 	
-	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
+\begin{minted}[fontsize=\small]{scheme} 
+#lang racket
 
-	
-	\noindent The code listing of the two-dimensional array that stores bit pattern of each BigInt digit. It is declared in the global space (outside of any function).
-	
-	\begin{minted}[fontsize=\small]{c}
-#define NUMBER_OF_ROWS 8
+(define (square x)
+  (* x x))
 
-/**
- * Digits are stored as bit patterns of 8-bit unsigned integer (char) numbers.
- *
- * Each digit requires just 8 bytes of storage - which is polynomially smaller
- * than the storage in brute-force approach where each digit is represented by
- * a 2D array of 8x8 characters, with 64 bytes of storage per digit.
- */
-	\end{minted}
-	
-	\rmfamily\
-	\newline
-	\noindent Main program, excluding the declaration of BIG_DIGITS array:
-	
-	\begin{minted}[fontsize=\small]{c}
-#include <stdio.h>
-#include <math.h>
+(define (square-lst x)
+  (map square x))
 
-void BigInt(unsigned int);
-unsigned int getNumberOfDigits(unsigned int);
+(define (sum-lst x)
+  (apply + x))
 
-#define NUMBER_OF_BITS 8
-#define NUMBER_OF_ROWS 8
-	\end{minted}
-	
-	
-	\noindent The result of the program execution:
-	
-%	\begin{lstlisting}[basicstyle=\tiny, language=bash]%[basicstyle=\tiny, %or \small or \footnotesize etc.]
-	\begin{lstlisting}[basicstyle=\fontsize{7}{9}\ttfamily, language=bash]%[basicstyle=\tiny, %or \small or \footnotesize etc.]
-	
-	Blah-blah-blah
-asdasd 12 123 12 3123 
+(define (mean-lst lst)
+  (/ (sum-lst lst)
+     (length lst)))
 
-123123
+; at least 1 argument is required
+(define (sigma x . y)
+  (let ((data (cons x y)))
+    (sqrt (- (mean-lst (square-lst data))
+             (square (mean-lst data))))))
+\end{minted}	
 
-	\end{lstlisting}
-	
-	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-
-
-	
-	\rmfamily
-	
-	\paragraph{3. Array processing (elimination of three largest values) (one of many array reduction problems) }\
-	
-	\rmfamily\
-	
-		The array a(1..n) contains arbitrary integers. Write a function reduce(a, n) that reduces the array a(1..n) by eliminating from it all values that are equal to three largest different integers. For example, if a=(9, 1, 1, 6, 7, 1, 2, 3, 3, 5, 6, 6, 6, 6, 7, 9) then three largest different integers are 6, 7, 9, and after reduction the reduced array would be a=(1, 1, 1, 2, 3, 3, 5), n=7. The time complexity of the solution should be in O(n). 
-		\newline
-		
-		The answer is listed on the pages 11 through 13.
-		
-	\ttfamily\
-	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
 \paragraph{}\	
-\paragraph{}\	
-\paragraph{}\
-\paragraph{}\	
-
+	The result of the program execution:
 	
-		\rmfamily
-		\noindent The code listing of the entire program for problem \#3:
-		\begin{minted}[fontsize=\small]{c}
-#include <stdio.h>
-#include "functions.h"
-
-unsigned int reduce(int *, unsigned int);
-void findTop3MaxValuesInArray(int *, unsigned int, int *, int *, int *);
-void nullifyTop3MaxValuesInArray(int *, unsigned int, int, int, int);
-unsigned int moveZeroesToEndOfArray(int *, unsigned int);
-		\end{minted}
-		
-		
-\paragraph{}\
-\paragraph{}\
-
-	\rmfamily
-	\noindent Auxiliary functions (in separate file "functions.c"):	
-	\begin{minted}[fontsize=\small]{c} 
-#include <stdio.h>
-#include "functions.h"
-	\end{minted}
-		
-\paragraph{}\
-\paragraph{}\
-		
-		\rmfamily
-		\noindent The result of the program execution:
-		
-		\ttfamily
-		\begin{lstlisting}[language=bash]
-$ gcc -Wall -std=c99 hw2-problem3.c functions.c -O3
-$ ./a.out
-		\end{lstlisting}
-		
-\paragraph{}\	
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-
-	\rmfamily
+\begin{minted}[fontsize=\small]{scheme} 
+> (sigma 1 2 3 2 1)
+0.7483314773547883
+> (sigma 1 3 1 3 1 3)
+1
+> (sigma 1 3)
+1
+> (sigma 1)
+0
+> (sigma 100 94 92 88 87 87)
+4.6785562825394
+\end{minted}
 	
-	\paragraph{4. Iteration versus recursion (an opportunity for performance measurement) }\
-	
-	\rmfamily\
-	
-		Make a sorted integer array a[i]=i, i=0,...,n-1.  Let bs(a, n, x) be a binary search program that returns the index i of the array a[0..n-1] where a[i]=x. Obviously, the result is bs(a, n, x)=x, and the binary search function can be tested using the loop
-		
-		\begin{minted}[fontsize=\small]{c}
-for (j=0; j < K; j++)
-    for (i=0; i < n; i++)
-        if (bs(a, n, i) != i)
-            cout << "\nERROR";
-		\end{minted}
-		
-		
-		Select the largest n your software can support and then K so that this loop with an iterative version of bs runs 3 seconds or more. Then measure and compare this run time and the run time of the loop that uses a recursive version of bs. Compare these run times using maximum compiler optimization (release version) and the slowest version (minimum optimization or the debug version). If you use a laptop, make measurements using AC power, and then the same measurements using only the battery. What conclusions can you derive from these experiments? Who is faster? Why?
-		\newline
-		
-		The answer is listed on the pages 15 through 19.
-	
-
-\paragraph{}\
-\paragraph{}\
-
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
@@ -660,134 +536,11 @@ for (j=0; j < K; j++)
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
-
-		\rmfamily\
-		
-		\noindent The code listing of the entire program for problem \#4:
-		\begin{minted}[fontsize=\small]{c}
-#include <stdio.h>
-#include <time.h>
-
-#define K 1000                      // system-dependent constant
-
-void initializeArray(int *, int);
-int ibs(int *, int, int);
-int rbs(int *, int, int, int);
-double ibsTest(int *, int);
-double rbsTest(int *, int);
-
-		\end{minted}
-
-
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-
-
-
-
-\noindent The result of the program execution with different setup \& compiler optimizations:
-
-
-
-	
-	\ttfamily
-	\begin{lstlisting}[basicstyle=\small, language=bash][language=bash]
-# connected to charger, no Wi-Fi, no monitors connected:
-
-$ gcc -Wall -std=c99 hw2-problem4.c -O0
-$ ./a.out
-Running time of iterative Binary Search: 12.815268 seconds.
-	\end{lstlisting}
-
-\paragraph{}\
-	\rmfamily
-	Initially, with minimal compiler optimization, the implementation of recursive Binary Search
-
-	\ttfamily
-	\begin{lstlisting}[basicstyle=\small, language=bash][language=bash]	
-$ gcc -Wall -std=c99 hw2-problem4.c -O0
-$ ./a.out
-Running time of iterative Binary Search: 12.409296 seconds.
-	\end{lstlisting}
-	
-	\paragraph{}\
-	\rmfamily
-	One possible explanation to that counterintuitive phenomena could be related to behavior defined in operating system. When it activates a power savings mode, it is very likely that certain background processes halt, thus making my program run faster by tens of milliseconds.
-
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
 
 	
-	\rmfamily
-	
-	\paragraph{5. Iteration versus recursion (another opportunity for performance measurement) }\
-	
-	\rmfamily\
-	
-		Write a recursive function Frec(n) that computes Fibonacci numbers. Then write an iterative version of Fibonacci number function Fit(n). Functions Frec(n) and Fit(n) return the same value but with different performance.
-		\newline
-		
-		Write the main program that discovers the value N10 so that Frec(N10) runs on your machine exactly 10 seconds. Then measure the run time of Fit(N10) and compute how many times is Fit(N10) faster than Frec(N10). Show what is N10 on your machine.
-		\newline
-		
-		\noindent Notes:
-		
-		1. When you measure the speed, your machine should be disconnected from the Internet, it should use the AC power supply, and it should run only one program (your performance measurement program).
-		
-		2. In C++ you can measure current time in seconds using the following function:
-		
-		\begin{minted}[fontsize=\small]{c}
-double sec(void)
-{
-    return double(clock()) / double(CLOCKS_PER_SEC);
-}
-		\end{minted}
-		
-		To measure the run time of fast programs you must repeat them many times inside a loop. Take care to eliminate the overhead generated by the loop.
-		\newline
-		
-		The answer is listed on the pages 20 through 22.
-
-\paragraph{}\
-\paragraph{}\
-
-
-
-		\noindent The code listing of the entire program for problem \#5: 
-		\begin{minted}[fontsize=\small]{c}
-#include <stdio.h>
-#include <zconf.h>
-#include <time.h>
-
-int Frec(int);
-int Fit(int);
-
-double findN(int *);
-
-// using the function pointer to avoid unnecessary code repetition:
-double benchmarkFibFunction(int (*f)(int), int);
-
-		\end{minted}
-		
-		
-	\rmfamily
-	\noindent The result of the program execution with different compiler optimizations:
-	
-	\ttfamily
-	\begin{lstlisting}[language=bash]
-	
-$ gcc -std=c99 -Wall hw2-problem5.c -O0
-$ ./a.out && ./a.out
-Depending on the compiler optimizations, the results may vary. Please wait...
-
-	\end{lstlisting}
-	
-
-	\paragraph{}\
-	\rmfamily
-	As you can see, a slightly more aggressive optimization enables Frec function to find
-		
+			
 \end{document}
