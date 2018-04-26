@@ -1,5 +1,8 @@
 \documentclass{article}
 \author{Ilya Kopyl}
+
+\usepackage{amsmath, amssymb, amsthm}
+
 \usepackage{enumitem}
 
 \usepackage{listings}
@@ -128,6 +131,7 @@ Also, an anonymous function can be used in cases when we otherwise would have to
 \paragraph{}\
 Problem 1b: show examples of defining and using named functions:
 \paragraph{}\
+
 Since we already know what a lambda function is, we can now take it and associate it with a name (identifier) - and then we could use just this name to evaluate any expression with it:
 
 \begin{minted}[fontsize=\small]{scheme} 
@@ -176,10 +180,12 @@ The reason why we define functions is to follow the Single Responsibility Princi
 > (sum-of-squares '(1 2 3 4))
 30
 \end{minted}
+
 \paragraph{}\
 \paragraph{}\
 Problem 1c: show an example of a data structure (e.g. a list) that contains functions:
 \paragraph{}\
+
 If we think of a function as an entity that is responsible for only one operation/modification, then chaining different functions to each other to perform sequential modification of the same data can be viewed as a sort of Henry Ford's conveyor belt. In the previous code we considered a case when the number, kinds of functions and their order of evaluation are known and determined, but a data is not. But let's consider a situation when we initially don't know a number, nor kinds of functions, nor their order of evaluation at all. We would need to figure out how to modify a given data dynamically, at runtime. The approach is to pass a list of functions as an extra argument to our master function. With the help of a tail recursion we could take one function at a time from that list, and evaluate it with our data, provided that the arity of these functions match with the number of data arguments. But I digressed. There are two data structures to store functions in: a list and a quoted list. Let's consider both approaches:
 
 \begin{minted}[fontsize=\small]{scheme} 
@@ -220,11 +226,13 @@ If we think of a function as an entity that is responsible for only one operatio
 > ((eval (car '(square))) 5)
 25
 \end{minted}
+
 \paragraph{}\
 \paragraph{}\
 \rmfamily
 Problem 1d: show an example of comparing functions and lists for equality:
 \paragraph{}\
+
 To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to another object in Scheme it either needs to point to the same location in memory as the other one, or to have the same type and value, or to have the same, equal numerical value. 
 
 \paragraph{}\
@@ -332,11 +340,13 @@ Examples of comparing lists for equality:
 > (eqv? list11 list1)
 #t
 \end{minted}
+
 \paragraph{}\
 \paragraph{}\
 \rmfamily
 Problem 1e: show an example of passing function as an argument to another function:
 \paragraph{}\
+
 Let's continue the discussion started in problem 1c and define a function conveyor that takes as its arguments a list of numbers (as data that we want to modify), and either a single function or a list of functions (as a sequence of operations to perform on that data):
 \begin{minted}[fontsize=\small]{scheme} 
 ; initial setup:
@@ -385,11 +395,13 @@ Let's continue the discussion started in problem 1c and define a function convey
 > (conveyor '(square double sqrt) '(1 2 3 4))
 (1.4142135623730951 2.8284271247461903 4.242640687119285 5.656854249492381)
 \end{minted}
+
 \paragraph{}\
 \paragraph{}\
 \rmfamily
 Problem 1f: show an example of returning a function as a result of another function:
 \paragraph{}\
+
 In order to return a function we must put a lambda expression as the last expression to evaluate inside another function. Let's consider the following code:
 \begin{minted}[fontsize=\small]{scheme}
 ; auxiliary function
@@ -435,76 +447,50 @@ Apple
 (1 4 9 16)
 \end{minted}
 
+\paragraph{}\
+\paragraph{}\
+\rmfamily
+Problem 1g: show examples of reading function(s) from the keyboard, reading function(s) from a file, and displaying a function:
+\paragraph{}\
+
 
 
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
-
-		\rmfamily
-		\noindent The code listing of main program:
-		\begin{minted}[fontsize=\small]{c}
-#include <stdio.h>
-#include <assert.h>
-#include "functions.h"
-
-unsigned int maxlen(int *, unsigned int);
-		\end{minted}
-
-
 \paragraph{}\
 
+	
+	
 	\rmfamily
 	
-	Auxiliary functions (in separate file "functions.c"):
+	\paragraph{2. Write a Scheme function sigma that computes the standard deviation of any number of arguments.}\
 	
-	\begin{minted}[fontsize=\small]{c} 
-#include <stdio.h>
-#include "functions.h"
+\paragraph{}\
+		The mean value of n numbers is \(\overline{x} = (x_1 + x_2 + \ldots + x_n) / n\).
+\paragraph{}\
+		The mean value of n squares is \(\overline{x^2} = (x_1^2 + x_2^2 + \ldots + x_n^2) / n\).
+\paragraph{}\
+		The standard deviation is defined as \(\sigma = \sqrt{ \overline{x^2} - (\overline{x})^2 } \).
+\paragraph{}\
+		Write a Scheme function sigma that computes the standard deviation of any number of arguments, as in the following example:		
+		
+\begin{minted}[fontsize=\small]{scheme} 
+> (sigma 1 2 3 2 1)
+0.748331477354788
 
+> (sigma 1 3 1 3 1 3)
+1.
+
+> (sigma 1 3)
+1.
+
+> (sigma 1)
+0.
 \end{minted}
 
-
-
-
-	
-	\rmfamily\
-	
-		\noindent The result of the program execution:
-		
-	\ttfamily
-	\begin{lstlisting}[language=bash]
-
-Array a:    1  1  1  2  3  3  5  6  6  6  6  7  9
-
-	\end{lstlisting}
-	
-	
-\paragraph{}\
-
-	
-	
-	\rmfamily
-	
-	\paragraph{2. Integer plot function (find a smart way to code big integers) }\
-	
-	\rmfamily\
-	
-		Write a program BigInt(n) that displays an arbitrary positive integer n using big characters of size 7x7, as in the following example for BigInt(170):
-				
-	\ttfamily
-	\begin{lstlisting}[language=bash]		
-	   @@ 	 @@@@@@@  @@@@@  
-	  @@@  	      @@ @@   @@ 
-
-		 
-	\end{lstlisting}
-	
-	\rmfamily\
-	Write a demo main program that illustrates the work of BigInt(n) and prints the following sequence of big numbers 1, 12, 123, 1234,..., 1234567890, one below the other.
-	\newline
-	
-	The answer is listed on the pages 7 through 9.
+\paragraph{}\	
+	The answer is listed on the pages TBD through TBD.
 	
 	
 \paragraph{}\
