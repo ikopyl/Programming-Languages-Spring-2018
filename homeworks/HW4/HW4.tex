@@ -463,7 +463,56 @@ Reading a function from keyboard:
 (lambda(x) (* x 4))
 1024
 \end{minted}
+\paragraph{}\
+Reading functions from a file:
 
+\begin{minted}[fontsize=\small]{scheme} 
+
+> (define in (open-input-file "/Users/ilya.kopyl/Documents/functions.txt"))
+> (read in)
+'(lambda (x) (* x x))
+> (read in)
+'(lambda (x) (+ x x))
+> (read in)
+'(define (square x) (* x x))
+> (read in)
+'(define (double x) (* x 2))
+> (read in)
+#<eof>
+> (close-input-port in)
+
+
+> (define in (open-input-file "/Users/ilya.kopyl/Documents/functions.txt"))
+> ((eval (read in)) 32)
+1024
+> ((eval (read in)) 8)
+16
+
+> square
+. . square: undefined;
+ cannot reference an identifier before its definition
+
+> (eval (read in))
+
+> square
+#<procedure:square>
+
+> (square 16)
+256
+
+
+> double
+. . double: undefined;
+ cannot reference an identifier before its definition
+
+> (eval (read in))
+
+> double
+#<procedure:double>
+
+> (double 2)
+4
+\end{minted}
 
 \paragraph{}\
 \paragraph{}\
