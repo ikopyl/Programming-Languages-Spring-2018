@@ -464,7 +464,7 @@ Reading a function from keyboard:
 1024
 \end{minted}
 \paragraph{}\
-Reading functions from a file:
+Reading functions from a file, displaying them as quoted lists, and evaluating:
 
 \begin{minted}[fontsize=\small]{scheme} 
 
@@ -512,7 +512,41 @@ Reading functions from a file:
 
 > (double 2)
 4
+
+> (close-input-port in)
 \end{minted}
+\paragraph{}\
+\paragraph{}\
+Displaying a source code of a function:
+\begin{minted}[fontsize=\small]{scheme}
+ilya.kopyl@ilyakopyl-ltm TIScheme(1) $ mit-scheme
+MIT/GNU Scheme running under OS X
+
+Copyright (C) 2014 Massachusetts Institute of Technology
+
+1 ]=> (define (square x) (* x x))
+
+;Value: square
+
+1 ]=> (pp square)
+(named-lambda (square x)
+  (* x x))
+;Unspecified return value
+
+1 ]=> (define (flatten2 sequence)
+	(if (not (list? sequence)) (list sequence)
+		(apply append (map flatten2 sequence))))
+
+;Value: flatten2
+
+1 ]=> (pp flatten2)
+(named-lambda (flatten2 sequence)
+  (if (not (list? sequence))
+      (list sequence)
+      (apply append (map flatten2 sequence))))
+;Unspecified return value
+\end{minted}
+
 
 \paragraph{}\
 \paragraph{}\
