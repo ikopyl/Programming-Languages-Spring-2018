@@ -445,7 +445,24 @@ Apple
 \rmfamily
 Problem 1g: show examples of reading function(s) from the keyboard, reading function(s) from a file, and displaying a function:
 \paragraph{}\
+Reading a function from keyboard:
 
+\begin{minted}[fontsize=\small]{scheme} 
+> (eval (read))
+(lambda(x) (+ 1 2))
+#<procedure:...t/private/kw.rkt:446:14
+
+> ((eval (read)) 256)
+(lambda(x) (+ x x))
+512
+
+> (define (read-fun-from-keyboard)
+    (eval (read)))
+
+> ((read-fun-from-keyboard) 256)
+(lambda(x) (* x 4))
+1024
+\end{minted}
 
 
 \paragraph{}\
@@ -502,7 +519,7 @@ Source code of the program:
 
 ; at least 1 argument is required
 (define (sigma x . y)
-  (let ((data (cons x y)))
+  (let ((data (cons x y)))	; defined the local variable for convenience
     (sqrt (- (mean-lst (square-lst data))
              (square (mean-lst data))))))
 \end{minted}	
