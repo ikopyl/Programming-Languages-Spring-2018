@@ -102,7 +102,7 @@
 		
 \paragraph{}\
 		The answer is listed on the pages 2 through 11.
-\paragraph{(1.a) Show an example of the anonymous function and its use.}\
+\paragraph{\quad1. (a) Show an example of the anonymous function and its use.}\
 \paragraph{}\
 At the very basic case, an anonymous function is nothing more but a lambda expression - a body of a function. Since it is not associated with any identifier (i.e. when it is unnamed), we may use it only when we explicitly write it inside of other expressions:
 \ttfamily
@@ -125,7 +125,7 @@ Also, an anonymous function can be used in cases when we otherwise would have to
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.b) Show examples of defining and using named functions.}\
+\paragraph{\quad1. (b) Show examples of defining and using named functions.}\
 \paragraph{}\
 Since we already know what a lambda function is, we can now take it and associate it with a name (identifier) - and then we could use just this name to evaluate any expression with it:
 
@@ -177,7 +177,7 @@ The reason why we define functions is to follow the Single Responsibility Princi
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.c) Show an example of a data structure (e.g. a list) that contains functions.}\
+\paragraph{\quad1. (c) Show an example of a data structure (e.g. a list) that contains functions.}\
 \paragraph{}\
 If we think of a function as an entity that is responsible for only one operation/modification, then chaining different functions to each other to perform sequential modification of the same data can be viewed as a sort of Henry Ford's conveyor belt. In the previous code we considered a case when the number, kinds of functions and their order of evaluation are known and determined, but a data is not. But let's consider a situation when we initially don't know a number, nor kinds of functions, nor their order of evaluation at all. We would need to figure out how to modify a given data dynamically, at runtime. The approach is to pass a list of functions as an extra argument to our master function. With the help of a tail recursion we could take one function at a time from that list, and evaluate it with our data, provided that the arity of these functions match with the number of data arguments. But I digressed. There are two data structures to store functions in: a list and a quoted list. Let's consider both approaches:
 
@@ -221,7 +221,7 @@ If we think of a function as an entity that is responsible for only one operatio
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.d) Show an example of comparing functions and lists for equality.}\
+\paragraph{\quad1. (d) Show an example of comparing functions and lists for equality.}\
 \paragraph{}\
 To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to another object in Scheme it either needs to point to the same location in memory as the other one, or to have the same type and value, or to have the same, equal numerical value. 
 
@@ -332,7 +332,7 @@ Examples of comparing lists for equality:
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.e) Show an example of passing function as an argument to another function.}\
+\paragraph{\quad1. (e) Show an example of passing function as an argument to another function.}\
 \paragraph{}\
 Let's continue the discussion started in the problem (1.c) and define a function conveyor that takes as its arguments a list of numbers (as data that we want to modify), and either a single function or a list of functions (as a sequence of operations to perform on that data):
 \begin{minted}[fontsize=\small]{scheme} 
@@ -384,7 +384,7 @@ Let's continue the discussion started in the problem (1.c) and define a function
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.f) Show an example of returning a function as a result of another function.}\
+\paragraph{\quad1. (f) Show an example of returning a function as a result of another function.}\
 \paragraph{}\
 In order to return a function we must put a lambda expression as the last expression to evaluate inside another function. Let's consider the following code:
 \begin{minted}[fontsize=\small]{scheme}
@@ -432,7 +432,7 @@ Apple
 \end{minted}
 
 \paragraph{}\
-\paragraph{(1.g) Show examples of reading function(s) from the keyboard, reading function(s) from a file, and displaying a function.}\
+\paragraph{\quad1. (g) Show examples of reading function(s) from the keyboard, reading function(s) from a file, and displaying a function.}\
 
 \paragraph{}\
 Reading a function from keyboard:
@@ -616,23 +616,42 @@ Source code of the program:
 \paragraph{}\
 \paragraph{}\
 
-\paragraph{3. (a) Write a recursive Scheme procedure line that prints n asterisks in a line as follows:}\
+\paragraph{3.\quad (a) Write a recursive Scheme procedure line that prints n asterisks in a line as follows:}\
 
 \begin{minted}[fontsize=\small]{scheme} 
 > (line 5)
 *****
 \end{minted}
 
+\paragraph{\qquad (b) Write a recursive Scheme procedure histogram that uses the procedure line, and prints a histogram for a list of integers:}\
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (histogram '(1 2 3 3 2 1))
+*
+**
+***
+***
+**
+*
+\end{minted}
+\paragraph{}\
+		The answer is listed on the page 14.
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 \paragraph{}\
 Source code of the program:
 
 \begin{minted}[fontsize=\small]{scheme} 
 #lang racket
 
+; auxiliary predicate
 (define (non-negative? x)
   (if (or (equal? x 0)
           (positive? x)) #t #f))
 
+;auxiliary predicate
 (define (valid-input? x)
   (if (and (number? x)
            (and (integer? x)
@@ -640,13 +659,19 @@ Source code of the program:
 
 (define (line x)
   (if (valid-input? x)
-      (if (equal? x 0) (newline)
-          (begin (display '*)
-                 (line (- x 1))))
+      (if (equal? x 0) (newline)	   ; base case - print newline character
+          (begin (display '*)	      ; print *
+                 (line (- x 1))))	  ; call line function for x-1
       (display "Argument must be a non-negative integer.")))
+
+(define (histogram lst)
+  (if (list? lst)
+      (if (empty? lst) (display "")	; base case - print an empty string
+          (begin (line (car lst))	  ; call line function for car of the lst
+                 (histogram (cdr lst))))   ; call histogram for cdr of the lst
+      (display "Argument must be a list.")))
 \end{minted}
 
-\paragraph{}\
 \paragraph{}\
 	The result of the program execution:
 	
@@ -661,6 +686,15 @@ Argument must be a non-negative integer.
 *
 > (line 5)
 *****
+> (histogram 12)
+Argument must be a list.
+> (histogram '(1 2 3 3 2 1))
+*
+**
+***
+***
+**
+*
 \end{minted}
 
 \end{document}
