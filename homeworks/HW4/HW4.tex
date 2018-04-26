@@ -615,9 +615,52 @@ Source code of the program:
 	
 \paragraph{}\
 \paragraph{}\
-\paragraph{}\
-
 
 \paragraph{3. (a) Write a recursive Scheme procedure line that prints n asterisks in a line as follows:}\
-			
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (line 5)
+*****
+\end{minted}
+
+\paragraph{}\
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{scheme} 
+#lang racket
+
+(define (non-negative? x)
+  (if (or (equal? x 0)
+          (positive? x)) #t #f))
+
+(define (valid-input? x)
+  (if (and (number? x)
+           (and (integer? x)
+                (non-negative? x))) #t #f))
+
+(define (line x)
+  (if (valid-input? x)
+      (if (equal? x 0) (newline)
+          (begin (display '*)
+                 (line (- x 1))))
+      (display "Argument must be a non-negative integer.")))
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+	The result of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (line -1)
+Argument must be a non-negative integer.
+> (line pi)
+Argument must be a non-negative integer.
+> (line 0)
+
+> (line 1)
+*
+> (line 5)
+*****
+\end{minted}
+
 \end{document}
