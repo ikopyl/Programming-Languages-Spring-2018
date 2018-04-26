@@ -3,42 +3,24 @@
 (define (square x)
   (* x x))
 
-(define (squarelist x)
+(define (square-lst x)
   (map square x))
 
-; at least 1 argument is required
-(define (sqr x . y)
-  (squarelist (cons x y)))
 
-
-(define (sumlist x)
+(define (sum-lst x)
   (apply + x))
 
-; there are no required arguments, the sum of empty list is zero
-(define (sum . x)
-  (sumlist x))
 
-
-; at least 1 argument is required
-(define (mean x . y)
-  (/ (sum x (sumlist y))
-     (+ 1 (length y))))
-
-(define (meanlist lst)
-  (/ (sumlist lst)
+(define (mean-lst lst)
+  (/ (sum-lst lst)
      (length lst)))
 
 
-; second attempt:
-(define (sigma-old x . y)
-  (sqrt (- (meanlist (squarelist (cons x y)))
-           (square (meanlist (cons x y))))))
-
-; let's introduce a local scope:
+; at least 1 argument is required
 (define (sigma x . y)
-  (let ((mydata (cons x y)))
-    (sqrt (- (meanlist (squarelist mydata))
-             (square (meanlist mydata))))))
+  (let ((data (cons x y)))
+    (sqrt (- (mean-lst (square-lst data))
+             (square (mean-lst data))))))
 
 
 
