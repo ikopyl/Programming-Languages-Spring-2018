@@ -15,3 +15,11 @@
           (begin (display '*)
                  (line (- x 1))))
       (display "Argument must be a non-negative integer.")))
+
+(define (histogram lst)
+  (if (list? lst)
+      (if (empty? lst) (display "")
+          (begin (line (car lst))
+                 (histogram (cdr lst))))
+      (display "Argument must be a list.")))
+
