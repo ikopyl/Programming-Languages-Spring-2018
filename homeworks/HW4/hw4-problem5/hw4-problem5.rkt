@@ -43,9 +43,11 @@
 
 ; iterative implementation of inner-product
 (define (inner-product-iterative v1 v2)
-  (if (not (valid-vectors-input? v1 v2)) (display "")
-      (begin (display v1)
-             (newline)
-             (display v2))))
+  (let ((sum 0))
+    (do ((i 0 (add1 i)))
+      ((>= i (vector-length v1)) (display sum))
+      (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
+   
+         
 
 
