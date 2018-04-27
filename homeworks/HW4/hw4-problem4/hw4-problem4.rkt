@@ -9,17 +9,26 @@
 ; when the interval becomes sufficiently small. Then the coordinate
 ; of the maximum is xmax = (x1+x2)/2, yielding fmax = f(xmax).
 
+; auxiliary predicate
+(define (difference-sufficiently-small? x1 x2)
+  (let ((threshold 1e-6))
+    (if (< (abs (- x2 x1)) threshold) #t #f)))
+
 (define (disp x n)
   (display (/ (round (* x (expt 10 n)))
               (expt 10 n))))
 
+; auxiliary function
+(define (mean x . y)
+  (/ (apply + (cons x y))
+     (+ 1 (length y))))
 
 (define (fmax f x1 x2)
   (cond
-    [(< (- x2 x1) 1e-6) (display "maximum: f(")
-                        (disp (/ (+ x1 x2) 2) 4)
-                        (display ") = ")
-                        (disp (f (/ (+ x1 x2) 2)) 4)]
+    [(difference-sufficiently-small? x1 x2) (display "maximum: f(")
+                                            (disp (mean x1 x2) 4)
+                                            (display ") = ")
+                                            (disp (f (mean x1 x2)) 4)]
     [else (let ((a1 (+ x1 (/ (- x2 x1) 3)))
                 (a2 (- x2 (/ (- x2 x1) 3))))
             (if (< (f a1) (f a2))
