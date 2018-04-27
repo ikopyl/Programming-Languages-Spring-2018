@@ -13,24 +13,27 @@
 
 ; auxiliary predicate
 (define (valid-vectors-input? v1 v2)
-  (if (not (both-vectors? v1 v2))
-      (display "Error: Both arguments must be vectors.\n")
-      (if (not (vector-lengths-equal? v1 v2))
-          (begin (display "Error: Both vectors must have the same length.\n") #f)
-          #t)))
+  (cond
+    [(not (both-vectors? v1 v2))
+     (begin (display "Error: Both arguments must be vectors.\n") #f)]
+    [(not (vector-lengths-equal? v1 v2))
+     (begin (display "Error: Both vectors must have the same length.\n") #f)]
+    [else #t]))
 
 ; main program - entry point
 (define (inner-product v1 v2 is-recursive)
-  (if (not (valid-vectors-input? v1 v2)) (exit)
-      (if (equal? is-recursive #t)
-          (inner-product-recursive (vector->list v1) (vector->list v2))
-          (inner-product-iterative v1 v2))))
+  (cond
+    [(not (valid-vectors-input? v1 v2)) (display "")]
+    [else (if (equal? is-recursive #t)
+              (inner-product-recursive (vector->list v1) (vector->list v2))
+              (inner-product-iterative v1 v2))]))
 
 ; recursive implementation of inner-product
 (define (inner-product-recursive lst1 lst2)
   (cond
     [(empty? lst1) 0]
-    [(+ (* (car lst1) (car lst2)) (inner-product-recursive (cdr lst1) (cdr lst2)))]))
+    [(+ (* (car lst1) (car lst2))
+        (inner-product-recursive (cdr lst1) (cdr lst2)))]))
   
 ; iterative implementation of inner-product
 (define (inner-product-iterative v1 v2)
