@@ -658,18 +658,17 @@ Source code of the program:
                 (non-negative? x))) #t #f))
 
 (define (line x)
-  (if (valid-input? x)
-      (if (equal? x 0) (newline)	   ; base case - print newline character
-          (begin (display '*)	      ; print *
-                 (line (- x 1))))	  ; call line function for x-1
-      (display "Argument must be a non-negative integer.")))
+  (if (not (valid-input? x)) (display "Argument must be a non-negative integer.\n")
+      (if (equal? x 0) (newline)	     ; base case - print newline character
+          (begin (display "*")	       ; print *
+                 (line (- x 1))))))	  ; call line function for x-1
 
+      
 (define (histogram lst)
-  (if (list? lst)
-      (if (empty? lst) (display "")	; base case - print an empty string
-          (begin (line (car lst))	  ; call line function for car of the lst
-                 (histogram (cdr lst))))   ; call histogram for cdr of the lst
-      (display "Argument must be a list.")))
+  (if (not (list? lst)) (display "Argument must be a list.\n")
+      (if (empty? lst) (display "")	  ; base case - print an empty string
+          (begin (line (car lst))	    ; call line function for car of the lst
+                 (histogram (cdr lst))))))   ; call histogram for cdr of the lst      
 \end{minted}
 
 \paragraph{}\
@@ -698,5 +697,62 @@ Argument must be a list.
 \end{minted}
 
 \paragraph{4. Write a Scheme program for computing a maximum of function \(f(x)\) within the interval \([x_1, x_2]\). Use the trisection method, and find the coordinate of maximum \(xmax\) with accuracy of 6 significant decimal digits.}\
+
+\paragraph{}\
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{scheme}
+#lang racket
+
+; auxiliary predicate - refactored code for improved readability
+(define (difference-sufficiently-small? x1 x2)
+  (let ((threshold 1e-10))    ; threshold can be easily changed in the future
+    (if (< (abs (- x2 x1)) threshold) #t #f)))
+    
+; auxiliary function - refactored code for improved readability
+(define (display-rounded x n)
+  (display (round-to-n-significant-decimal-digits x n)))
+
+; auxiliary function - refactored code for improved readability
+(define (round-to-n-significant-decimal-digits x n)
+  (/ (round (* x (expt 10 n)))
+     (expt 10 n)))
+
+; auxiliary function - refactored code for improved readability
+(define (mean x . y)
+  (/ (apply + (cons x y))
+     (+ 1 (length y))))
+
+; auxiliary function - refactoring code for improved readability
+(define (third-of-delta-between x1 x2)
+  (/ (- x2 x1) 3))
+
+; main function
+(define (fmax f x1 x2)
+  (if (not (procedure? f)) (display "First argument must be a procedure.\n")
+      (cond
+        [(difference-sufficiently-small? x1 x2) (display "xmax = ")
+                                                (display-rounded (mean x1 x2) 6)
+                                                (newline)
+                                                (display "ymax = ")
+                                                (display-rounded (f (mean x1 x2)) 6)]
+        [else (let ((a1 (+ x1 (third-of-delta-between x1 x2)))
+                    (a2 (- x2 (third-of-delta-between x1 x2))))
+                (if (< (f a1) (f a2))
+                    (fmax f a1 x2)
+                    (fmax f x1 a2)))])))
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+	The results of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (difference-sufficiently-small? 1.00000000001 1.00000000008)
+#t
+> (difference-sufficiently-small? 1.00000000011 1.0000000008)
+#f
+\end{minted}
 
 \end{document}
