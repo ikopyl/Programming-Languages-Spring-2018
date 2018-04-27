@@ -796,7 +796,7 @@ ERROR: Different sizes of vectors!
 \end{enumerate}
 
 \paragraph{}\
-	The answer is listed on the pages TBD through TBD.
+	The answer is listed on the pages 17 through 18.
 	
 \paragraph{}\
 Source code of the program:
@@ -878,6 +878,63 @@ Error: Both vectors must have the same length.
 10
 \end{minted}
 
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{6. The files "matrix1.dat" and "matrix2.dat" are created using a text editor and contain two rectangular matrices. For example, }\
+\paragraph{}\
+\quad matrix1.dat:		\qquad \qquad \qquad \qquad matrix2.dat:
+\begin{minted}[fontsize=\small]{scheme}
+
+     2   3                     3   3
+     1   2   3                 1   2   3
+     4   5   6                 1   2   3
+                               1   2   3
+\end{minted}
+In both cases the first row contains the size of the matrix (the number of rows and the number of columns). The remaining rows contain the values of elements.
+
+	\begin{enumerate}[label=(\alph*)]
+
+	\item Develop programs \textbf{row} and \textbf{col} that read a matrix from a file and display a specified row or column. For example:
+	
+\begin{minted}[fontsize=\small]{scheme}
+> (row "matrix1.dat" 2)
+4 5 6
+> (col "matrix1.dat" 2)
+2 5
+\end{minted}
+	
+	Matrices should be stored in memory as vectors whose components are vectors.
+	\paragraph{}\
+	
+	\item Develop a program for matrix multiplication \textbf{mmul} that multiplies two matrices stored in specified input files, and creates and displays an output file containing the product. For example:
+	
+\begin{minted}[fontsize=\small]{scheme}
+> (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
+ 6  12   18
+15  30   45
+\end{minted}
+In this example the contents of the new file "matrix3.dat" should be
+
+\begin{minted}[fontsize=\small]{scheme}
+ 2    3
+ 6   12   18
+15   30   45
+\end{minted}
+					
+	\end{enumerate}
+	
+\paragraph{}\
+\paragraph{}\
+	The answer is listed on the pages TBD through TBD.
 
 
 \end{document}
