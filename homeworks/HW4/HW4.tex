@@ -708,10 +708,6 @@ Source code of the program:
 (define (difference-sufficiently-small? x1 x2)
   (let ((threshold 1e-10))    ; threshold can be easily changed in the future
     (if (< (abs (- x2 x1)) threshold) #t #f)))
-    
-; auxiliary function - refactored code for improved readability
-(define (display-rounded x n)
-  (display (round-to-n-significant-decimal-digits x n)))
 
 ; auxiliary function - refactored code for improved readability
 (define (round-to-n-significant-decimal-digits x n)
@@ -729,13 +725,15 @@ Source code of the program:
 
 ; main function
 (define (fmax f x1 x2)
-  (if (not (procedure? f)) (display "First argument must be a procedure.\n")
+  (if (not (procedure? f)) (display "First argument must be a procedure.")
       (cond
-        [(difference-sufficiently-small? x1 x2) (display "xmax = ")
-                                                (display-rounded (mean x1 x2) 6)
-                                                (newline)
-                                                (display "ymax = ")
-                                                (display-rounded (f (mean x1 x2)) 6)]
+        [(difference-sufficiently-small? x1 x2)
+         (let ((rounded-xmax (round-to-n-significant-decimal-digits (mean x1 x2) 6)))
+           (display "xmax = ")
+           (display rounded-xmax)
+           (newline)
+           (display "ymax = ")
+           (display (round-to-n-significant-decimal-digits (f rounded-xmax) 6)))]
         [else (let ((a1 (+ x1 (third-of-delta-between x1 x2)))
                     (a2 (- x2 (third-of-delta-between x1 x2))))
                 (if (< (f a1) (f a2))
@@ -771,10 +769,10 @@ xmax = 9.987654
 ymax = 89.765578
 > (fmax (lambda(x) (* x (- x 1))) 0 9.9876543)
 xmax = 9.987654
-ymax = 89.765584
+ymax = 89.765578
 > (fmax (lambda(x) (* x (- x 1))) 0 9.987654321)
 xmax = 9.987654
-ymax = 89.765585
+ymax = 89.765578
 \end{minted}
 
 \end{document}
