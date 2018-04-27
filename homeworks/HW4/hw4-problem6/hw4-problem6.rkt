@@ -35,7 +35,7 @@
 (define (row filename i)
   (display-vector (ro filename i)))
 
-
+; return j-th col of the matrix in the filename
 (define (co filename j)
   (define mat (read-matrix filename))
   (define nrow (vector-length mat))
@@ -46,9 +46,9 @@
 
 
 ; display j-th col of the matrix in filename
-
 (define (col filename j)
   (display-vector (co filename j)))
+
 
 
 ; iterative implementation of inner-product
@@ -60,7 +60,6 @@
 
 
 ; matrix multiplication, display and create
-
 (define (mmul f1 f2 f3)
   (define m1 (read-matrix f1))
   (define m2 (read-matrix f2))
@@ -72,15 +71,12 @@
   (display ncol outport)
   (newline outport)
   (do ((i 0 (add1 i)))
-    ((>= i nrow)
-     (close-output-port outport)
-     (display ""))
-    ((let ((row (make-vector ncol)))
+    ((>= i nrow) (close-output-port outport) (display ""))
+    (begin (let ((row (make-vector ncol)))
        (do ((j 0 (add1 j)))
-         ((>= j ncol)
-          (display-vector row)
-          (newline)
-          (newline outport))
+         ((>= j ncol) (display-vector row) (newline) (newline outport))
          (vector-set! row j (inner-product-iterative (ro f1 i) (co f2 j)))
          (display (vector-ref row j) outport)
          (display " " outport))))))
+
+; (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
