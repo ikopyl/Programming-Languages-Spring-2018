@@ -27,11 +27,25 @@
           (begin (display "Error: Both vectors must have the same length.\n") #f)
           #t)))
 
-; main function
-(define (inner-product-rec v1 v2)
+; main program - entry point
+(define (inner-product v1 v2 is-recursive)
   (if (not (valid-vectors-input? v1 v2)) (display "")
-           (begin (display v1)
-                  (newline)
-                  (display v2))))
+      (if (equal? is-recursive #t)
+          (inner-product-recursive v1 v2 (vector-length v1))
+          (inner-product-iterative v1 v2))))
 
-  
+; recursive implementation of inner-product
+(define (inner-product-recursive v1 v2 n)
+  (if (not (valid-vectors-input? v1 v2)) (display "")
+      (begin (display v1)
+             (newline)
+             (display v2))))
+
+; iterative implementation of inner-product
+(define (inner-product-iterative v1 v2)
+  (if (not (valid-vectors-input? v1 v2)) (display "")
+      (begin (display v1)
+             (newline)
+             (display v2))))
+
+
