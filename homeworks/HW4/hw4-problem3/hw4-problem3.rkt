@@ -10,16 +10,14 @@
                 (non-negative? x))) #t #f))
 
 (define (line x)
-  (if (valid-input? x)
+  (if (not (valid-input? x)) (display "Argument must be a non-negative integer.\n")
       (if (equal? x 0) (newline)
-          (begin (display '*)
-                 (line (- x 1))))
-      (display "Argument must be a non-negative integer.")))
+          (begin (display "*")
+                 (line (- x 1))))))
 
 (define (histogram lst)
-  (if (list? lst)
+  (if (not (list? lst)) (display "Argument must be a list.\n")
       (if (empty? lst) (display "")
           (begin (line (car lst))
-                 (histogram (cdr lst))))
-      (display "Argument must be a list.")))
+                 (histogram (cdr lst))))))
 
