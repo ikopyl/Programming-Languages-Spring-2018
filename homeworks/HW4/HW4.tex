@@ -746,13 +746,35 @@ Source code of the program:
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
-	The results of the program execution:
+	Results of the program execution:
 	
 \begin{minted}[fontsize=\small]{scheme} 
 > (difference-sufficiently-small? 1.00000000001 1.00000000008)
 #t
 > (difference-sufficiently-small? 1.00000000011 1.0000000008)
 #f
+
+> (fmax (lambda(x) (* x (- 1 x))) 0 10)
+xmax = 1/2
+ymax = 1/4
+> (fmax (lambda(x) (* x (- x 1))) 0 10)
+xmax = 10
+ymax = 90
+> (fmax (lambda(x) (* x (- x 1))) 0 9.95)
+xmax = 9.95
+ymax = 89.0525
+> (fmax (lambda(x) (* x (- x 1))) 0 9.9875)
+xmax = 9.9875
+ymax = 89.762656
+> (fmax (lambda(x) (* x (- x 1))) 0 9.987654)
+xmax = 9.987654
+ymax = 89.765578
+> (fmax (lambda(x) (* x (- x 1))) 0 9.9876543)
+xmax = 9.987654
+ymax = 89.765584
+> (fmax (lambda(x) (* x (- x 1))) 0 9.987654321)
+xmax = 9.987654
+ymax = 89.765585
 \end{minted}
 
 \end{document}
