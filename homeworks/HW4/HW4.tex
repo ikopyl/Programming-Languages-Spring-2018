@@ -704,22 +704,22 @@ Source code of the program:
 \begin{minted}[fontsize=\small]{scheme}
 #lang racket
 
-; auxiliary predicate - refactored code for improved readability
+; auxiliary predicate
 (define (difference-sufficiently-small? x1 x2)
   (let ((threshold 1e-10))    ; threshold can be easily changed in the future
     (if (< (abs (- x2 x1)) threshold) #t #f)))
 
-; auxiliary function - refactored code for improved readability
+; auxiliary function
 (define (round-to-n-significant-decimal-digits x n)
   (/ (round (* x (expt 10 n)))
      (expt 10 n)))
 
-; auxiliary function - refactored code for improved readability
+; auxiliary function
 (define (mean x . y)
   (/ (apply + (cons x y))
      (+ 1 (length y))))
 
-; auxiliary function - refactoring code for improved readability
+; auxiliary function
 (define (third-of-delta-between x1 x2)
   (/ (- x2 x1) 3))
 
