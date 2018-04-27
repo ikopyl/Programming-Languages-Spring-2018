@@ -1,15 +1,7 @@
 #lang racket
 
-
-; goals:
-
-; understand what the vectors are
-
-; understand how the inner product of two vectors works:
+; the inner product of two vectors:
 ; A * B = (a1 * b1 + a2 * b2 + ... + an * bn)
-
-; understand how to use the DO loop
-
 
 ; auxiliary predicate
 (define (both-vectors? v1 v2)
@@ -31,16 +23,15 @@
 (define (inner-product v1 v2 is-recursive)
   (if (not (valid-vectors-input? v1 v2)) (display "")
       (if (equal? is-recursive #t)
-          (inner-product-recursive v1 v2 (vector-length v1))
+          (inner-product-recursive (vector->list v1) (vector->list v2))
           (inner-product-iterative v1 v2))))
 
 ; recursive implementation of inner-product
-(define (inner-product-recursive v1 v2 n)
-  (if (not (valid-vectors-input? v1 v2)) (display "")
-      (begin (display v1)
-             (newline)
-             (display v2))))
-
+(define (inner-product-recursive lst1 lst2)
+  (cond
+    [(empty? lst1) 0]
+    [(+ (* (car lst1) (car lst2)) (inner-product-recursive (cdr lst1) (cdr lst2)))]))
+  
 ; iterative implementation of inner-product
 (define (inner-product-iterative v1 v2)
   (let ((sum 0))
@@ -48,6 +39,4 @@
       ((>= i (vector-length v1)) (display sum))
       (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
    
-         
-
-
+        
