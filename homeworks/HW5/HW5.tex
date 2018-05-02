@@ -1,0 +1,1061 @@
+\documentclass{article}
+\author{Ilya Kopyl}
+
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage{enumitem}
+
+\usepackage{listings}
+
+\usepackage{minted}
+
+\usepackage{syntax}
+
+\usepackage[T1]{fontenc}			% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
+
+\usepackage{courier} % tt
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{microtype}
+\DisableLigatures[<]{encoding = T1}
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+
+
+\begin{document}
+
+	\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+%	\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+	\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
+%	\setlength{\grammarindent}{5cm} 
+
+
+
+
+	\begin{titlepage}
+		\vspace*{\stretch{1.0}}
+		\begin{center}
+				\Large\textsc{CSc 600-01 (Section 1)}
+				
+				\Large\textbf{Homework 5 - Introduction to Ruby}\\
+
+				\Large\textit{prepared by Ilya Kopyl}
+				
+		\end{center}	
+		\vspace*{\stretch{2.0}}
+	\end{titlepage}
+
+
+	\title{\textsc{CSc 600 Homework 4 - Ruby Introduction}}	
+	\maketitle
+	
+		\noindent \textit{Homework is prepared in LaTeX with TeXShop editor (under GNU GPL).}
+		
+		% \textit{Syntax diagrams are created in LucidChart online editor (lucidchart.com).}
+
+
+	\rmfamily\
+
+
+
+
+	\paragraph{1. Function \(rand(n+1)\) returns a random integer between \(0\) and \(n\). Write a function that creates an array of 100 random numbers between \(0\) and \(10\).}\
+
+\paragraph{}\
+
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{ruby}
+def generate_rand_array()
+  arr = []
+  for i in 1..100
+    arr.push rand(10+1)
+  end
+
+  arr
+end
+
+def generate_rand_array2()
+  100.times.map { rand(10+1) }
+end
+
+def generate_new_rand_int_arr(n, upper_bound)
+  n.times.map { rand(upper_bound+1) }
+end
+
+p generate_rand_array
+puts
+p generate_rand_array2
+puts
+p generate_new_rand_int_arr(100, 10)
+\end{minted}
+
+\paragraph{}\
+
+	Result of the program execution:
+\begin{minted}[fontsize=\small]{scheme}
+
+\end{minted}
+\noindent \texttt{[9, 10, 10, 5, 5, 4, 0, 9, 8, 5, 7, 8, 7, 4, 2, 2, 4, 2, 8, 4, 6, 6, 5, 4, 7, 5, 0, 10, 1, 1, 4, 5, 4, 10, 2, 0, 1, 9, 4, 6, 1, 9, 3, 4, 0, 5, 7, 0, 4, 2, 7, 1, 4, 3, 3, 5, 0, 3, 1, 5, 1, 0, 7, 3, 4, 2, 3, 7, 1, 6, 5, 8, 5, 2, 7, 6, 9, 0, 7, 3, 10, 9, 4, 8, 0, 10, 5, 7, 7, 5, 6, 4, 1, 7, 5, 10, 1, 9, 7, 6]}
+
+\ttfamily
+\noindent [0, 3, 7, 10, 5, 10, 6, 7, 1, 0, 6, 10, 3, 7, 0, 9, 9, 1, 7, 4, 6, 8, 3, 1, 6, 8, 8, 7, 3, 7, 0, 0, 8, 3, 5, 1, 6, 7, 1, 8, 6, 7, 9, 6, 7, 4, 2, 4, 3, 7, 4, 5, 0, 8, 8, 3, 0, 10, 6, 10, 10, 0, 3, 6, 9, 8, 4, 2, 4, 7, 5, 0, 4, 3, 7, 9, 3, 10, 9, 8, 4, 8, 0, 7, 10, 5, 9, 6, 10, 5, 7, 5, 3, 3, 2, 6, 4, 9, 3, 0]
+
+\noindent [2, 0, 7, 7, 0, 4, 3, 3, 4, 4, 5, 1, 1, 6, 7, 8, 0, 9, 3, 8, 9, 6, 3, 2, 1, 6, 6, 10, 2, 1, 2, 5, 2, 9, 1, 10, 3, 2, 6, 8, 2, 0, 0, 5, 1, 10, 10, 8, 3, 0, 5, 9, 0, 5, 10, 9, 3, 8, 1, 1, 1, 3, 6, 9, 2, 6, 9, 7, 5, 2, 6, 2, 4, 10, 7, 5, 5, 2, 10, 9, 0, 0, 8, 7, 0, 4, 4, 10, 9, 9, 1, 1, 5, 0, 4, 10, 6, 5, 7, 9]
+
+\noindent [0, 2, 6, 9, 10, 0, 6, 0, 0, 6, 1, 7, 3, 0, 10, 8, 10, 8, 8, 0, 2, 0, 7, 1, 4, 10, 7, 8, 10, 8, 5, 0, 5, 9, 6, 7, 5, 0, 3, 9, 6, 5, 1, 7, 6, 7, 5, 0, 6, 2, 9, 5, 7, 3, 1, 0, 1, 7, 9, 9, 3, 4, 5, 1, 1, 7, 7, 2, 4, 2, 0, 0, 7, 0, 9, 4, 7, 9, 3, 9, 5, 1, 2, 0, 10, 4, 6, 0, 8, 5, 3, 0, 0, 3, 1, 6, 1, 6, 1, 0]
+\rmfamily
+
+\paragraph{}\
+\paragraph{\quad1. (b) Show examples of defining and using named functions.}\
+\paragraph{}\
+Since we already know what a lambda function is, we can now take it and associate it with a name (identifier) - and then we could use just this name to evaluate any expression with it:
+
+\begin{minted}[fontsize=\small]{scheme} 
+ 
+> (define square (lambda(x) (* x x)))
+
+> square
+#<procedure:square>
+
+> (square 2)
+4
+> (square 4)
+16
+\end{minted}
+- thus the function definition is a process of binding a lambda expression to some identifier. For simplicity and convenience we could make the same function definition with the use of syntactic sugar and omit 'lambda' keyword. Semantically, such function definition would still remain the same:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define (square x) (* x x))
+
+> (square 2)
+4
+> (square 4)
+16
+\end{minted}
+
+We could also take our defined function square and store it in a variable:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define a sqr)
+
+> a
+#<procedure:sqr>
+
+> (a 2)
+4
+> (a 4)
+16
+\end{minted}
+
+The reason why we define functions is to follow the Single Responsibility Principle, when each function is doing only one thing. But at certain point we would need to do a function composition, i.e. to define a function that is composed of series of expressions that use previously defined functions:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (define (sum-of-squares lst)
+    (apply + (map square lst)))
+    
+> (sum-of-squares '(1 2 3 4))
+30
+\end{minted}
+
+\paragraph{}\
+\paragraph{\quad1. (c) Show an example of a data structure (e.g. a list) that contains functions.}\
+\paragraph{}\
+If we think of a function as an entity that is responsible for only one operation/modification, then chaining different functions to each other to perform sequential modification of the same data can be viewed as a sort of Henry Ford's conveyor belt. In the previous code we considered a case when the number, kinds of functions and their order of evaluation are known and determined, but a data is not. But let's consider a situation when we initially don't know a number, nor kinds of functions, nor their order of evaluation at all. We would need to figure out how to modify a given data dynamically, at runtime. The approach is to pass a list of functions as an extra argument to our master function. With the help of a tail recursion we could take one function at a time from that list, and evaluate it with our data, provided that the arity of these functions match with the number of data arguments. But I digressed. There are two data structures to store functions in: a list and a quoted list. Let's consider both approaches:
+
+\begin{minted}[fontsize=\small]{scheme} 
+; functions we are going to work on
+> (define (square x)
+    (* x x))
+
+> (define (double x)
+    (* x 2))
+
+; example of a quoted list: functions turned into symbols
+> (quote (square double))
+(square double)
+> '(square double)	; syntactic sugar equivalent
+(square double)
+
+> (symbol? (car '(square)))
+#t
+
+; example of a list of functions:
+> (list square double)
+(#<procedure:square> #<procedure:double>)
+
+> (procedure? (car (list square)))
+#t
+
+
+; we can assign both lists to variables: 
+> (define lst-of-fun1 '(square double))
+
+> (define lst-of-fun2 (list square double))
+
+
+; differences in use:
+> ((car (list square)) 5)
+25
+
+> ((eval (car '(square))) 5)
+25
+\end{minted}
+
+\paragraph{}\
+\paragraph{\quad1. (d) Show an example of comparing functions and lists for equality.}\
+\paragraph{}\
+To answer this question we must first understand what equality means when it comes to comparing functions or lists with each other. For any object to be equal to another object in Scheme it either needs to point to the same location in memory as the other one, or to have the same type and value, or to have the same, equal numerical value. 
+
+\paragraph{}\
+Per Revised Report on the Algorithmic Language Scheme (r7rs):
+
+	\begin{enumerate}[label=-]
+				
+		\item The eqv? procedure defines a useful equivalence relation on objects. Briefly, it returns \#t if obj1 and obj2 are pairs, vectors, bytevectors, records, or strings that denote the same location in the store; or if obj1 and obj2 are procedures whose location tags are equal.
+					
+		\item The equal? procedure, when applied to pairs, vectors, strings and bytevectors, recursively compares them, returning \#t when the unfoldings of its arguments into (possibly infinite) trees are equal (in the sense of equal?) as ordered trees, and \#f otherwise. It returns the same as eqv? when applied to booleans, symbols, numbers, characters, ports, procedures, and the empty list. If two objects are eqv?, they must be equal? as well. In all other cases, equal? may return either \#t or \#f.
+					
+		\item The eq? predicate is similar to eqv? except that in some cases it is capable of discerning distinctions finer than those detectable by eqv?. On symbols, booleans, the empty list, pairs, and records, and also on non-empty strings, vectors, and bytevectors, eq? and eqv? are guaranteed to have the same behavior. On procedures, eq? must return true if the arguments? location tags are equal. On numbers and characters, eq?'s behavior is implementation-dependent, but it will always return either true or false. On empty strings, empty vectors, and empty bytevectors, eq? may also behave differently from eqv?.
+					
+	\end{enumerate}
+	
+\paragraph{}\
+By mathematical definition of a function, the only valid way to compare two functions for their equivalence is to verify that for every valid input both functions produce the same output, and that both functions also have the same domain and range. This means that a function equality can only be defined correctly in terms of operational equivalency; that is, the implementation doesn't matter, only the behavior does. This, of course, is an undecidable problem in any nontrivial language. It is impossible to determine if any two functions are operationally equivalent because, if we could, we could solve the halting problem. 
+\paragraph{}\
+Let's consider a series of experiments to prove this point:
+
+\begin{minted}[fontsize=\small]{scheme}
+
+> (define (square x)
+    (* x x))
+> (eq? square square)
+#t
+> (equal? square square)
+#t
+> (eqv? square square)
+#t
+
+
+> (define a square)
+> (eq? a square)
+#t
+> (equal? a square)
+#t
+> (eqv? a square)
+#t
+
+
+> (define (sqr x)
+    (* x x))
+> (eq? square sqr)
+#f
+> (equal? square sqr)
+#f
+> (eqv? square sqr)
+#f
+\end{minted}
+- as you can see, if two identifiers both point to the same object (a function) in memory, the result of comparison of these two identifiers with any of the predicates eq?, equal?, eqv? would result in true. However, there are no means to check the equivalence of functions located in two different locations in memory, even if they consist of the same sequence of expressions.
+\paragraph{}\
+Examples of comparing lists for equality:
+\begin{minted}[fontsize=\small]{scheme} 
+
+; base case: an empty list
+> (equal? '() '())
+#t
+> (eq? '() '())
+#t
+> (eqv? '() '())
+#t 
+
+; a list of 1 symbol
+> (equal? '(a) '(a))
+#t
+> (eq? '(a) '(a))
+#f
+> (eqv? '(a) '(a))
+#f
+
+; same as:
+> (equal? (list 'a) (list 'a))
+#t
+> (eq? (list 'a) (list 'a))
+#f
+> (eqv? (list 'a) (list 'a))
+#f
+
+
+> (equal? '(a (b) c) '(a (b) c))
+#t
+> (eq? '(a (b) c) '(a (b) c))
+#f
+> (eqv? '(a (b) c) '(a (b) c))
+#f
+
+
+> (define list1 '(1 2 3))
+> (define list2 '(1 2 3))
+
+> (equal? list1 list2)
+#t
+> (eq? list1 list2)
+#f
+> (eqv? list1 list2)
+#f
+
+> (define list11 list1)
+
+> (equal? list11 list1)
+#t
+> (eq? list11 list1)
+#t
+> (eqv? list11 list1)
+#t
+\end{minted}
+
+\paragraph{}\
+\paragraph{\quad1. (e) Show an example of passing function as an argument to another function.}\
+\paragraph{}\
+Let's continue the discussion started in the problem (1.c) and define a function conveyor that takes as its arguments a list of numbers (as data that we want to modify), and either a single function or a list of functions (as a sequence of operations to perform on that data):
+\begin{minted}[fontsize=\small]{scheme} 
+; initial setup:
+(define (square x)
+    (* x x))
+
+(define (double x)
+    (* x 2))
+    
+(define (atom? x)
+  (and (not (pair? x))
+       (not (null? x))))    
+    
+(define (conveyor lst-functions lst-data-operand1)
+    (cond
+      [(empty? lst-functions) lst-data-operand1]
+      [(atom? lst-functions) (map lst-functions lst-data-operand1)]
+      [else (conveyor (cdr lst-functions)
+                      (if (procedure? (car lst-functions))
+                          (map (car lst-functions) lst-data-operand1)
+                          (map (eval (car lst-functions)) lst-data-operand1)))]))
+
+; passing a single function as an argument:                          
+> (conveyor square '(1 2 3 4))
+(1 4 9 16)
+
+> (conveyor double '(1 2 3 4))
+(2 4 6 8)
+
+> (define lst-fun1 '(square double))
+> lst-fun1
+(square double)
+
+> (define lst-fun2 (list square double))
+> lst-fun2
+(#<procedure:square> #<procedure:double>)
+
+; passing a quoted list of functions (where functions are symbols) as an argument:
+> (conveyor lst-fun1 '(1 2 3 4))
+(2 8 18 32)
+
+; passing a list of functions as an argument:
+> (conveyor lst-fun2 '(1 2 3 4))
+(2 8 18 32)
+
+> (conveyor '(square double sqrt) '(1 2 3 4))
+(1.4142135623730951 2.8284271247461903 4.242640687119285 5.656854249492381)
+\end{minted}
+
+\paragraph{}\
+\paragraph{\quad1. (f) Show an example of returning a function as a result of another function.}\
+\paragraph{}\
+In order to return a function we must put a lambda expression as the last expression to evaluate inside another function. Let's consider the following code:
+\begin{minted}[fontsize=\small]{scheme}
+; auxiliary function
+(define (atom? x)
+  (and (not (pair? x))
+       (not (null? x))))   
+ 
+; two hard things in Computer Science: cache invalidation and naming things
+(define (multiple-fun x)
+  (cond
+    [(number? x) (lambda(d) (* d d))]
+    [(procedure? x) (lambda(d) (* d d))]
+    [(atom? x) (lambda(d) (display d))]
+    [else (lambda(d) (car d))]))
+    
+    
+    
+; examples of use:
+> (multiple-fun 123)
+#<procedure:...hw4-problem1.rkt:51:17>
+
+> ((multiple-fun 123) 32)
+1024
+
+> ((multiple-fun 'a) "Hello, world!")
+Hello, world!
+
+> ((multiple-fun '(a b c)) '(Apple Banana))
+Apple
+
+> ((multiple-fun (lambda(n) (+ n n))) 256)
+65536
+
+> ((multiple-fun +) 256)
+65536
+
+; leveraging the function conveyor defined in the previous problem (1e)
+> (conveyor (list (multiple-fun +)) '(1 2 3 4))
+(1 4 9 16) 
+
+; which is the same as:
+> (map (multiple-fun +) '(1 2 3 4))
+(1 4 9 16)
+\end{minted}
+
+\paragraph{}\
+\paragraph{\quad1. (g) Show examples of reading function(s) from the keyboard, reading function(s) from a file, and displaying a function.}\
+
+\paragraph{}\
+Reading a function from keyboard:
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (eval (read))
+(lambda(x) (+ 1 2))
+#<procedure:...t/private/kw.rkt:446:14
+
+> ((eval (read)) 256)
+(lambda(x) (+ x x))
+512
+
+> (define (read-fun-from-keyboard)
+    (eval (read)))
+
+> ((read-fun-from-keyboard) 256)
+(lambda(x) (* x 4))
+1024
+\end{minted}
+\paragraph{}\
+Reading functions from a file, displaying them as quoted lists, and evaluating:
+
+\begin{minted}[fontsize=\small]{scheme} 
+
+> (define in (open-input-file "/Users/ilya.kopyl/Documents/functions.txt"))
+> (read in)
+'(lambda (x) (* x x))
+> (read in)
+'(lambda (x) (+ x x))
+> (read in)
+'(define (square x) (* x x))
+> (read in)
+'(define (double x) (* x 2))
+> (read in)
+#<eof>
+> (close-input-port in)
+
+
+> (define in (open-input-file "/Users/ilya.kopyl/Documents/functions.txt"))
+> ((eval (read in)) 32)
+1024
+> ((eval (read in)) 8)
+16
+
+> square
+. . square: undefined;
+ cannot reference an identifier before its definition
+
+> (eval (read in))
+
+> square
+#<procedure:square>
+
+> (square 16)
+256
+
+
+> double
+. . double: undefined;
+ cannot reference an identifier before its definition
+
+> (eval (read in))
+
+> double
+#<procedure:double>
+
+> (double 2)
+4
+
+> (close-input-port in)
+\end{minted}
+\paragraph{}\
+\paragraph{}\
+Displaying a source code of a function:
+\begin{minted}[fontsize=\small]{scheme}
+ilya.kopyl@ilyakopyl-ltm TIScheme(1) $ mit-scheme
+MIT/GNU Scheme running under OS X
+
+Copyright (C) 2014 Massachusetts Institute of Technology
+
+1 ]=> (define (square x) (* x x))
+
+;Value: square
+
+1 ]=> (pp square)
+(named-lambda (square x)
+  (* x x))
+;Unspecified return value
+
+1 ]=> (define (flatten2 sequence)
+	(if (not (list? sequence)) (list sequence)
+		(apply append (map flatten2 sequence))))
+
+;Value: flatten2
+
+1 ]=> (pp flatten2)
+(named-lambda (flatten2 sequence)
+  (if (not (list? sequence))
+      (list sequence)
+      (apply append (map flatten2 sequence))))
+;Unspecified return value
+\end{minted}
+
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+	\paragraph{2. Write a Scheme function \(sigma\) that computes the standard deviation of any number of arguments.}\
+	
+\paragraph{}\
+		The mean value of n numbers is \(\overline{x} = (x_1 + x_2 + \ldots + x_n) / n\).
+\paragraph{}\
+		The mean value of n squares is \(\overline{x^2} = (x_1^2 + x_2^2 + \ldots + x_n^2) / n\).
+\paragraph{}\
+		The standard deviation is defined as \(\sigma = \sqrt{ \overline{x^2} - (\overline{x})^2 } \).
+\paragraph{}\
+		Write a Scheme function \(sigma\) that computes the standard deviation of any number of arguments, as in the following example:		
+		
+\begin{minted}[fontsize=\small]{scheme} 
+> (sigma 1 2 3 2 1)
+0.748331477354788
+> (sigma 1 3 1 3 1 3)
+1.
+> (sigma 1 3)
+1.
+> (sigma 1)
+0.
+\end{minted}
+
+\paragraph{}\	
+Source code of the program:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+#lang racket
+
+(define (square x)
+  (* x x))
+
+(define (square-lst x)
+  (map square x))
+
+(define (sum-lst x)
+  (apply + x))
+
+(define (mean-lst lst)
+  (/ (sum-lst lst)
+     (length lst)))
+
+; at least 1 argument is required
+(define (sigma x . y)
+  (let ((data (cons x y)))	; defined the local variable for convenience
+    (sqrt (- (mean-lst (square-lst data))
+             (square (mean-lst data))))))
+\end{minted}	
+
+\paragraph{}\	
+\paragraph{}\
+	The result of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (sigma 1 2 3 2 1)
+0.7483314773547883
+> (sigma 1 3 1 3 1 3)
+1
+> (sigma 1 3)
+1
+> (sigma 1)
+0
+> (sigma 100 94 92 88 87 87)
+4.6785562825394
+\end{minted}
+	
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{3.\quad (a) Write a recursive Scheme procedure \(line\) that prints n asterisks in a line as follows:}\
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (line 5)
+*****
+\end{minted}
+
+\paragraph{\qquad (b) Write a recursive Scheme procedure \(histogram\) that uses the procedure \(line\), and prints a histogram for a list of integers:}\
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (histogram '(1 2 3 3 2 1))
+*
+**
+***
+***
+**
+*
+\end{minted}
+\paragraph{}\
+		The answer is listed on the page 14.
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{scheme} 
+#lang racket
+
+; auxiliary predicate
+(define (non-negative? x)
+  (if (or (equal? x 0)
+          (positive? x)) #t #f))
+
+;auxiliary predicate
+(define (valid-input? x)
+  (if (and (number? x)
+           (and (integer? x)
+                (non-negative? x))) #t #f))
+
+(define (line x)
+  (if (not (valid-input? x)) (display "Argument must be a non-negative integer.\n")
+      (if (equal? x 0) (newline)	     ; base case - print newline character
+          (begin (display "*")	       ; print *
+                 (line (- x 1))))))	  ; call line function for x-1
+
+      
+(define (histogram lst)
+  (if (not (list? lst)) (display "Argument must be a list.\n")
+      (if (empty? lst) (display "")	  ; base case - print an empty string
+          (begin (line (car lst))	    ; call line function for car of the lst
+                 (histogram (cdr lst))))))   ; call histogram for cdr of the lst      
+\end{minted}
+
+\paragraph{}\
+	The result of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (line -1)
+Argument must be a non-negative integer.
+> (line pi)
+Argument must be a non-negative integer.
+> (line 0)
+
+> (line 1)
+*
+> (line 5)
+*****
+> (histogram 12)
+Argument must be a list.
+> (histogram '(1 2 3 3 2 1))
+*
+**
+***
+***
+**
+*
+\end{minted}
+
+\paragraph{4. Write a Scheme program for computing a maximum of function \(f(x)\) within the interval \([x_1, x_2]\). Use the trisection method, and find the coordinate of maximum \(xmax\) with accuracy of 6 significant decimal digits.}\
+
+\paragraph{}\
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{scheme}
+#lang racket
+
+; auxiliary predicate
+(define (difference-sufficiently-small? x1 x2)
+  (let ((threshold 1e-10))    ; threshold can be easily changed in the future
+    (if (< (abs (- x2 x1)) threshold) #t #f)))
+
+; auxiliary function
+(define (round-to-n-significant-decimal-digits x n)
+  (/ (round (* x (expt 10 n)))
+     (expt 10 n)))
+
+; auxiliary function
+(define (mean x . y)
+  (/ (apply + (cons x y))
+     (+ 1 (length y))))
+
+; auxiliary function
+(define (third-of-delta-between x1 x2)
+  (/ (- x2 x1) 3))
+
+; main function
+(define (fmax f x1 x2)
+  (if (not (procedure? f)) (display "First argument must be a procedure.")
+      (cond
+        [(difference-sufficiently-small? x1 x2)
+         (let ((rounded-xmax (round-to-n-significant-decimal-digits (mean x1 x2) 6)))
+           (display "xmax = ")
+           (display rounded-xmax)
+           (newline)
+           (display "ymax = ")
+           (display (round-to-n-significant-decimal-digits (f rounded-xmax) 6)))]
+        [else (let ((a1 (+ x1 (third-of-delta-between x1 x2)))
+                    (a2 (- x2 (third-of-delta-between x1 x2))))
+                (if (< (f a1) (f a2))
+                    (fmax f a1 x2)
+                    (fmax f x1 a2)))])))
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+	Results of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (difference-sufficiently-small? 1.00000000001 1.00000000008)
+#t
+> (difference-sufficiently-small? 1.00000000011 1.0000000008)
+#f
+
+> (fmax (lambda(x) (* x (- 1 x))) 0 10)
+xmax = 1/2
+ymax = 1/4
+> (fmax (lambda(x) (* x (- x 1))) 0 10)
+xmax = 10
+ymax = 90
+> (fmax (lambda(x) (* x (- x 1))) 0 9.95)
+xmax = 9.95
+ymax = 89.0525
+> (fmax (lambda(x) (* x (- x 1))) 0 9.9875)
+xmax = 9.9875
+ymax = 89.762656
+> (fmax (lambda(x) (* x (- x 1))) 0 9.987654)
+xmax = 9.987654
+ymax = 89.765578
+> (fmax (lambda(x) (* x (- x 1))) 0 9.9876543)
+xmax = 9.987654
+ymax = 89.765578
+> (fmax (lambda(x) (* x (- x 1))) 0 9.987654321)
+xmax = 9.987654
+ymax = 89.765578
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{5. Develop a program that computes the scalar product of two vectors. The program must not accept vectors having different size (in such a case print an error message). For example: }\
+
+\begin{minted}[fontsize=\small]{scheme} 
+> (scalar-product '#(1 2 3) '#(2 1 1))
+7
+> (scalar-product '#(1 2 3) '#(1 2 3 4 5))
+ERROR: Different sizes of vectors!
+\end{minted}
+
+\begin{enumerate}[label=(\alph*)]
+
+	\item \textbf{Write the program in iterative style using the DO loop.}
+	
+	\item \textbf{Write the program using recursion.}
+					
+\end{enumerate}
+
+\paragraph{}\
+	The answer is listed on the pages 17 through 18.
+	
+\paragraph{}\
+Source code of the program:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+#lang racket
+
+; the inner product of two vectors:
+; A * B = (a1 * b1 + a2 * b2 + ... + an * bn)
+
+; auxiliary predicate
+(define (both-vectors? v1 v2)
+  (and (vector? v1) (vector? v2)))
+
+; auxiliary predicate
+(define (vector-lengths-equal? v1 v2)
+  (equal? (vector-length v1) (vector-length v2)))
+
+; auxiliary predicate
+(define (valid-vectors-input? v1 v2)
+  (cond
+    [(not (both-vectors? v1 v2))
+     (begin (display "Error: Both arguments must be vectors.\n") #f)]
+    [(not (vector-lengths-equal? v1 v2))
+     (begin (display "Error: Both vectors must have the same length.\n") #f)]
+    [else #t]))
+
+; main program - entry point
+(define (inner-product v1 v2 is-recursive)
+  (cond
+    [(not (valid-vectors-input? v1 v2)) (display "")]
+    [else (if (equal? is-recursive #t)
+              (inner-product-recursive (vector->list v1) (vector->list v2))
+              (inner-product-iterative v1 v2))]))
+
+; recursive implementation of inner-product
+(define (inner-product-recursive lst1 lst2)
+  (cond
+    [(empty? lst1) 0]
+    [(+ (* (car lst1) (car lst2))
+        (inner-product-recursive (cdr lst1) (cdr lst2)))]))
+  
+; iterative implementation of inner-product
+(define (inner-product-iterative v1 v2)
+  (let ((sum 0))
+    (do ((i 0 (add1 i)))
+      ((>= i (vector-length v1)) sum)
+      (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
+\end{minted}	
+
+\paragraph{}\
+\paragraph{}\
+
+	Results of the program execution:
+	
+\begin{minted}[fontsize=\small]{scheme} 
+> (inner-product #(1 2 3) 123 #f)
+Error: Both arguments must be vectors.
+
+> (inner-product #(1 2 3) 123 #t)
+Error: Both arguments must be vectors.
+
+> (inner-product #(1 2 3) #(1 2 3 4) #f)
+Error: Both vectors must have the same length.
+
+> (inner-product #(1 2 3) #(1 2 3 4) #t)
+Error: Both vectors must have the same length.
+
+> (inner-product #(1 2 3) #(2 1 1) #f)
+7
+
+> (inner-product #(1 2 3) #(2 1 1) #t)
+7
+
+> (inner-product #(1 2 3) #(3 2 1) #t)
+10
+
+> (inner-product #(1 2 3) #(3 2 1) #f)
+10
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{6. The files "matrix1.dat" and "matrix2.dat" are created using a text editor and contain two rectangular matrices. For example, }\
+\paragraph{}\
+\quad matrix1.dat:		\qquad \qquad \qquad \qquad matrix2.dat:
+\begin{minted}[fontsize=\small]{scheme}
+
+     2   3                     3   3
+     1   2   3                 1   2   3
+     4   5   6                 1   2   3
+                               1   2   3
+\end{minted}
+In both cases the first row contains the size of the matrix (the number of rows and the number of columns). The remaining rows contain the values of elements.
+
+	\begin{enumerate}[label=(\alph*)]
+
+	\item Develop programs \textbf{row} and \textbf{col} that read a matrix from a file and display a specified row or column. For example:
+	
+\begin{minted}[fontsize=\small]{scheme}
+> (row "matrix1.dat" 2)
+4 5 6
+> (col "matrix1.dat" 2)
+2 5
+\end{minted}
+	
+	Matrices should be stored in memory as vectors whose components are vectors.
+	\paragraph{}\
+	
+	\item Develop a program for matrix multiplication \textbf{mmul} that multiplies two matrices stored in specified input files, and creates and displays an output file containing the product. For example:
+	
+\begin{minted}[fontsize=\small]{scheme}
+> (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
+ 6  12   18
+15  30   45
+\end{minted}
+In this example the contents of the new file "matrix3.dat" should be
+
+\begin{minted}[fontsize=\small]{scheme}
+ 2    3
+ 6   12   18
+15   30   45
+\end{minted}
+					
+	\end{enumerate}
+	
+\paragraph{}\
+\paragraph{}\
+	The answer is listed on the pages 20 through 22.
+\paragraph{}\
+\paragraph{}\
+
+Source code of the program:
+
+\begin{minted}[fontsize=\small]{scheme}
+#lang racket
+
+; display components of the vector
+(define (display-vector v)
+  (do ((i 0 (add1 i)))
+    ((>= i (vector-length v))
+     (display ""))
+    (display (vector-ref v i))
+    (display " ")))
+
+;read matrix from file
+(define (read-matrix filename)
+  (let* ((inport (open-input-file filename))
+         (nrow (read inport))
+         (ncol (read inport))
+         (mat (make-vector nrow)))
+    (do ((i 0 (add1 i)))
+      ((>= i nrow) (close-input-port inport) mat)
+      (let ((row (make-vector ncol)))
+        (do ((j 0 (add1 j)))
+          ((>= j ncol)
+           (vector-set! mat i row))
+          (vector-set! row j (read inport)))))))
+
+; return i-th row of the matrix in filename
+(define (ro filename i)
+  (define mat (read-matrix filename))
+  (vector-ref mat i))
+
+; display i-th row of the matrix in filename
+(define (row filename i)
+  (display-vector (ro filename i)))
+
+; return j-th col of the matrix in the filename
+(define (co filename j)
+  (define mat (read-matrix filename))
+  (define nrow (vector-length mat))
+  (define column (make-vector nrow))
+  (do ((i 0 (add1 i)))
+    ((>= i nrow) column)
+    (vector-set! column i (vector-ref (vector-ref mat i) j ))))
+
+; display j-th col of the matrix in filename
+(define (col filename j)
+  (display-vector (co filename j)))
+
+
+; iterative implementation of inner-product
+(define (inner-product-iterative v1 v2)
+  (let ((sum 0))
+    (do ((i 0 (add1 i)))
+      ((>= i (vector-length v1)) sum)
+      (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
+
+; matrix multiplication, display and create
+(define (mmul f1 f2 f3)
+  (define m1 (read-matrix f1))
+  (define m2 (read-matrix f2))
+  (define nrow (vector-length m1))
+  (define ncol (vector-length m2))
+  (define outport (open-output-file f3))
+  (display nrow outport)
+  (display " " outport)
+  (display ncol outport)
+  (newline outport)
+  (do ((i 0 (add1 i)))
+    ((>= i nrow) (close-output-port outport) (display ""))
+    (begin (let ((row (make-vector ncol)))
+       (do ((j 0 (add1 j)))
+         ((>= j ncol) (display-vector row) (newline) (newline outport))
+         (vector-set! row j (inner-product-iterative (ro f1 i) (co f2 j)))
+         (display (vector-ref row j) outport)
+         (display " " outport))))))
+\end{minted}
+\paragraph{}\
+
+	Results of the program execution:
+\begin{minted}[fontsize=\small]{scheme}
+> (read-matrix "mymatrix1.dat")
+'#(#(1 9 5) #(2 5 6) #(4 3 1))
+
+> (read-matrix "mymatrix2.dat")
+'#(#(1 4 5) #(1 8 9))
+
+> (row "mymatrix1.dat" 0)
+1 4 5 
+> (row "mymatrix1.dat" 0)
+1 4 5 
+> (row "mymatrix1.dat" 1)
+1 8 9 
+
+> (col "mymatrix1.dat" 0)
+1 1 
+> (col "mymatrix1.dat" 1)
+4 8 
+
+> (col "mymatrix1.dat" 2)
+5 9 
+
+> (mmul "mymatrix1.dat" "mymatrix2.dat" "mymatrix3.dat")
+29 44 34 
+53 76 62 
+
+> (read-matrix "mymatrix3.dat")
+'#(#(29 44 34) #(53 76 62))
+
+
+
+> (read-matrix "matrix1.dat")
+'#(#(1 2 3) #(4 5 6))
+
+> (read-matrix "matrix2.dat")
+'#(#(1 2 3) #(1 2 3) #(1 2 3))
+
+> (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
+6 12 18 
+15 30 45 
+
+> (read-matrix "matrix3.dat")
+'#(#(6 12 18) #(15 30 45))
+
+
+\end{minted}
+
+\end{document}
