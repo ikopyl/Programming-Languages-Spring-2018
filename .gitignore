@@ -6,4 +6,5 @@ cmake-build-debug
 *.rkt~
 *.aux
 *.log
+*.gz
 _minted*
