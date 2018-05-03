@@ -10,6 +10,7 @@ end
 
 def hist(array)
   array.each do |item|
+    print item, '\t'
     item.times { print '*' }
     puts
   end
