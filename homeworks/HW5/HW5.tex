@@ -119,6 +119,9 @@ irb(main):001:0> show([1,2,3,4,5])
 irb(main):002:0> show([])
 Array is empty
 => nil
+irb(main):003:0> show(generate_rand_int_array(10, 100))
+39 17 69 0 94 87 91 15 60 32
+=> nil
 \end{minted}
 	
 \paragraph{}\
@@ -140,78 +143,53 @@ Array is empty
 10 *********
 \end{minted}
 
-\paragraph{\qquad (b) Write a recursive Scheme procedure \(histogram\) that uses the procedure \(line\), and prints a histogram for a list of integers:}\
-
-\begin{minted}[fontsize=\small]{scheme} 
-> (histogram '(1 2 3 3 2 1))
-*
-**
-***
-***
-**
-*
-\end{minted}
 \paragraph{}\
-		The answer is listed on the page 14.
-
+	The answer is listed on the page TBD.
 \paragraph{}\
-\paragraph{}\
-\paragraph{}\
+	
 \paragraph{}\
 Source code of the program:
 
-\begin{minted}[fontsize=\small]{scheme} 
-#lang racket
-
-; auxiliary predicate
-(define (non-negative? x)
-  (if (or (equal? x 0)
-          (positive? x)) #t #f))
-
-;auxiliary predicate
-(define (valid-input? x)
-  (if (and (number? x)
-           (and (integer? x)
-                (non-negative? x))) #t #f))
-
-(define (line x)
-  (if (not (valid-input? x)) (display "Argument must be a non-negative integer.\n")
-      (if (equal? x 0) (newline)	     ; base case - print newline character
-          (begin (display "*")	       ; print *
-                 (line (- x 1))))))	  ; call line function for x-1
-
-      
-(define (histogram lst)
-  (if (not (list? lst)) (display "Argument must be a list.\n")
-      (if (empty? lst) (display "")	  ; base case - print an empty string
-          (begin (line (car lst))	    ; call line function for car of the lst
-                 (histogram (cdr lst))))))   ; call histogram for cdr of the lst      
+\begin{minted}[fontsize=\normalsize]{ruby}
+def hist(array)
+  array.each_with_index do |value, index|
+    print index, "\t"
+    puts " #{'*' * value} "
+  end
+end
 \end{minted}
 
 \paragraph{}\
 	The result of the program execution:
 	
-\begin{minted}[fontsize=\small]{scheme} 
-> (line -1)
-Argument must be a non-negative integer.
-> (line pi)
-Argument must be a non-negative integer.
-> (line 0)
-
-> (line 1)
-*
-> (line 5)
-*****
-> (histogram 12)
-Argument must be a list.
-> (histogram '(1 2 3 3 2 1))
-*
-**
-***
-***
-**
-*
+\begin{minted}[fontsize=\normalsize]{bash} 
+$ irb -r ./hw5.rb
+irb(main):001:0> hist([1,2,3,4,5])
+0	 *
+1	 **
+2	 ***
+3	 ****
+4	 *****
+=> [1, 2, 3, 4, 5]
+irb(main):002:0> hist(generate_rand_int_array(10, 10))
+0	 ***
+1	 *
+2	 *****
+3	 ********
+4	 ******
+5	 ****
+6	 ***
+7	 ****
+8	 *****
+9	 *****
+=> [3, 1, 5, 8, 6, 4, 3, 4, 5, 5]
 \end{minted}
+
+
+\paragraph{}\
+\paragraph{}\
+
+
 
 \paragraph{4. Write a Scheme program for computing a maximum of function \(f(x)\) within the interval \([x_1, x_2]\). Use the trisection method, and find the coordinate of maximum \(xmax\) with accuracy of 6 significant decimal digits.}\
 
