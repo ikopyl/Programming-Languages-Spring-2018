@@ -90,3 +90,14 @@
 
 (define (translate points delta)
   (map (lambda (x) (+ x delta)) points))
+
+(define (add-num-to-each-elem-in-list num lst)
+  (map (lambda (x) (+ x num)) lst))
+
+(define (avg num-list)
+  (/ (apply + num-list)
+     (length num-list)))
+
+(define (avg2 num-list)
+  (/ (sum num-list)
+     (length num-list)))
