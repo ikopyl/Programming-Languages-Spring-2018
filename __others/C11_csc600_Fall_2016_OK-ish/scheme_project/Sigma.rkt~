@@ -1,3 +1,0 @@
-#lang racket
-(define (sumlist lst)
-  (if (null? lst) 0 (! (car lst) (sumlist (cdr lst))))) 
