@@ -76,7 +76,7 @@
 
 Source code of the program:
 
-\begin{minted}[fontsize=\small]{ruby}
+\begin{minted}[fontsize=\normalsize]{ruby}
 def generate_rand_int_array(size = 100, val_upper_bound = 10)
   Array.new(size) { rand(val_upper_bound + 1) }
 end
@@ -94,14 +94,13 @@ end
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
-\paragraph{}\
 
 	\paragraph{2. Make a function \(show(v)\) that displays the array \(v\). }\
 
 \paragraph{}\	
 Source code of the program:
 
-\begin{minted}[fontsize=\small]{ruby} 
+\begin{minted}[fontsize=\normalsize]{ruby} 
 def show(array)
   print 'Array is empty' if array.empty?
   array.each { |item| print item, ' ' } unless array.empty?
@@ -112,7 +111,7 @@ end
 \paragraph{}\
 	The result of the program execution:
 	
-\begin{minted}[fontsize=\small]{bash} 
+\begin{minted}[fontsize=\normalsize]{bash} 
 $ irb -r ./hw5.rb
 irb(main):001:0> show([1,2,3,4,5])
 1 2 3 4 5
@@ -125,11 +124,20 @@ Array is empty
 \paragraph{}\
 \paragraph{}\
 
-\paragraph{3. Make a function \(hist(v)\) that plots a histogram of values stored in array v. For example:}\
+\paragraph{3. Make a function \(hist(v)\) that plots a histogram of values stored in array \(v\). For example:}\
 
-\begin{minted}[fontsize=\small]{scheme} 
-> (line 5)
-*****
+\begin{minted}[fontsize=\normalsize]{bash} 
+0  **********
+1  ********
+2  *********
+3  ***********
+4  *******
+5  ************
+6  ***********
+7  *********
+8  *************
+9  ***********
+10 *********
 \end{minted}
 
 \paragraph{\qquad (b) Write a recursive Scheme procedure \(histogram\) that uses the procedure \(line\), and prints a histogram for a list of integers:}\
