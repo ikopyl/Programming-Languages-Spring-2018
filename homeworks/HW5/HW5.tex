@@ -77,21 +77,21 @@
 Source code of the program:
 
 \begin{minted}[fontsize=\small]{ruby}
-def generate_new_rand_int_arr(size = 100, val_upper_bound = 10)
+def generate_rand_int_array(size = 100, val_upper_bound = 10)
   Array.new(size) { rand(val_upper_bound + 1) }
 end
-
-p generate_new_rand_int_arr
 \end{minted}
 
 \paragraph{}\
 
 	Result of the program execution:
-\begin{minted}[fontsize=\small]{bash}
+\rmfamily\newline
 
-\end{minted}
-\noindent \texttt{[9, 10, 10, 5, 5, 4, 0, 9, 8, 5, 7, 8, 7, 4, 2, 2, 4, 2, 8, 4, 6, 6, 5, 4, 7, 5, 0, 10, 1, 1, 4, 5, 4, 10, 2, 0, 1, 9, 4, 6, 1, 9, 3, 4, 0, 5, 7, 0, 4, 2, 7, 1, 4, 3, 3, 5, 0, 3, 1, 5, 1, 0, 7, 3, 4, 2, 3, 7, 1, 6, 5, 8, 5, 2, 7, 6, 9, 0, 7, 3, 10, 9, 4, 8, 0, 10, 5, 7, 7, 5, 6, 4, 1, 7, 5, 10, 1, 9, 7, 6]}
+\noindent \texttt{\$ irb -r ./hw5.rb}\newline
+\noindent \texttt{irb(main):001:0> generate_rand_int_array}\newline
+\noindent \texttt{=> [9, 10, 10, 5, 5, 4, 0, 9, 8, 5, 7, 8, 7, 4, 2, 2, 4, 2, 8, 4, 6, 6, 5, 4, 7, 5, 0, 10, 1, 1, 4, 5, 4, 10, 2, 0, 1, 9, 4, 6, 1, 9, 3, 4, 0, 5, 7, 0, 4, 2, 7, 1, 4, 3, 3, 5, 0, 3, 1, 5, 1, 0, 7, 3, 4, 2, 3, 7, 1, 6, 5, 8, 5, 2, 7, 6, 9, 0, 7, 3, 10, 9, 4, 8, 0, 10, 5, 7, 7, 5, 6, 4, 1, 7, 5, 10, 1, 9, 7, 6]}
 
+\paragraph{}\
 \paragraph{}\
 \paragraph{}\
 \paragraph{}\
@@ -100,23 +100,32 @@ p generate_new_rand_int_arr
 
 \paragraph{}\	
 Source code of the program:
-	
+
 \begin{minted}[fontsize=\small]{ruby} 
-puts "Hello, world!"
+def show(array)
+  print 'Array is empty' if array.empty?
+  array.each { |item| print item, ' ' } unless array.empty?
+  puts
+end
 \end{minted}	
 
-\paragraph{}\	
 \paragraph{}\
 	The result of the program execution:
 	
 \begin{minted}[fontsize=\small]{bash} 
-Hello, world!
+$ irb -r ./hw5.rb
+irb(main):001:0> show([1,2,3,4,5])
+1 2 3 4 5
+=> nil
+irb(main):002:0> show([])
+Array is empty
+=> nil
 \end{minted}
 	
 \paragraph{}\
 \paragraph{}\
 
-\paragraph{3.\quad (a) Write a recursive Scheme procedure \(line\) that prints n asterisks in a line as follows:}\
+\paragraph{3. Make a function \(hist(v)\) that plots a histogram of values stored in array v. For example:}\
 
 \begin{minted}[fontsize=\small]{scheme} 
 > (line 5)
