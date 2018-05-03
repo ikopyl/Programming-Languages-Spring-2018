@@ -7,3 +7,10 @@ def show(array)
   array.each { |item| print item, ' ' } unless array.empty?
   puts
 end
+
+def hist(array)
+  array.each do |item|
+    item.times { print '*' }
+    puts
+  end
+end
