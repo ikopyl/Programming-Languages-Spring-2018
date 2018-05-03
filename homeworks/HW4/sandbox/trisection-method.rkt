@@ -9,22 +9,24 @@
 ; when the interval becomes sufficiently small. Then the coordinate
 ; of the maximum is xmax = (x1+x2)/2, yielding fmax = f(xmax).
 
-(define disp
-  (lambda (x n)
-    (display (/ (round (* x (expt 10 n)))
-                (expt 10 n)))))
+(define (disp x n)
+  (display (/ (round (* x (expt 10 n)))
+              (expt 10 n))))
 
 
-(define fmax
-  (lambda (f x1 x2)
-    (cond
-      [(< (- x2 x1) 1e-10) (display "maximum: f(")
-                           (disp (/ (+ x1 x2) 2) 4)
-                           (display ") = ")
-                           (disp (f (/ (+ x1 x2) 2)) 4)]
-      [else (let ((a1 (+ x1 (/ (- x2 x1) 3)))
-                  (a2 (- x2 (/ (- x2 x1) 3))))
-              (if (< (f a1) (f a2))
-                  (fmax f a1 x2)
-                  (fmax f x1 a2)))])))
-            
+(define (fmax f x1 x2)
+  (cond
+    [(< (- x2 x1) 1e-6) (display "maximum: f(")
+                         (disp (/ (+ x1 x2) 2) 4)
+                         (display ") = ")
+                         (disp (f (/ (+ x1 x2) 2)) 4)]
+    [else (let ((a1 (+ x1 (/ (- x2 x1) 3)))
+                (a2 (- x2 (/ (- x2 x1) 3))))
+            (if (< (f a1) (f a2))
+                (fmax f a1 x2)
+                (fmax f x1 a2)))]))
+
+
+; (fmax (lambda(x) (* x (- 1 x))) 0 10)
+
+; (fmax (lambda(x) (* x (- x 1))) 0 10)

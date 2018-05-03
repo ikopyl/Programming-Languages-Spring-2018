@@ -1,0 +1,7 @@
+(lambda(x) (* x x))
+(lambda(x) (+ x x))
+
+(define (square x) (* x x))
+
+(define (double x) (* x 2))
+
