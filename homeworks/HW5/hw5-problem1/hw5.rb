@@ -9,9 +9,8 @@ def show(array)
 end
 
 def hist(array)
-  array.each do |item|
-    print item, '\t'
-    item.times { print '*' }
-    puts
+  array.each_with_index do |value, index|
+    print index, "\t"
+    puts " #{'*' * value} "
   end
 end
