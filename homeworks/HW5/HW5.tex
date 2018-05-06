@@ -70,119 +70,84 @@
 
 
 
-	\paragraph{1. Function \(rand(n+1)\) returns a random integer between \(0\) and \(n\). Write a function that creates an array of 100 random numbers between \(0\) and \(10\).}\
+	\paragraph{1. Write a single Ruby demo program that illustrates the use of all main Ruby iterators (\(loop\), \(while\), \(until\), \(for\), \(upto\), \(downto\), \(times\), \(each\), \(map\), \(step\), \(collect\), \(select\), \(reject\)).}\
 
 \paragraph{}\
 
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby}
-def generate_rand_int_array(size = 100, val_upper_bound = 10)
-  Array.new(size) { rand(val_upper_bound + 1) }
-end
+
 \end{minted}
 
 \paragraph{}\
 
 	Result of the program execution:
-\rmfamily\newline
 
-\noindent \texttt{\$ irb -r ./hw5.rb}\newline
-\noindent \texttt{irb(main):001:0> generate_rand_int_array}\newline
-\noindent \texttt{=> [9, 10, 10, 5, 5, 4, 0, 9, 8, 5, 7, 8, 7, 4, 2, 2, 4, 2, 8, 4, 6, 6, 5, 4, 7, 5, 0, 10, 1, 1, 4, 5, 4, 10, 2, 0, 1, 9, 4, 6, 1, 9, 3, 4, 0, 5, 7, 0, 4, 2, 7, 1, 4, 3, 3, 5, 0, 3, 1, 5, 1, 0, 7, 3, 4, 2, 3, 7, 1, 6, 5, 8, 5, 2, 7, 6, 9, 0, 7, 3, 10, 9, 4, 8, 0, 10, 5, 7, 7, 5, 6, 4, 1, 7, 5, 10, 1, 9, 7, 6]}
+
 
 \paragraph{}\
 \paragraph{}\
-\paragraph{}\
 
-	\paragraph{2. Make a function \(show(v)\) that displays the array \(v\). }\
+
+	\paragraph{2. Write Ruby recognizer methods \(limited?\) and \(sorted?\) that expand the Ruby class Array.}\ \newline
+	
+	The expression \texttt{array.limited?(amin, amax)} should return \(true\) if  \(amin  \leqslant  a[i]  \leqslant  amax\) \(\forall i\). \newline
+	
+	The expression \texttt{array.sorted?} should return the following: 
+	\begin{itemize}
+		\item \ \ \(0\) \quad  if the array is not sorted
+		\item \(+1\) \quad if \(a[0] \leqslant a[1] \leqslant a[2] \leqslant ... \leqslant a[n]\) (non-decreasing order)
+		\item \(-1\) \quad if \(a[0] \geqslant a[1] \geqslant a[2] \geqslant ... \geqslant a[n]\) (non-increasing order)
+	\end{itemize}
+	
+	Show examples of the use of this method.
 
 \paragraph{}\	
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby} 
-def show(array)
-  print 'Array is empty' if array.empty?
-  array.each { |item| print item, ' ' } unless array.empty?
-  puts
-end
+
 \end{minted}	
 
 \paragraph{}\
 	The result of the program execution:
 	
 \begin{minted}[fontsize=\normalsize]{bash} 
-$ irb -r ./hw5.rb
-irb(main):001:0> show([1,2,3,4,5])
-1 2 3 4 5
-=> nil
-irb(main):002:0> show([])
-Array is empty
-=> nil
-irb(main):003:0> show(generate_rand_int_array(10, 100))
-39 17 69 0 94 87 91 15 60 32
-=> nil
+
 \end{minted}
 	
 \paragraph{}\
 \paragraph{}\
 
-\paragraph{3. Make a function \(hist(v)\) that plots a histogram of values stored in array \(v\). For example:}\
+\paragraph{3. Create a Ruby class \(triangle\) with initializer, accessors, and member functions for computing the \(perimeter\) and the \(area\) of arbitrary triangles. Also make a member function \(test\) that checks sides a, b, and c, and classifies the triangle as: }\
 
-\begin{minted}[fontsize=\normalsize]{bash} 
-0  **********
-1  ********
-2  *********
-3  ***********
-4  *******
-5  ************
-6  ***********
-7  *********
-8  *************
-9  ***********
-10 *********
-\end{minted}
+\begin{enumerate}[label=(\arabic*)]
+	\item equilateral,
+	\item isosceles,
+	\item scalene,
+	\item right,
+	\item not a triangle.
+\end{enumerate}
+
+Right triangle can be either isosceles or scalene. Compute the perimeter and area only for valid triangles (verified by test). Show examples of the use of this class.
 
 \paragraph{}\
-	The answer is listed on the page 3.
 \paragraph{}\
-	
+	The answer is listed on the page TBD.
+\paragraph{}\
 \paragraph{}\
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby}
-def hist(array)
-  array.each_with_index do |value, index|
-    print index, "\t"
-    puts " #{'*' * value} "
-  end
-end
+
 \end{minted}
 
 \paragraph{}\
 	The result of the program execution:
 	
 \begin{minted}[fontsize=\normalsize]{bash} 
-$ irb -r ./hw5.rb
-irb(main):001:0> hist([1,2,3,4,5])
-0	 *
-1	 **
-2	 ***
-3	 ****
-4	 *****
-=> [1, 2, 3, 4, 5]
-irb(main):002:0> hist(generate_rand_int_array(10, 10))
-0	 ***
-1	 *
-2	 *****
-3	 ********
-4	 ******
-5	 ****
-6	 ***
-7	 ****
-8	 *****
-9	 *****
-=> [3, 1, 5, 8, 6, 4, 3, 4, 5, 5]
+
 \end{minted}
 
 
@@ -191,377 +156,33 @@ irb(main):002:0> hist(generate_rand_int_array(10, 10))
 
 
 
-\paragraph{4. Write a function \(mean(v)\) that returns the mean value of numbers stored in the array \(v\).}\
+\paragraph{4. Create a Ruby class \(Sphere\). Each sphere is characterized by the instance variable radius. For this class create the initializer and the following methods: }\
+
+	\begin{itemize}
+		\item \(area\) \(-\) a method that returns the area of the sphere (\(a = 4r^2\pi\))
+		\item \(volume\) \(-\) a method that returns the volume of the sphere (\(v = 4r^3\pi / 3\))
+	\end{itemize}
+	
+	Create the class \(Ball\) that inherits properties from the class \(Sphere\) and adds a new instance variable \(color\). Then create the class \(MyBall\) that inherits properties from the class \(Ball\) and adds a new instance variable \(owner\). Write the method \(show\) that displays the instance variables of the class \(MyBall\). Show sample applications of the class \(MyBall\).
 
 \paragraph{}\
 	The answer is listed on the page TBD.
+	
 \paragraph{}\
-
 \paragraph{}\
 Source code of the program:
 
-\begin{minted}[fontsize=\small]{scheme}
-#lang racket
-
-; auxiliary predicate
-(define (difference-sufficiently-small? x1 x2)
-  (let ((threshold 1e-10))    ; threshold can be easily changed in the future
-    (if (< (abs (- x2 x1)) threshold) #t #f)))
-
-; auxiliary function
-(define (round-to-n-significant-decimal-digits x n)
-  (/ (round (* x (expt 10 n)))
-     (expt 10 n)))
-
-; auxiliary function
-(define (mean x . y)
-  (/ (apply + (cons x y))
-     (+ 1 (length y))))
-
-; auxiliary function
-(define (third-of-delta-between x1 x2)
-  (/ (- x2 x1) 3))
-
-; main function
-(define (fmax f x1 x2)
-  (if (not (procedure? f)) (display "First argument must be a procedure.")
-      (cond
-        [(difference-sufficiently-small? x1 x2)
-         (let ((rounded-xmax (round-to-n-significant-decimal-digits (mean x1 x2) 6)))
-           (display "xmax = ")
-           (display rounded-xmax)
-           (newline)
-           (display "ymax = ")
-           (display (round-to-n-significant-decimal-digits (f rounded-xmax) 6)))]
-        [else (let ((a1 (+ x1 (third-of-delta-between x1 x2)))
-                    (a2 (- x2 (third-of-delta-between x1 x2))))
-                (if (< (f a1) (f a2))
-                    (fmax f a1 x2)
-                    (fmax f x1 a2)))])))
+\begin{minted}[fontsize=\normalsize]{ruby}
 \end{minted}
 
-\paragraph{}\
 \paragraph{}\
 \paragraph{}\
 	Results of the program execution:
 	
-\begin{minted}[fontsize=\small]{scheme} 
-> (difference-sufficiently-small? 1.00000000001 1.00000000008)
-#t
-> (difference-sufficiently-small? 1.00000000011 1.0000000008)
-#f
-
-> (fmax (lambda(x) (* x (- 1 x))) 0 10)
-xmax = 1/2
-ymax = 1/4
-> (fmax (lambda(x) (* x (- x 1))) 0 10)
-xmax = 10
-ymax = 90
-> (fmax (lambda(x) (* x (- x 1))) 0 9.95)
-xmax = 9.95
-ymax = 89.0525
-> (fmax (lambda(x) (* x (- x 1))) 0 9.9875)
-xmax = 9.9875
-ymax = 89.762656
-> (fmax (lambda(x) (* x (- x 1))) 0 9.987654)
-xmax = 9.987654
-ymax = 89.765578
-> (fmax (lambda(x) (* x (- x 1))) 0 9.9876543)
-xmax = 9.987654
-ymax = 89.765578
-> (fmax (lambda(x) (* x (- x 1))) 0 9.987654321)
-xmax = 9.987654
-ymax = 89.765578
+\begin{minted}[fontsize=\normalsize]{bash} 
 \end{minted}
 
 \paragraph{}\
 \paragraph{}\
-
-\paragraph{5. Develop a program that computes the scalar product of two vectors. The program must not accept vectors having different size (in such a case print an error message). For example: }\
-
-\begin{minted}[fontsize=\small]{scheme} 
-> (scalar-product '#(1 2 3) '#(2 1 1))
-7
-> (scalar-product '#(1 2 3) '#(1 2 3 4 5))
-ERROR: Different sizes of vectors!
-\end{minted}
-
-\begin{enumerate}[label=(\alph*)]
-
-	\item \textbf{Write the program in iterative style using the DO loop.}
-	
-	\item \textbf{Write the program using recursion.}
-					
-\end{enumerate}
-
-\paragraph{}\
-	The answer is listed on the pages 17 through 18.
-	
-\paragraph{}\
-Source code of the program:
-	
-\begin{minted}[fontsize=\small]{scheme} 
-#lang racket
-
-; the inner product of two vectors:
-; A * B = (a1 * b1 + a2 * b2 + ... + an * bn)
-
-; auxiliary predicate
-(define (both-vectors? v1 v2)
-  (and (vector? v1) (vector? v2)))
-
-; auxiliary predicate
-(define (vector-lengths-equal? v1 v2)
-  (equal? (vector-length v1) (vector-length v2)))
-
-; auxiliary predicate
-(define (valid-vectors-input? v1 v2)
-  (cond
-    [(not (both-vectors? v1 v2))
-     (begin (display "Error: Both arguments must be vectors.\n") #f)]
-    [(not (vector-lengths-equal? v1 v2))
-     (begin (display "Error: Both vectors must have the same length.\n") #f)]
-    [else #t]))
-
-; main program - entry point
-(define (inner-product v1 v2 is-recursive)
-  (cond
-    [(not (valid-vectors-input? v1 v2)) (display "")]
-    [else (if (equal? is-recursive #t)
-              (inner-product-recursive (vector->list v1) (vector->list v2))
-              (inner-product-iterative v1 v2))]))
-
-; recursive implementation of inner-product
-(define (inner-product-recursive lst1 lst2)
-  (cond
-    [(empty? lst1) 0]
-    [(+ (* (car lst1) (car lst2))
-        (inner-product-recursive (cdr lst1) (cdr lst2)))]))
-  
-; iterative implementation of inner-product
-(define (inner-product-iterative v1 v2)
-  (let ((sum 0))
-    (do ((i 0 (add1 i)))
-      ((>= i (vector-length v1)) sum)
-      (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
-\end{minted}	
-
-\paragraph{}\
-\paragraph{}\
-
-	Results of the program execution:
-	
-\begin{minted}[fontsize=\small]{scheme} 
-> (inner-product #(1 2 3) 123 #f)
-Error: Both arguments must be vectors.
-
-> (inner-product #(1 2 3) 123 #t)
-Error: Both arguments must be vectors.
-
-> (inner-product #(1 2 3) #(1 2 3 4) #f)
-Error: Both vectors must have the same length.
-
-> (inner-product #(1 2 3) #(1 2 3 4) #t)
-Error: Both vectors must have the same length.
-
-> (inner-product #(1 2 3) #(2 1 1) #f)
-7
-
-> (inner-product #(1 2 3) #(2 1 1) #t)
-7
-
-> (inner-product #(1 2 3) #(3 2 1) #t)
-10
-
-> (inner-product #(1 2 3) #(3 2 1) #f)
-10
-\end{minted}
-
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-\paragraph{}\
-
-\paragraph{6. The files "matrix1.dat" and "matrix2.dat" are created using a text editor and contain two rectangular matrices. For example, }\
-\paragraph{}\
-\quad matrix1.dat:		\qquad \qquad \qquad \qquad matrix2.dat:
-\begin{minted}[fontsize=\small]{scheme}
-
-     2   3                     3   3
-     1   2   3                 1   2   3
-     4   5   6                 1   2   3
-                               1   2   3
-\end{minted}
-In both cases the first row contains the size of the matrix (the number of rows and the number of columns). The remaining rows contain the values of elements.
-
-	\begin{enumerate}[label=(\alph*)]
-
-	\item Develop programs \textbf{row} and \textbf{col} that read a matrix from a file and display a specified row or column. For example:
-	
-\begin{minted}[fontsize=\small]{scheme}
-> (row "matrix1.dat" 2)
-4 5 6
-> (col "matrix1.dat" 2)
-2 5
-\end{minted}
-	
-	Matrices should be stored in memory as vectors whose components are vectors.
-	\paragraph{}\
-	
-	\item Develop a program for matrix multiplication \textbf{mmul} that multiplies two matrices stored in specified input files, and creates and displays an output file containing the product. For example:
-	
-\begin{minted}[fontsize=\small]{scheme}
-> (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
- 6  12   18
-15  30   45
-\end{minted}
-In this example the contents of the new file "matrix3.dat" should be
-
-\begin{minted}[fontsize=\small]{scheme}
- 2    3
- 6   12   18
-15   30   45
-\end{minted}
-					
-	\end{enumerate}
-	
-\paragraph{}\
-\paragraph{}\
-	The answer is listed on the pages 20 through 22.
-\paragraph{}\
-\paragraph{}\
-
-Source code of the program:
-
-\begin{minted}[fontsize=\small]{scheme}
-#lang racket
-
-; display components of the vector
-(define (display-vector v)
-  (do ((i 0 (add1 i)))
-    ((>= i (vector-length v))
-     (display ""))
-    (display (vector-ref v i))
-    (display " ")))
-
-;read matrix from file
-(define (read-matrix filename)
-  (let* ((inport (open-input-file filename))
-         (nrow (read inport))
-         (ncol (read inport))
-         (mat (make-vector nrow)))
-    (do ((i 0 (add1 i)))
-      ((>= i nrow) (close-input-port inport) mat)
-      (let ((row (make-vector ncol)))
-        (do ((j 0 (add1 j)))
-          ((>= j ncol)
-           (vector-set! mat i row))
-          (vector-set! row j (read inport)))))))
-
-; return i-th row of the matrix in filename
-(define (ro filename i)
-  (define mat (read-matrix filename))
-  (vector-ref mat i))
-
-; display i-th row of the matrix in filename
-(define (row filename i)
-  (display-vector (ro filename i)))
-
-; return j-th col of the matrix in the filename
-(define (co filename j)
-  (define mat (read-matrix filename))
-  (define nrow (vector-length mat))
-  (define column (make-vector nrow))
-  (do ((i 0 (add1 i)))
-    ((>= i nrow) column)
-    (vector-set! column i (vector-ref (vector-ref mat i) j ))))
-
-; display j-th col of the matrix in filename
-(define (col filename j)
-  (display-vector (co filename j)))
-
-
-; iterative implementation of inner-product
-(define (inner-product-iterative v1 v2)
-  (let ((sum 0))
-    (do ((i 0 (add1 i)))
-      ((>= i (vector-length v1)) sum)
-      (set! sum (+ sum (* (vector-ref v1 i) (vector-ref v2 i)))))))
-
-; matrix multiplication, display and create
-(define (mmul f1 f2 f3)
-  (define m1 (read-matrix f1))
-  (define m2 (read-matrix f2))
-  (define nrow (vector-length m1))
-  (define ncol (vector-length m2))
-  (define outport (open-output-file f3))
-  (display nrow outport)
-  (display " " outport)
-  (display ncol outport)
-  (newline outport)
-  (do ((i 0 (add1 i)))
-    ((>= i nrow) (close-output-port outport) (display ""))
-    (begin (let ((row (make-vector ncol)))
-       (do ((j 0 (add1 j)))
-         ((>= j ncol) (display-vector row) (newline) (newline outport))
-         (vector-set! row j (inner-product-iterative (ro f1 i) (co f2 j)))
-         (display (vector-ref row j) outport)
-         (display " " outport))))))
-\end{minted}
-\paragraph{}\
-
-	Results of the program execution:
-\begin{minted}[fontsize=\small]{scheme}
-> (read-matrix "mymatrix1.dat")
-'#(#(1 9 5) #(2 5 6) #(4 3 1))
-
-> (read-matrix "mymatrix2.dat")
-'#(#(1 4 5) #(1 8 9))
-
-> (row "mymatrix1.dat" 0)
-1 4 5 
-> (row "mymatrix1.dat" 0)
-1 4 5 
-> (row "mymatrix1.dat" 1)
-1 8 9 
-
-> (col "mymatrix1.dat" 0)
-1 1 
-> (col "mymatrix1.dat" 1)
-4 8 
-
-> (col "mymatrix1.dat" 2)
-5 9 
-
-> (mmul "mymatrix1.dat" "mymatrix2.dat" "mymatrix3.dat")
-29 44 34 
-53 76 62 
-
-> (read-matrix "mymatrix3.dat")
-'#(#(29 44 34) #(53 76 62))
-
-
-
-> (read-matrix "matrix1.dat")
-'#(#(1 2 3) #(4 5 6))
-
-> (read-matrix "matrix2.dat")
-'#(#(1 2 3) #(1 2 3) #(1 2 3))
-
-> (mmul "matrix1.dat" "matrix2.dat" "matrix3.dat")
-6 12 18 
-15 30 45 
-
-> (read-matrix "matrix3.dat")
-'#(#(6 12 18) #(15 30 45))
-
-
-\end{minted}
 
 \end{document}
