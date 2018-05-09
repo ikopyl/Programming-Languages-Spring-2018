@@ -546,17 +546,51 @@ irb(main):001:0> use_map
 \paragraph{\quad 1.10 step}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_step
+  # if no block is given, an enumerator is returned instead:
+  p 1.step(10)
+  p 1.step(10, 2)
 
+  # with empty block it returns the start value (i.e. 1)
+  p 1.step(10) { }    # "identity function"
+  puts
+
+  # by default, it increments each values by 1
+  # here it prints all iterated values and returns the first element to p
+  p 1.step(10) { |num| print "#{num} "}     # i.e. 1 2 3 4 5 6 7 8 9 10 1
+
+  # we can also set a different increment value:
+  p 1.step(10, 2).map { |item| item }
+  puts
+
+  array = ['a', 'b', 'c', 'd', 'e', 'f']
+
+  # the use of array.step method:
+  (0...array.length).step(1).each do |index|
+    print "#{array[index] * index}"
+  end
+end
 \end{minted}
 
 
 \paragraph{}\
+
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_step
+#<Enumerator: 1:step(10)>
+#<Enumerator: 1:step(10, 2)>
+1
 
+1 2 3 4 5 6 7 8 9 10 1
+[1, 3, 5, 7, 9]
+
+bccdddeeeefffff=> 0...6
 \end{minted}
 
+\paragraph{}\
 \paragraph{}\
 
 
