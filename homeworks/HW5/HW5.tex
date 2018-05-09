@@ -332,7 +332,7 @@ irb(main):001:0> use_upto
 8
 9
 10
-=> nil
+=> 5
 \end{minted}
 
 \paragraph{}\
@@ -342,19 +342,52 @@ irb(main):001:0> use_upto
 \paragraph{\quad 1.6 downto}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_downto
+  # downto without block returns an iterator:
+  p 10.downto(5)
 
+  # downto with block returns the start value:
+  p 10.downto(5) { |num| num }
+  puts
+
+  # downto can be written with inline block:
+  10.downto(5) { |num| p num }
+  puts
+
+  # or with multiline block:
+  10.downto(5) do |num|
+    p num
+  end
+end
 \end{minted}
-
 
 \paragraph{}\
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_downto
+#<Enumerator: 10:downto(5)>
+10
 
+10
+9
+8
+7
+6
+5
+
+10
+9
+8
+7
+6
+5
+=> 10
 \end{minted}
 
 \paragraph{}\
-
+\paragraph{}\
 
 
 
