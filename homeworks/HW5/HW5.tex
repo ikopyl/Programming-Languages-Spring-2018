@@ -61,9 +61,6 @@
 	\maketitle
 	
 		\noindent \textit{Homework is prepared in LaTeX with TeXShop editor (under GNU GPL).}
-		
-		% \textit{Syntax diagrams are created in LucidChart online editor (lucidchart.com).}
-
 
 	\rmfamily\
 
@@ -73,17 +70,37 @@
 	\paragraph{1. Write a single Ruby demo program that illustrates the use of all main Ruby iterators (\(loop\), \(while\), \(until\), \(for\), \(upto\), \(downto\), \(times\), \(each\), \(map\), \(step\), \(collect\), \(select\), \(reject\)).}\
 
 \paragraph{}\
-
-Source code of the program:
+1.1 loop
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+# loop repeatedly executes the block of code
+# In the example below I tried to emulate the look of vi text editor:
+def use_loop
+  line_number = 1
+  loop do
+    print "#{line_number}\t"
+    line = gets
+    break if line =~ /^\:q!|\:wq/      # exit on either :q! or :wq
+    line_number += 1
+  end
+end
+\end{minted}
 
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_loop
+1	Skepticism is a resting place for human reason
+2	where it can reflect upon its dogmatic wanderings,
+3	but it is no dwelling place for permanent settlement.
+4	Simply to acquiesce in skepticism can never suffice
+5	to overcome the restlessness of reason.:wq
+=> nil
 \end{minted}
 
 \paragraph{}\
-
-	Result of the program execution:
-
+Depending on the existence and the location of the break statement inside the block, loop can be either a loop with exit at the top, with exit at the bottom, with exit in the middle, or with no exit at all, which would produce an infinite loop.
 
 
 \paragraph{}\
