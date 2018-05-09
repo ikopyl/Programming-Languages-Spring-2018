@@ -417,6 +417,7 @@ end
 
 
 \paragraph{}\
+
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
@@ -498,21 +499,48 @@ a b c d e
 \paragraph{\quad 1.9 map}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_map
+  # if no block is given, an enumerator is returned instead:
+  p [1, 2, 3].map
+  puts
 
+  # with empty block it returns an array filled with nil values:
+  p [1, 2, 3].map { }
+  puts
+
+  # use case analogous to the use of map function in Scheme:
+  # block is mapped to each element in the array
+  # as an expression, map returns the modified array
+  p [1, 2, 3].map { |x| x**x }
+  p ['a', 'b', 'c'].map { |char| char * 3 }
+
+  # it can also be chained with other enumerators:
+  p 10.times.map { |item| item }
+end
 \end{minted}
 
-
 \paragraph{}\
+
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_map
+#<Enumerator: [1, 2, 3]:map>
 
+[nil, nil, nil]
+
+[1, 4, 27]
+["aaa", "bbb", "ccc"]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 \end{minted}
 
 \paragraph{}\
-
-
-
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 
 
 \paragraph{\quad 1.10 step}\
