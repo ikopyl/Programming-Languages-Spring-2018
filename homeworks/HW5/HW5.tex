@@ -102,6 +102,20 @@ irb(main):001:0> use_loop
 \paragraph{}\
 Depending on the existence and the location of the break statement inside the block, loop can be either a loop with exit at the top, with exit at the bottom, with exit in the middle, or with no exit at all, which would produce an infinite loop.
 
+\paragraph{}\
+If no block is given, an enumerator is returned instead:
+\begin{minted}[fontsize=\normalsize]{bash} 
+$ irb
+irb(main):001:0> p loop
+#<Enumerator: main:loop>
+=> #<Enumerator: main:loop>
+irb(main):002:0> puts loop
+#<Enumerator:0x00007f813f09c140>
+=> nil
+\end{minted}
+
+
+
 
 \paragraph{}\
 \paragraph{}\
