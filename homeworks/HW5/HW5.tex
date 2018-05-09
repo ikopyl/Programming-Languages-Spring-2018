@@ -600,15 +600,35 @@ bccdddeeeefffff=> 0...6
 \paragraph{\quad 1.11 collect}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_collect
+  # in no block is given, an enumerator is returned instead
+  p [1, 2, 3, 4, 5].collect
 
+  # with empty block it returns an array of nil values
+  p [1, 2, 3, 4, 5].collect { }
+
+  p [1, 2, 3, 4, 5].collect { |item| item }       # identity function
+
+  puts
+  # collect works the same way as map method:
+  p [1, 2, 3, 4, 5].collect { |item| item **2 }   # returns the modified array
+end
 \end{minted}
 
 
 \paragraph{}\
+
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_collect
+#<Enumerator: [1, 2, 3, 4, 5]:collect>
+[nil, nil, nil, nil, nil]
+[1, 2, 3, 4, 5]
 
+[1, 4, 9, 16, 25]
+=> [1, 4, 9, 16, 25]
 \end{minted}
 
 \paragraph{}\
