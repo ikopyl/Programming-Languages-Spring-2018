@@ -229,6 +229,58 @@ irb(main):001:0> use_until
 => nil
 \end{minted}
 
+
+\paragraph{}\
+
+
+\paragraph{\quad 1.4 for}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+def use_for
+  for number in 1..5 do
+    p number
+  end
+
+  puts
+  # do is optional:
+  for number in 1...5
+    p number
+  end
+  puts
+  
+  # as an expression, for loop returns all the values it iterated over:
+  p for number in 1...5 do end
+  p for letter in 'a'..'z' do end
+  p for number in [1, 2, 3, 4] do end
+  p for letter in ['a', 'b', 'c', 'd'] do end
+end
+\end{minted}
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_for
+1
+2
+3
+4
+5
+
+1
+2
+3
+4
+
+1...5
+"a".."z"
+[1, 2, 3, 4]
+["a", "b", "c", "d"]
+=> ["a", "b", "c", "d"]
+\end{minted}
+
+
 \paragraph{}\
 \paragraph{}\
 
