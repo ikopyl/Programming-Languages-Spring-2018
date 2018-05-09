@@ -69,8 +69,7 @@
 
 	\paragraph{1. Write a single Ruby demo program that illustrates the use of all main Ruby iterators (\(loop\), \(while\), \(until\), \(for\), \(upto\), \(downto\), \(times\), \(each\), \(map\), \(step\), \(collect\), \(select\), \(reject\)).}\
 
-\paragraph{}\
-1.1 loop
+\paragraph{\quad 1.1 loop}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
 # loop repeatedly executes the block of code
@@ -100,8 +99,7 @@ irb(main):001:0> use_loop
 \end{minted}
 
 \paragraph{}\
-Depending on the existence and the location of the break statement inside the block, loop can be either a loop with exit at the top, with exit at the bottom, with exit in the middle, or with no exit at all, which would produce an infinite loop.
-
+Depending on the existence and the location of the break statement inside the block, loop can be either a loop with exit at the top, with exit at the bottom, with exit in the middle, or with no exit at all, which would produce an infinite loop. 
 \paragraph{}\
 If no block is given, an enumerator is returned instead:
 \begin{minted}[fontsize=\normalsize]{bash} 
@@ -114,8 +112,122 @@ irb(main):002:0> puts loop
 => nil
 \end{minted}
 
+\paragraph{\quad 1.2 while}\
 
+\begin{minted}[fontsize=\normalsize]{ruby}
+# while loop executes the code while condition is true:
+def use_while
+  # example of while with exit at the top:
+  a = 0
+  while a < 5 do
+    p a
+    a += 1
+  end
 
+  puts
+  # example of while with exit at the bottom:
+  i = 0
+  while true
+    puts "push #{i}"
+    i += 1
+    break if i >= 10
+  end
+
+  puts
+  # example of while with exit in the middle:
+  while true
+    i -= 1
+    break if i < 0
+    puts "pop #{i}"
+  end
+  
+  puts
+  # example of inline while loop:
+  p a -= 1 while a > 0
+end
+\end{minted}
+
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_while
+0
+1
+2
+3
+4
+
+push 0
+push 1
+push 2
+push 3
+push 4
+push 5
+push 6
+push 7
+push 8
+push 9
+
+pop 9
+pop 8
+pop 7
+pop 6
+pop 5
+pop 4
+pop 3
+pop 2
+pop 1
+pop 0
+
+4
+3
+2
+1
+0
+=> nil
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{\quad 1.3 until}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+# until loop executes the code while condition is false
+def use_until
+  a = 0
+  until a > 4 do
+    p a
+    a += 1
+  end
+
+  puts
+  # example of inline until:
+  p a -= 1 until a <= 0
+end
+\end{minted}
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_until
+0
+1
+2
+3
+4
+
+4
+3
+2
+1
+0
+=> nil
+\end{minted}
 
 \paragraph{}\
 \paragraph{}\
