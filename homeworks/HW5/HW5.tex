@@ -394,7 +394,25 @@ irb(main):001:0> use_downto
 \paragraph{\quad 1.7 times}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_times
+  # if no block is given, an enumerator is returned instead:
+  p 5.times
 
+  # as an expression it would return the number of iterations:
+  p 5.times { }
+  puts
+
+  # times can be written with inline block:
+  x = 2
+  5.times { x *= x }
+  p x
+
+  # or with multiline block:
+  5.times do |num|
+    print "#{num} "
+    puts if num == 4      # the values are iterated from 0 to n-1
+  end
+end
 \end{minted}
 
 
@@ -402,7 +420,14 @@ irb(main):001:0> use_downto
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_times
+#<Enumerator: 5:times>
+5
 
+4294967296
+0 1 2 3 4
+=> 5
 \end{minted}
 
 \paragraph{}\
