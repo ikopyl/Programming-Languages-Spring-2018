@@ -430,6 +430,12 @@ irb(main):001:0> use_times
 => 5
 \end{minted}
 
+
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 \paragraph{}\
 
 
@@ -438,7 +444,29 @@ irb(main):001:0> use_times
 \paragraph{\quad 1.8 each}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_each
+  # if no block is given, an enumerator is returned instead:
+  p [1, 2, 3, 4, 5].each
 
+  # with block it returns the initial collection:
+  p [1, 2, 3, 4, 5].each { }
+  puts
+  array = ['a', 'b', 'c', 'd', 'e']
+
+  # each with inline block:
+  array.each { |char| puts char }
+
+  # each with multiline block:
+  array.each do |char|
+    print "#{char} "
+  end
+  puts
+
+  # an example of each_with_index:
+  array.each_with_index do |char, index|
+    puts "#{index}:\t#{char}"
+  end
+end
 \end{minted}
 
 
@@ -446,11 +474,24 @@ irb(main):001:0> use_times
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_each
+#<Enumerator: [1, 2, 3, 4, 5]:each>
+[1, 2, 3, 4, 5]
 
+a
+b
+c
+d
+e
+a b c d e
+0:	a
+1:	b
+2:	c
+3:	d
+4:	e
+=> ["a", "b", "c", "d", "e"]
 \end{minted}
-
-\paragraph{}\
-
 
 
 
