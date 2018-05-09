@@ -231,6 +231,11 @@ irb(main):001:0> use_until
 
 
 \paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+
 
 
 \paragraph{\quad 1.4 for}\
@@ -279,6 +284,215 @@ irb(main):001:0> use_for
 ["a", "b", "c", "d"]
 => ["a", "b", "c", "d"]
 \end{minted}
+
+\paragraph{}\
+\paragraph{}\
+
+\paragraph{\quad 1.5 upto}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+def use_upto
+  # upto without block returns an iterator:
+  p 5.upto(10)
+
+  # upto with block returns the start value:
+  p 5.upto(10) { |num| num }
+  puts
+
+  # upto can be written with inline block:
+  5.upto(10) { |num| puts num }
+  puts
+
+  # or with multiline block:
+  5.upto(10) do |num|
+    p num
+  end
+end
+\end{minted}
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_upto
+#<Enumerator: 5:upto(10)>
+5
+
+5
+6
+7
+8
+9
+10
+
+5
+6
+7
+8
+9
+10
+=> nil
+\end{minted}
+
+\paragraph{}\
+\paragraph{}\
+
+
+\paragraph{\quad 1.6 downto}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+\paragraph{\quad 1.7 times}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+\paragraph{\quad 1.8 each}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+\paragraph{\quad 1.9 map}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+
+\paragraph{\quad 1.10 step}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+
+\paragraph{\quad 1.11 collect}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+
+\paragraph{\quad 1.12 select}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
+
+
+
+\paragraph{\quad 1.13 reject}\
+
+\begin{minted}[fontsize=\normalsize]{ruby}
+
+\end{minted}
+
+
+\paragraph{}\
+Result of the code execution:
+
+\begin{minted}[fontsize=\normalsize]{csh} 
+
+\end{minted}
+
+\paragraph{}\
+
+
 
 
 \paragraph{}\
