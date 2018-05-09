@@ -514,7 +514,7 @@ def use_map
   p [1, 2, 3].map { |x| x**x }
   p ['a', 'b', 'c'].map { |char| char * 3 }
 
-  # it can also be chained with other enumerators:
+  # it can also be chained with other enumerables:
   p 10.times.map { |item| item }
 end
 \end{minted}
@@ -611,7 +611,7 @@ def use_collect
 
   puts
   # collect works the same way as map method:
-  p [1, 2, 3, 4, 5].collect { |item| item **2 }   # returns the modified array
+  p [1, 2, 3, 4, 5].collect { |item| item ** 2 }   # returns the modified array
 end
 \end{minted}
 
@@ -640,15 +640,29 @@ irb(main):001:0> use_collect
 \paragraph{\quad 1.12 select}\
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+def use_select
+  # if no block is given, an enumerator is returned instead
+  p [1, 2, 3].select
 
+  # with empty block it returns an empty array
+  p [1, 2, 3].select { }
+
+  # returns only even numbers:
+  p [1, 2, 3, 4, 5, 6, 7, 8].select { |num| num % 2 == 0 }
+end
 \end{minted}
 
-
+\paragraph{}\
 \paragraph{}\
 Result of the code execution:
 
 \begin{minted}[fontsize=\normalsize]{csh} 
-
+$ irb -I . -r hw5_problem1.rb
+irb(main):001:0> use_select
+#<Enumerator: [1, 2, 3]:select>
+[]
+[2, 4, 6, 8]
+=> [2, 4, 6, 8]
 \end{minted}
 
 \paragraph{}\
