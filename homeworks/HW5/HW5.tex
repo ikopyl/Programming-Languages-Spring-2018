@@ -723,20 +723,119 @@ irb(main):001:0> use_reject
 	
 	Show examples of the use of this method.
 
+\paragraph{}\
+The answer is listed below and on pages 15 through 16.
 \paragraph{}\	
+
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby} 
+# extending class Array with methods limited? and sorted?,
+# as well as 4 other auxiliary methods to showcase the former two
+class Array
+  def limited?(amin, amax)
+    each { |item| return false if item < amin || item > amax }
+    true
+  end
 
+  def sorted?
+    return 1 if sort == self
+    return -1 if sort.reverse == self
+    0
+  end
+
+  def limited_print(amin, amax)
+    print "Array #{self} is "
+    print 'not quite ' unless limited?(amin, amax)
+    puts "limited by #{amin} and #{amax}."
+  end
+
+  def limited_test(amin, amax)
+    p limited?(amin, amax)
+    limited_print(amin, amax)
+    puts
+  end
+
+  def sorted_print
+    sort_value = sorted?
+    print "array #{self} is "
+    puts 'not sorted.' if sort_value.zero?
+    puts 'sorted in non-increasing order.' if sort_value.equal?(-1)
+    puts 'sorted in non-decreasing order.' if sort_value.equal?(1)
+  end
+
+  def sorted_test
+    puts "Given array #{self}, sorted? returns #{sorted?},"
+    print '=> '
+    sorted_print
+    puts
+  end
+end
+
+array = [1, 2, 3, 4, 5]
+
+array.limited_test(1, 5)
+array.limited_test(0, 5)
+array.limited_test(0, 4)
+array.limited_test(1, 6)
+array.limited_test(2, 6)
+
+puts
+
+array.sorted_test
+
+array = [3, 3, 4, 5, 5]
+array.sorted_test
+
+array = [5, 5, 3, 3, 1]
+array.sorted_test
+
+array = [123, 123, 432, 12, 342]
+array.sorted_test
 \end{minted}	
 
 \paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 	The result of the program execution:
 	
-\begin{minted}[fontsize=\normalsize]{bash} 
+\begin{minted}[fontsize=\normalsize]{csh} 
+$ ruby hw5_problem2.rb
+true
+Array [1, 2, 3, 4, 5] is limited by 1 and 5.
 
+true
+Array [1, 2, 3, 4, 5] is limited by 0 and 5.
+
+false
+Array [1, 2, 3, 4, 5] is not quite limited by 0 and 4.
+
+true
+Array [1, 2, 3, 4, 5] is limited by 1 and 6.
+
+false
+Array [1, 2, 3, 4, 5] is not quite limited by 2 and 6.
+
+
+Given array [1, 2, 3, 4, 5], sorted? returns 1,
+=> array [1, 2, 3, 4, 5] is sorted in non-decreasing order.
+
+Given array [3, 3, 4, 5, 5], sorted? returns 1,
+=> array [3, 3, 4, 5, 5] is sorted in non-decreasing order.
+
+Given array [5, 5, 3, 3, 1], sorted? returns -1,
+=> array [5, 5, 3, 3, 1] is sorted in non-increasing order.
+
+Given array [123, 123, 432, 12, 342], sorted? returns 0,
+=> array [123, 123, 432, 12, 342] is not sorted.
 \end{minted}
 	
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
+\paragraph{}\
 \paragraph{}\
 \paragraph{}\
 
