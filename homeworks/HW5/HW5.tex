@@ -724,7 +724,7 @@ irb(main):001:0> use_reject
 	Show examples of the use of this method.
 
 \paragraph{}\
-The answer is listed below and on pages 15 through 16.
+The answer is listed on pages 14 through 16.
 \paragraph{}\	
 
 Source code of the program:
@@ -852,25 +852,268 @@ Given array [123, 123, 432, 12, 342], sorted? returns 0,
 Right triangle can be either isosceles or scalene. Compute the perimeter and area only for valid triangles (verified by test). Show examples of the use of this class.
 
 \paragraph{}\
-\paragraph{}\
-	The answer is listed on the page TBD.
-\paragraph{}\
+	The answer is listed on pages 17 through 22.
 \paragraph{}\
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+# Computing the perimeter and area of arbitrary triangles
+class Triangle
+  def initialize(side_a, side_b, side_c)
+    @side_a = side_a
+    @side_b = side_b
+    @side_c = side_c
+  end
 
+  # There was an option to either pre-calculate perimeter and store it
+  # in a separate instance variable, or to have it calculated every time
+  # when perimeter method is called. I chose the latter to avoid having states
+  # and to use the method as idempotent function. Otherwise I would have to
+  # re-calculate perimeter each time any of the sides is changed.
+  def perimeter
+    side_a + side_b + side_c if triangle?
+  end
+
+  # do the sides a, b, c form a triangle?
+  def triangle?
+    @side_a + @side_b > @side_c &&
+      @side_a + @side_c > @side_b &&
+      @side_b + @side_c > @side_a
+  end
+
+  # are all sides equal?
+  def equilateral?
+    @side_a == @side_b && @side_b == @side_c
+  end
+
+  # are at least two sides equal?
+  def isosceles?
+    side_a == side_b || side_a == side_c || side_b == side_c
+  end
+
+  # are the triangle sides all unequal?
+  def scalene?
+    !isosceles?
+  end
+
+  def right_triangle?
+    return false if equilateral? || !triangle?
+
+    hypotenuse = sides.max
+    catheti = sides - [hypotenuse]
+
+    # analogous to Scheme's (apply + (map square lst))
+    sum_of_catheti_squares =
+        catheti.map do |cathetus|
+          cathetus**2
+        end.reduce(:+)
+
+    # isosceles right-angled triangles can not have sides with integer values
+    # that's why I use approximation here:
+    (hypotenuse**2 - sum_of_catheti_squares).abs < 1.0e-10
+  end
+
+  def sides
+    [@side_a, @side_b, @side_c]
+  end
+
+
+
+
+
+
+
+
+
+
+
+  # leveraging the properties of equilateral & isosceles triangles
+  # to compute their area;
+  # using Heron's formula to compute areas of any other triangles
+  def area
+    if equilateral?
+      0.5 * Triangle.find_isosceles_height(side_a, side_b) * side_a
+    elsif isosceles?
+      base, side = find_isosceles_base_and_side
+      0.5 * Triangle.find_isosceles_height(base, side) * base
+    elsif triangle?
+      semiperimeter = 0.5 * perimeter
+      Math.sqrt(semiperimeter *
+                    (semiperimeter - side_a) *
+                    (semiperimeter - side_b) *
+                    (semiperimeter - side_c))
+    end
+  end
+
+  def self.find_isosceles_height(base, side)
+    half_base = 0.5 * base
+    Math.sqrt((side**2) - half_base**2)
+  end
+
+  def find_isosceles_base_and_side
+    if side_a == side_b
+      [side_c, side_a]
+    elsif side_a == side_c
+      [side_b, side_a]
+    else
+      [side_a, side_b]
+    end
+  end
+
+  def test
+    return [5] unless triangle?
+    return_values = []
+    return_values << 1 if equilateral?
+    return_values << 2 if isosceles?
+    return_values << 3 if scalene?
+    return_values << 4 if right_triangle?
+  end
+
+
+
+
+
+  def showcase
+    p self
+    puts "Test: #{test}"
+    puts "Do sides #{sides} form a triangle? #{triangle?}"
+    if triangle?
+      puts "Perimeter of the triangle: #{perimeter}"
+      puts "Area of the triangle: #{format('%.4f', area)}"
+      puts "Is this a right triangle? #{right_triangle?}"
+      puts "Is this a scalene triangle? #{scalene?}"
+      puts "Is this an isosceles triangle? #{isosceles?}"
+      puts "Is this an equilateral triangle? #{equilateral?}"
+    end
+    puts
+    puts
+  end
+
+  private :find_isosceles_base_and_side
+  attr_accessor :side_a, :side_b, :side_c
+end
+
+# right triangle
+triangle = Triangle.new(3, 4, 5)
+triangle.showcase
+
+# scalene triangle
+triangle.side_b = 12
+triangle.showcase
+
+# right triangle
+triangle.side_a = 5
+triangle.side_c = 13
+triangle.showcase
+
+# isosceles triangle
+triangle = Triangle.new(10, 10, 2)
+triangle.showcase
+# equilateral triangle
+triangle = Triangle.new(8, 8, 8)
+triangle.showcase
+
+# isosceles triangle consisting of two 3-4-5s
+triangle = Triangle.new(5, 5, 8)
+triangle.showcase
+
+
+
+# scalene triangle
+triangle = Triangle.new(8, 15, 20)
+triangle.showcase
+
+# isosceles right triangle:
+triangle = Triangle.new(1, 1, Math.sqrt(2))
+triangle.showcase
 \end{minted}
 
 \paragraph{}\
 	The result of the program execution:
 	
-\begin{minted}[fontsize=\normalsize]{bash} 
+\begin{minted}[fontsize=\normalsize]{csh} 
+#<Triangle:0x00007fd47502dfe0 @side_a=3, @side_b=4, @side_c=5>
+Test: [3, 4]
+Do sides [3, 4, 5] form a triangle? true
+Perimeter of the triangle: 12
+Area of the triangle: 6.0000
+Is this a right triangle? true
+Is this a scalene triangle? true
+Is this an isosceles triangle? false
+Is this an equilateral triangle? false
 
+
+#<Triangle:0x00007fd47502dfe0 @side_a=3, @side_b=12, @side_c=5>
+Test: [5]
+Do sides [3, 12, 5] form a triangle? false
+
+
+#<Triangle:0x00007fd47502dfe0 @side_a=5, @side_b=12, @side_c=13>
+Test: [3, 4]
+Do sides [5, 12, 13] form a triangle? true
+Perimeter of the triangle: 30
+Area of the triangle: 30.0000
+Is this a right triangle? true
+Is this a scalene triangle? true
+Is this an isosceles triangle? false
+Is this an equilateral triangle? false
+
+
+#<Triangle:0x00007fd47502c690 @side_a=10, @side_b=10, @side_c=2>
+Test: 
+Do sides [10, 10, 2] form a triangle? true
+Perimeter of the triangle: 22
+Area of the triangle: 9.9499
+Is this a right triangle? false
+Is this a scalene triangle? false
+Is this an isosceles triangle? true
+Is this an equilateral triangle? false
+#<Triangle:0x00007fd4730bf910 @side_a=8, @side_b=8, @side_c=8>
+Test: 
+Do sides [8, 8, 8] form a triangle? true
+Perimeter of the triangle: 24
+Area of the triangle: 27.7128
+Is this a right triangle? false
+Is this a scalene triangle? false
+Is this an isosceles triangle? true
+Is this an equilateral triangle? true
+
+
+#<Triangle:0x00007fd4730beba0 @side_a=5, @side_b=5, @side_c=8>
+Test: 
+Do sides [5, 5, 8] form a triangle? true
+Perimeter of the triangle: 18
+Area of the triangle: 12.0000
+Is this a right triangle? false
+Is this a scalene triangle? false
+Is this an isosceles triangle? true
+Is this an equilateral triangle? false
+
+
+#<Triangle:0x00007fd4730bde80 @side_a=8, @side_b=15, @side_c=20>
+Test: 
+Do sides [8, 15, 20] form a triangle? true
+Perimeter of the triangle: 43
+Area of the triangle: 53.1972
+Is this a right triangle? false
+Is this a scalene triangle? true
+Is this an isosceles triangle? false
+Is this an equilateral triangle? false
+
+
+#<Triangle:0x00007fd4730b7aa8 @side_a=1, @side_b=1, @side_c=1.4142135623730951>
+Test: [2, 4]
+Do sides [1, 1, 1.4142135623730951] form a triangle? true
+Perimeter of the triangle: 3.414213562373095
+Area of the triangle: 0.5000
+Is this a right triangle? true
+Is this a scalene triangle? false
+Is this an isosceles triangle? true
+Is this an equilateral triangle? false
 \end{minted}
 
 
-\paragraph{}\
+
 \paragraph{}\
 
 
