@@ -68,6 +68,9 @@
 
 
 	\paragraph{1. Write a single Ruby demo program that illustrates the use of all main Ruby iterators (\(loop\), \(while\), \(until\), \(for\), \(upto\), \(downto\), \(times\), \(each\), \(map\), \(step\), \(collect\), \(select\), \(reject\)).}\
+	
+	\paragraph{}\
+The answer is listed on pages 1 through 13.
 
 \paragraph{\quad 1.1 loop}\
 
@@ -97,7 +100,6 @@ irb(main):001:0> use_loop
 5	to overcome the restlessness of reason.:wq
 => nil
 \end{minted}
-
 \paragraph{}\
 Depending on the existence and the location of the break statement inside the block, loop can be either a loop with exit at the top, with exit at the bottom, with exit in the middle, or with no exit at all, which would produce an infinite loop. 
 \paragraph{}\
@@ -1128,20 +1130,148 @@ Is this an equilateral triangle? false
 	Create the class \(Ball\) that inherits properties from the class \(Sphere\) and adds a new instance variable \(color\). Then create the class \(MyBall\) that inherits properties from the class \(Ball\) and adds a new instance variable \(owner\). Write the method \(show\) that displays the instance variables of the class \(MyBall\). Show sample applications of the class \(MyBall\).
 
 \paragraph{}\
-	The answer is listed on the page TBD.
+	The answer is listed on pages 23 through 26.
 	
 \paragraph{}\
 \paragraph{}\
 Source code of the program:
 
 \begin{minted}[fontsize=\normalsize]{ruby}
+# parent class
+class Sphere
+  def initialize(radius)
+    @radius = radius
+  end
+
+  def area
+    4 * radius**2 * Math::PI
+  end
+
+  def volume
+    4 * radius**3 * Math::PI / 3
+  end
+
+  def show
+    p self
+    puts "Radius of sphere is #{@radius}"
+    puts "Area of sphere is #{format('%.4f', area)}"
+    puts "Volume of sphere is #{format('%.4f', volume)}"
+    puts
+  end
+
+  attr_accessor :radius
+end
+
+
+# child class
+class Ball < Sphere
+  def initialize(radius, color)
+    super(radius)
+    @color = color
+  end
+
+  def show
+    p self
+    puts "Color of the Ball is #{@color}"
+    puts "Radius of the Ball is #{@radius}"
+    puts "Area of the Ball is #{format('%.5f', area)}"
+    puts "Volume of the Ball is #{format('%.5f', volume)}"
+    puts
+  end
+
+  attr_accessor :color
+end
+
+# grandchild class
+class MyBall < Ball
+  def initialize(radius, color, owner)
+    super(radius, color)
+    @owner = owner
+  end
+
+  def show
+    p self
+    puts "Owner of MyBall is #{@owner}"
+    puts "Color of MyBall is #{@color}"
+    puts "Radius of MyBall is #{@radius}"
+    puts "Area of MyBall is #{format('%.6f', area)}"
+    puts "Volume of MyBall is #{format('%.6f', volume)}"
+    puts
+  end
+
+  attr_accessor :owner
+end
+
+# for sphere with radius #3 area is equal to volume
+sphere = Sphere.new(3)
+sphere.show
+
+sphere = Sphere.new(5)
+sphere.show
+
+puts
+puts
+
+ball = Ball.new(4, 'yellow')
+ball.show
+
+ball.color = 'red'
+ball.radius = 2
+ball.show
+
+puts
+puts
+
+ball = MyBall.new(1, 'green', 'Mr. Peanutbutter')
+ball.show
+
+ball.owner = 'Bojack Horseman'
+ball.show
 \end{minted}
 
 \paragraph{}\
 \paragraph{}\
 	Results of the program execution:
 	
-\begin{minted}[fontsize=\normalsize]{bash} 
+\begin{minted}[fontsize=\small]{csh}
+#<Sphere:0x00007f8b1a930380 @radius=3>
+Radius of sphere is 3
+Area of sphere is 113.0973
+Volume of sphere is 113.0973
+
+#<Sphere:0x00007f8b1a92fef8 @radius=5>
+Radius of sphere is 5
+Area of sphere is 314.1593
+Volume of sphere is 523.5988
+
+
+
+#<Ball:0x00007f8b1a92fa98 @radius=4, @color="yellow">
+Color of the Ball is yellow
+Radius of the Ball is 4
+Area of the Ball is 201.06193
+Volume of the Ball is 268.08257
+
+#<Ball:0x00007f8b1a92fa98 @radius=2, @color="red">
+Color of the Ball is red
+Radius of the Ball is 2
+Area of the Ball is 50.26548
+Volume of the Ball is 33.51032
+
+
+#<MyBall:0x00007f8b1a92f0e8 @radius=1, @color="green", @owner="Mr. Peanutbutter">
+Owner of MyBall is Mr. Peanutbutter
+Color of MyBall is green
+Radius of MyBall is 1
+Area of MyBall is 12.566371
+Volume of MyBall is 4.188790
+
+#<MyBall:0x00007f8b1a92f0e8 @radius=1, @color="green", @owner="Bojack Horseman">
+Owner of MyBall is Bojack Horseman
+Color of MyBall is green
+Radius of MyBall is 1
+Area of MyBall is 12.566371
+Volume of MyBall is 4.188790
 \end{minted}
 
 \paragraph{}\
