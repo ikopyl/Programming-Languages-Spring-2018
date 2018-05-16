@@ -70,10 +70,11 @@
   (- (mean-lst (square-lst lst))
      (square (mean-lst lst))))
 
+; standard deviation
 (define (sigma-lst lst)
   (sqrt (variance-lst lst)))
 
-
+; The coefficient of variance
 (define (varco-lst lst)
   (/ (sigma-lst lst) (mean-lst lst)))
 
